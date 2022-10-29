@@ -1,9 +1,10 @@
 ---
 import { t } from "src/locales";
+import Link from "../Link.astro";
 
 const { prev, next } = Astro.props;
 ---
 <div class="posts-pagination">
-    {prev ? <a class="posts-pagination__prev" href={prev} aria-label={t('PrevPage')}>← {t('toTheFuture')}</a> : null}
-    {next ? <a class="posts-pagination__next" href={next} aria-label={t('NextPage')}>{t('toThePast')} →</a> : null}
+    {prev ? <Link class="posts-pagination__prev" href={prev as string} aria-label={t('PrevPage')}>← {t('toTheFuture')}</Link> : null}
+    {next ? <Link class="posts-pagination__next" href={next as string} aria-label={t('NextPage')}>{t('toThePast')} →</Link> : null}
 </div>
