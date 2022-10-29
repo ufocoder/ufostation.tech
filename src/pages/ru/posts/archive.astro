@@ -24,7 +24,7 @@ const meta = {
 							<a href={post.url}>{post.frontmatter.title}</a>    
 
 							{post.frontmatter.pubDate ? (
-								<time datetime={post.frontmatter.pubDate}>
+								<time class="archive__item-time" datetime={post.frontmatter.pubDate}>
 									{post.frontmatter.pubDate && formatShortDate(post.frontmatter.pubDate)}
 								</time>
 							) : null}

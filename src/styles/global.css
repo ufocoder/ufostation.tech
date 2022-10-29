@@ -273,7 +273,8 @@ blockquote {
     font-size: 1.1em;
 }
 
-.archive__item time {
+.archive__item-time {
+	display: inline-block;
 	color: #999;
 }
 
