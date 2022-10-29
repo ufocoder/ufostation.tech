@@ -5,6 +5,6 @@ import Link from "../Link.astro";
 const { prev, next } = Astro.props;
 ---
 <div class="posts-pagination">
-    {prev ? <Link class="posts-pagination__prev" href={prev as string} aria-label={t('PrevPage')}>← {t('toTheFuture')}</Link> : null}
-    {next ? <Link class="posts-pagination__next" href={next as string} aria-label={t('NextPage')}>{t('toThePast')} →</Link> : null}
+    {prev ? <Link class="posts-pagination__prev" href={prev} aria-label={t('PrevPage') as string}>← {t('toTheFuture')}</Link> : null}
+    {next ? <Link class="posts-pagination__next" href={next} aria-label={t('NextPage') as string}>{t('toThePast')} →</Link> : null}
 </div>
