@@ -11,6 +11,8 @@ export interface Props {
 
 const faviconURL = import.meta.env.BASE_URL + 'favicon.svg';
 const { title, description, image } = Astro.props;
+
+const pageTitle = title  ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 ---
 
 <!-- Global Metadata -->
@@ -20,8 +22,8 @@ const { title, description, image } = Astro.props;
 <link rel="apple-touch-icon image_src" href={faviconURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title  ? `${title} | ${SITE_TITLE}` : SITE_TITLE}</title>
-<meta name="title" content={title} />
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
 <meta name="description" content={description} />  
 
 <!-- Open Graph / Facebook -->
@@ -34,7 +36,7 @@ const { title, description, image } = Astro.props;
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
+<meta property="twitter:title" content={pageTitle} />
 <meta property="twitter:description" content={description} />
 {image ? (<meta property="twitter:image" content={new URL(image, Astro.url)} />) : null }
 
