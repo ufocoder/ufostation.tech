@@ -1,11 +1,9 @@
 ---
 import { marked } from 'marked';
-import { formatFullDate, getReadingTime } from "src/lib/content.astro";
-import { t } from "src/locales";
+import { formatFullDate } from "src/lib/content";
+import { t, readingTime } from "src/locales";
 
 const { post } = Astro.props;
-
-const readingTime = getReadingTime(post.rawContent(), t('minutes'));
 ---
 <article class="post-preview">
     <a href={post.url} class="post-preview__title">{post.frontmatter.title}</a>
@@ -17,7 +15,7 @@ const readingTime = getReadingTime(post.rawContent(), t('minutes'));
             </time>
         ) : null}
         •
-        {readingTime} {t('read')}
+        {readingTime(post.frontmatter.minutesRead)}
     </div>
 
     

@@ -1,12 +1,9 @@
 ---
-import { formatFullDate, getReadingTime } from 'src/lib/content.astro';
-import { t } from 'src/locales';
+import { formatFullDate } from 'src/lib/content';
+import { t, readingTime } from 'src/locales';
 
-const { content, rawContent } = Astro.props;
-const { title, pubDate, updatedDate, description, heroImage } = content;
-
-const readingTime = getReadingTime(rawContent(), t('minutes'));
-
+const { content } = Astro.props;
+const { title, pubDate, updatedDate, description, heroImage, minutesRead } = content;
 ---
 <article class="post">
     {heroImage && (
@@ -17,7 +14,7 @@ const readingTime = getReadingTime(rawContent(), t('minutes'));
         {pubDate && <time datetime={pubDate}>{formatFullDate(pubDate)}</time>}
         {updatedDate && <div>({t('updated')} <time datetime={updatedDate}>{formatFullDate(updatedDate)}</time>)</div>}
         •
-        {readingTime} {t('read')}
+        {readingTime(minutesRead)}
     </div>
     <div class="post__content">
         <slot />

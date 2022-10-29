@@ -2,7 +2,7 @@
 import Header from './_header.astro';
 import BaseLayout from 'src/layouts/ru/Base.astro';
 import { getArchive } from 'src/lib/posts.astro';
-import { formatShortDate } from 'src/lib/content.astro';
+import { formatShortDate } from 'src/lib/content';
 
 const archive = await getArchive();
 
@@ -19,7 +19,7 @@ const meta = {
             <section class="archive">
                 <h3 class="archive__items-title">{year}</h3>
 				<ul class="archive__items">
-					{posts.map((post, key) => (
+					{posts.map((post) => (
 						<li class="archive__item">
 							<a href={post.url}>{post.frontmatter.title}</a>    
 
@@ -28,7 +28,6 @@ const meta = {
 									{post.frontmatter.pubDate && formatShortDate(post.frontmatter.pubDate)}
 								</time>
 							) : null}
-
 							
 						</li>
 					))}
