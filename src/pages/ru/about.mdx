@@ -3,6 +3,7 @@ layout: "src/layouts/ru/Page.astro"
 title: "О сайте"
 ---
 
+import Img from 'src/components/Img.astro';
 import Link from 'src/components/Link.astro';
 import {
     PODCAST_SITE_URL,
@@ -10,6 +11,9 @@ import {
     DONATE_BUYMEACOFFEE_URL, 
     GITHUB_URL
 } from 'src/config'
+
+
+<Img src="/assets/hero.jpg" height="200px" />
 
 Добро пожаловать на проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <Link href="/ru/posts/">техническими заметками</Link> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
 
