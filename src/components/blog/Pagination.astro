@@ -1,0 +1,9 @@
+---
+import { t } from "src/locales";
+
+const { prev, next } = Astro.props;
+---
+<div class="posts-pagination">
+    {prev ? <a class="posts-pagination__prev" href={prev} aria-label={t('PrevPage')}>← {t('toTheFuture')}</a> : null}
+    {next ? <a class="posts-pagination__next" href={next} aria-label={t('NextPage')}>{t('toThePast')} →</a> : null}
+</div>

@@ -1,0 +1,11 @@
+---
+import Layout from "src/layouts/ru/Post.astro";
+import NavigationBrowserSecurity from 'src/pages/ru/_navigation/browser-security.astro';
+---
+
+<Layout {...Astro.props}>
+    <Fragment>
+        <NavigationBrowserSecurity />
+        <slot />
+    </Fragment>
+</Layout>

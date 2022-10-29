@@ -1,0 +1,9 @@
+---
+import BaseLayout from './Base.astro';
+
+const { content: { title, description, heroImage }} = Astro.props;
+---
+<BaseLayout meta={{ title, description, heroImage, lang: 'en' }}>
+	<h1>{title}</h1>
+	<slot />
+</BaseLayout>

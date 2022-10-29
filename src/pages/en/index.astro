@@ -1,0 +1,20 @@
+---
+import BaseLayout from 'src/layouts/en/Base.astro';
+
+const meta = {
+	title: 'Home',
+	description: '',
+};
+---
+
+<BaseLayout meta={meta}>
+	<main>
+		<h1>Hello, Astronaut!</h1>
+		<p>
+			I'm a software developer who writes about code.
+		</p>
+		<p>
+			Этот сайт также доступен на <a href="/ru/">Русском языке</a> <img class="content__inline-icon" width="16px" height="16px" alt="Русский язык" src="/assets/icons/flag-ru.svg">
+		</p>
+	</main>
+</BaseLayout>

@@ -1,0 +1,31 @@
+---
+import { marked } from 'marked';
+import { formatFullDate, getReadingTime } from "src/lib/content.astro";
+import { t } from "src/locales";
+
+const { post } = Astro.props;
+
+const readingTime = getReadingTime(post.rawContent(), t('minutes'));
+---
+<article class="post-preview">
+    <a href={post.url} class="post-preview__title">{post.frontmatter.title}</a>
+
+    <div class="post-preview__meta">
+        {post.frontmatter.pubDate ? (
+            <time datetime={post.frontmatter.pubDate} class="post-preview__date">
+                {post.frontmatter.pubDate && formatFullDate(post.frontmatter.pubDate)}
+            </time>
+        ) : null}
+        •
+        {readingTime} {t('read')}
+    </div>
+
+    
+    {post.frontmatter.description && (
+        <div class="post-preview__content" set:html={marked.parse(post.frontmatter.description)} />
+    )}
+
+    <div class="post-preview__link">
+        <a href={post.url} >{t('readMore')}</a>
+    </div>
+</article>

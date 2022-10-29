@@ -1,0 +1,16 @@
+---
+import { SITE_TITLE } from 'src/config';
+import { t } from 'src/locales';
+
+const today = new Date();
+---
+<footer class="footer">
+	<div class="footer__container">
+		<div class="footer__copyright">
+			&copy; {today.getFullYear()} {SITE_TITLE}, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+		</div>
+		<div class="footer__built-with">
+			{t('builtWith')} 🚀 <a href="https://astro.build/">astro</a>
+		</div>
+	</div>
+</footer>

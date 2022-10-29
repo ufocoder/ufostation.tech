@@ -1,0 +1,19 @@
+---
+import Link from 'src/components/Link.astro';
+import BaseLayout from 'src/layouts/common/Base.astro';
+import { setLocale } from 'src/locales';
+
+const { meta } = Astro.props;
+
+const lang = 'en';
+
+setLocale(lang);
+---
+<BaseLayout meta={{ ...meta, lang}}>
+    <Fragment slot="header">
+        <nav class="header__menu">
+            <Link class="header__link" href="/en/about">About</Link>
+        </nav>
+    </Fragment>
+    <slot />
+</BaseLayout>

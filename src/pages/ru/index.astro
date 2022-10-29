@@ -1,0 +1,63 @@
+---
+import BaseLayout from 'src/layouts/ru/Base.astro';
+import { DONATE_BOOSTY_URL, PAGE_SIZE, PODCAST_SITE_URL } from 'src/config';
+import { getPosts } from 'src/lib/posts.astro';
+
+const lastPosts = (await getPosts()).slice(0, PAGE_SIZE);
+
+const meta = {
+	title: 'Главная',
+	description: '',
+};
+---
+<style>
+	.mainpage__hero-image {
+		height: 200px;
+		background-position: center right;
+		background-image: url(/assets/hero.jpg);
+		background-size: cover;
+	}
+
+	.mainpage__notes {
+		display: flex;
+		flex-direction: row;
+		gap: 2em;
+	
+	}
+
+	.mainpage__notes-description {
+		flex: 1;
+		margin-bottom: 1em;
+	}
+
+	.mainpage__notes-navigation {
+		flex: 1;
+	}
+
+	@media (max-width: 640px) {
+		.mainpage__notes {
+			display: block;
+		}
+	}
+</style>
+<BaseLayout meta={meta}>
+	<main>
+		<h2>Прием! Как слышно?</h2>
+
+		<div class="mainpage__hero-image" />
+		
+		<p>
+			Добро пожаловать на проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <a href="/ru/posts/">техническими заметками</a> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
+		</p>
+
+		<p>
+			Буду рад, если вы <a href={DONATE_BOOSTY_URL}>захотите меня поддержать</a>
+		</p>
+{/* 
+		<p>
+			This site is also available in <a href="/en">English</a> <img class="content__inline-icon" width="16px" height="16px" alt="English language" src="/assets/icons/flag-en.svg">
+		</p>
+*/}
+
+	</main>
+</BaseLayout>

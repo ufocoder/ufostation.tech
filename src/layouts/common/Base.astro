@@ -1,0 +1,34 @@
+---
+import Head from "./base/Head.astro";
+import Header from "./base/Header.astro";
+import Footer from "./base/Footer.astro";
+
+export interface Props {
+    children?: any;
+    meta: {
+        title: string;
+        description: string;
+        lang: string;
+        heroImage?: string;
+    }
+};
+
+const { meta: { title, description, heroImage, lang }} = Astro.props;
+
+---
+<html lang={lang}>
+	<head>
+		<Head title={title} description={description} image={heroImage} />
+	</head>
+	<body>
+		<Header>
+            <slot name="header" />
+        </Header>
+        <div class="content">
+            <div class="content__container">
+                <slot />
+            </div>
+        </div>
+        <Footer />
+	</body>
+</html>

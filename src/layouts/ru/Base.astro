@@ -1,0 +1,27 @@
+---
+import Link from 'src/components/Link.astro';
+import BaseLayout from 'src/layouts/common/Base.astro';
+import { setLocale } from 'src/locales';
+
+const { meta } = Astro.props;
+
+const lang = 'ru';
+
+setLocale(lang);
+---
+<BaseLayout meta={{ ...meta, lang}}>
+    <Fragment slot="header">
+        <input id="header-checkbox" type="checkbox" class="header__checkbox" />
+        <label for="header-checkbox" class="header__toggler">
+            <span class="header__toggler-line"></span>
+        </label>
+        <div class="header__menu">
+            <nav class="header__nav">
+                <Link class="header__link" href="/ru/posts">Блог</Link>
+                <Link class="header__link" href="/ru/podcast">Подкаст</Link>
+                <Link class="header__link" href="/ru/about">О сайте</Link>
+            </nav>
+        </div>
+    </Fragment>
+    <slot />
+</BaseLayout>

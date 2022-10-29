@@ -1,0 +1,14 @@
+---
+import { SITE_ANALYTICS_ID } from "src/config";
+
+const url = 'https://www.googletagmanager.com/gtag/js?id=' + SITE_ANALYTICS_ID;
+---
+<script async src={url} is:inline>
+    // _
+</script>
+<script is:inline define:vars={{ id: SITE_ANALYTICS_ID }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', id);
+</script>

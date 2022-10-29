@@ -1,0 +1,24 @@
+---
+import Link from 'src/components/Link.astro';
+
+const isArchivePage = '/ru/posts/archive' === Astro.url.pathname.replace(/\/$/, '');
+---
+<div class="posts-header">
+    <h2 class="posts-header__title">{Astro.props.title}</h2>
+    <ul class="posts-header__menu">
+        { isArchivePage ? (
+            <li class="posts-header__item">
+                <Link href="/ru/posts">Все посты</Link>
+            </li>
+        ): (
+            <li class="posts-header__item">
+                <Link href="/ru/posts/archive">Архив</Link>
+            </li>
+        )}    
+        <li class="posts-header__item">
+            <Link href="/ru/posts/rss.xml">
+                <img class="posts-header__rss" src="/assets/icons/rss.svg" height="18px" width="18px" alt="RSS" />
+            </Link>
+        </li>
+    </ul>
+</div>

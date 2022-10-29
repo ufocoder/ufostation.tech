@@ -1,0 +1,24 @@
+---
+layout: "src/layouts/ru/Page.astro"
+title: "О сайте"
+---
+import {
+    PODCAST_SITE_URL,
+    DONATE_BOOSTY_URL, 
+    DONATE_BUYMEACOFFEE_URL, 
+    GITHUB_URL
+} from 'src/config'
+
+Добро пожаловать на проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <a href="/ru/posts/">техническими заметками</a> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
+
+### Использование материалов
+
+Все материалы распостраняются по лицензии [Creative Commons Attribution-ShareAlike license 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Вы можете свободно делиться материалами в любом виде, адаптировать его под себя в любых целях, включая коммерческие. Однако не забывайте указать источник ;)
+
+### Нашли ошибку
+
+Нашли опечатку или хотите улучшить исходный код проекта? Отправьте <a href={`${GITHUB_URL}/compare`}>Pull Request</a> или <a href={`${GITHUB_URL}/issues/new`}>создайте issue</a>.
+
+### Поддержать
+
+Нравится контент? Вы можете <a href={DONATE_BUYMEACOFFEE_URL}>угостить меня кофе</a> или поддержать меня на <a href={DONATE_BOOSTY_URL}>boosty</a>

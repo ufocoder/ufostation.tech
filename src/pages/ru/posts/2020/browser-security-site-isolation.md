@@ -1,0 +1,51 @@
+---
+layout: "src/pages/ru/_layouts/_with-browser-security-navigation.astro"
+title: "Site Isolation"
+language: "ru"
+pubDate: "Dec 25 2020"
+tags: ["browser", "security"]
+description: Изоляция на уровне процессов, да и безопасность браузера в целом реализована так, чтобы исключить доступ к данным одного веб-сайта в браузере из другого веб-сайта. Тажке согласно рассмотренной выше мультипроцессной модели каждая вкладка браузера предполагает работу отдельного процесса рендеринга.
+---
+
+Изоляция на уровне процессов, да и безопасность браузера в целом реализована так, чтобы исключить доступ к данным одного веб-сайта в браузере из другого веб-сайта. Тажке согласно рассмотренной выше мультипроцессной модели каждая вкладка браузера предполагает работу отдельного процесса рендеринга.  
+  
+Однако, если внутри браузера неожиданно появится ошибка, позволяющая получить данные внутри страницы, то будет доступна следующая ситуация:  
+  
+Вы зашли на сайт [https://evil.com](https://evil.com/), на который встраивается другой сайт, например, [https://banking.com](https://banking.com/), где ранее вы авторизовались.  
+
+Сайт [https://evil.com](https://evil.com/) эксплуатирует ошибку браузера, которая позволяет получить доступ к вашей машине и ко встроеной странице [https://banking.com](https://banking.com/), далее нападающий веб-сайт может получить доступ к вашему аккаунту на [https://banking.com](https://banking.com/).  
+
+
+<img src="/assets/posts/2020/browser-security-site-isolation/processes.jpg" />
+  
+Как такое возможно?  
+  
+- Уязвимости в движке рендеринга;
+- Универсальный межсайтовый скриптинг [UXSS](https://www.acunetix.com/blog/articles/universal-cross-site-scripting-uxss/);
+- Атаки по побочным каналам, такие как [Spectre](https://spectreattack.com/).
+
+Касательно Google Chrome, опыт прошлых опыт показывает, что потенциально уязвимые ошибки будут присутствовать в будущих выпусках Chrome, причем этот возможных объем ошибок остается стабильным, несмотря на годы вложений в разработчиков, программы вознаграждения за уязвимости и т. д. К таким потенциальным ошибкам относятся: [10 potentially exploitable bugs in renderer components in M69](https://bugs.chromium.org/p/chromium/issues/list?can=1&amp;q=Release%3D0-M69%2C1-M69%2C2-M69%2C3-M69+Type%3DBug-Security+Security_Severity%3DHigh%2CCritical+-status%3ADuplicate+label%3Aallpublic+component%3ABlink%2CInternals%3ECompositing%2CInternals%3EImages%3ECodecs%2CInternals%3EMedia%2CInternals%3ESkia%2CInternals%3EWebRTC%2C+-component%3ABlink%3EMedia%3EPictureInPicture%2CBlink%3EPayments%2CBlink%3EStorage%2CInternals%3ECore%2CInternals%3EPrinting%2CInternals%3EStorage%2CMojo%2CServices%3ESync%2CUI%3EBrowser&amp;sort=m&amp;groupby=&amp;colspec=ID+Status+CVE+Security_Severity+Security_Impact+Component+Summary), [5 in M70](https://bugs.chromium.org/p/chromium/issues/list?sort=m&amp;groupby=&amp;colspec=ID%20Status%20CVE%20Security_Severity%20Security_Impact%20Component%20Summary&amp;q=Release%3D0-M70%2C1-M70%2C2-M70%2C3-M70%20Type%3DBug-Security%20Security_Severity%3DHigh%2CCritical%20-status%3ADuplicate%20label%3Aallpublic%20component%3ABlink%2CInternals%3ECompositing%2CInternals%3EImages%3ECodecs%2CInternals%3EMedia%2CInternals%3ESkia%2CInternals%3EWebRTC%2C%20-component%3ABlink%3EMedia%3EPictureInPicture%2CBlink%3EPayments%2CBlink%3EStorage%2CInternals%3ECore%2CInternals%3EPrinting%2CInternals%3EStorage%2CMojo%2CServices%3ESync%2CUI%3EBrowser&amp;can=1) и т.д (подробнее [здесь](https://www.chromium.org/Home/chromium-security/site-isolation#motivation) в разделе Motivation)  
+  
+С технологией Site Isolation эти два веб-сайта ([evil.com](http://evil.com/), [banking.com](http://banking.com/)) будут запущены в отдельных процессах рендеринга (каждый в своей песочнице), как следствие это усложннит эксплуатацию уязвимости браузера, чтобы получить данные.  
+
+<img src="/assets/posts/2020/browser-security-site-isolation/architecture.jpg" />
+
+Для более детального погружения в тему Site Isolation, строго рекомендую ознакомится с докладом [USENIX Security '19 - Site Isolation: Process Separation for Web Sites within the Browser](https://www.youtube.com/watch?v=YvVwrcaxxbQ).
+
+В Google Chrome фича впервые появлиась с релизом Chrome 67 (середина 2018 года), сейчас она включена по умолчанию во всех десктопных Chrome браузерах для всех сайтов, на Android устройствах включена, если объем оперативной памяти больше 2GB.  
+  
+Что же касается браузера Mozilla, то фича Site Isolation находится в тестировании с сентября 2020 года, а в первой половине 2021 планируется достичь стабильности.  
+  
+
+USENIX Security '19 - Site Isolation: Process Separation for Web: 
+
+<iframe src="https://www.youtube.com/embed/YvVwrcaxxbQ" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+
+**Дополнительные материалы**
+  
+- [Mozilla. Project Fission](https://wiki.mozilla.org/Project_Fission)
+- [Chromium Security‎. Site Isolation  
+](https://www.chromium.org/Home/chromium-security/site-isolation)
+- [Chrome Site Isolation Summit: Overview](https://www.youtube.com/watch?v=3fdbC3DE0YQ), [slides](https://docs.google.com/presentation/d/10HTTK4dsxO5p6FcpEOq8EkuV4yiBx2n6dBki8cqDWyo) - 2015 год  
+- [Chrome Site Isolation Summit: Chromium Changes](https://www.youtube.com/watch?v=gkrKtVkJNPM), [slides](https://docs.google.com/presentation/d/1e25K7BW3etNDm1-lkMltMcCcRDeVwLibBcbACRhqZ1k) - 2015 год  
+- [Site Isolation: Process Separation for Web Sites within the Browser](https://www.usenix.org/system/files/sec19-reis.pdf) - 2019 год 
