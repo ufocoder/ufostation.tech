@@ -38,4 +38,4 @@ const { title, description, image } = Astro.props;
 <meta property="twitter:description" content={description} />
 {image ? (<meta property="twitter:image" content={new URL(image, Astro.url)} />) : null }
 
-<GoogleAnalytics />
+<Analytics />
