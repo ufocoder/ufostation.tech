@@ -108,6 +108,8 @@ blockquote {
 .header {
 	background: var(--background-header);
 	position: sticky;
+	top: 0;
+	width: 100%;
 }
 
 .header__container {
@@ -302,6 +304,7 @@ blockquote {
 
 .posts-header__item {
 	display: inline-block;
+	padding-left: 0.2em;
 }
 
 .posts-header__rss {
