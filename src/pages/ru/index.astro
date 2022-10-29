@@ -1,5 +1,6 @@
 ---
 import BaseLayout from 'src/layouts/ru/Base.astro';
+import Link from 'src/components/Link.astro'
 import { DONATE_BOOSTY_URL, PAGE_SIZE, PODCAST_SITE_URL } from 'src/config';
 import { getPosts } from 'src/lib/posts.astro';
 
@@ -47,7 +48,7 @@ const meta = {
 		<div class="mainpage__hero-image" />
 		
 		<p>
-			Добро пожаловать на проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <a href="/ru/posts/">техническими заметками</a> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
+			Добро пожаловать на проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <Link href="/ru/posts/">техническими заметками</Link> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
 		</p>
 
 		<p>
@@ -55,7 +56,7 @@ const meta = {
 		</p>
 {/* 
 		<p>
-			This site is also available in <a href="/en">English</a> <img class="content__inline-icon" width="16px" height="16px" alt="English language" src="/assets/icons/flag-en.svg">
+			This site is also available in <Link href="/en">English</Link> <img class="content__inline-icon" width="16px" height="16px" alt="English language" src="/assets/icons/flag-en.svg">
 		</p>
 */}
 

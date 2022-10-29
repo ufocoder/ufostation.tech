@@ -1,12 +1,13 @@
 ---
+import Link from 'src/components/Link.astro';
 import { SITE_TITLE } from 'src/config';
 
 ---
 <header class="header">
 	<div class="header__container">
-		<a href="/" class="header__title">
+		<Link href="/" class="header__title">
 			{SITE_TITLE}
-		</a>
+		</Link>
 		<slot />
 	</div>
 </header>

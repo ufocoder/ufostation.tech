@@ -1,5 +1,5 @@
 ---
-import Link from 'src/components/Link.astro';
+import ActiveLink from 'src/components/ActiveLink.astro';
 import BaseLayout from 'src/layouts/common/Base.astro';
 import { setLocale } from 'src/locales';
 
@@ -17,9 +17,9 @@ setLocale(lang);
         </label>
         <div class="header__menu">
             <nav class="header__nav">
-                <Link class="header__link" href="/ru/posts">Блог</Link>
-                <Link class="header__link" href="/ru/podcast">Подкаст</Link>
-                <Link class="header__link" href="/ru/about">О сайте</Link>
+                <ActiveLink class="header__link" href="/ru/posts">Блог</ActiveLink>
+                <ActiveLink class="header__link" href="/ru/podcast">Подкаст</ActiveLink>
+                <ActiveLink class="header__link" href="/ru/about">О сайте</ActiveLink>
             </nav>
         </div>
     </Fragment>

@@ -1,5 +1,5 @@
 ---
-import Link from 'src/components/Link.astro';
+import ActiveLink from 'src/components/ActiveLink.astro';
 
 const isArchivePage = '/ru/posts/archive' === Astro.url.pathname.replace(/\/$/, '');
 ---
@@ -8,17 +8,17 @@ const isArchivePage = '/ru/posts/archive' === Astro.url.pathname.replace(/\/$/, 
     <ul class="posts-header__menu">
         { isArchivePage ? (
             <li class="posts-header__item">
-                <Link href="/ru/posts">Все посты</Link>
+                <ActiveLink href="/ru/posts">Все посты</ActiveLink>
             </li>
         ): (
             <li class="posts-header__item">
-                <Link href="/ru/posts/archive">Архив</Link>
+                <ActiveLink href="/ru/posts/archive">Архив</ActiveLink>
             </li>
         )}    
         <li class="posts-header__item">
-            <Link href="/ru/posts/rss.xml">
+            <ActiveLink href="/ru/posts/rss.xml">
                 <img class="posts-header__rss" src="/assets/icons/rss.svg" height="18px" width="18px" alt="RSS" />
-            </Link>
+            </ActiveLink>
         </li>
     </ul>
 </div>

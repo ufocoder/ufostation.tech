@@ -1,9 +1,11 @@
 ---
+import { SITE_BASE } from 'src/config';
+
 export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
 
-const { href, class: className, ...props } = Astro.props;
+const { href:rawHref, class: className, ...props } = Astro.props;
 
-const isActive = (Astro.url.pathname.replace(/\/$/, '') + '/').startsWith(href.toString());
+const href = SITE_BASE + '/' + rawHref.toString().replace(/^\//, '');
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}><slot /></a>
+<a href={href} class:list={className} {...props}><slot /></a>

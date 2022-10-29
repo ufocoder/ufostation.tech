@@ -1,5 +1,5 @@
 ---
-import Link from 'src/components/Link.astro';
+import ActiveLink from 'src/components/ActiveLink.astro';
 import BaseLayout from 'src/layouts/common/Base.astro';
 import { setLocale } from 'src/locales';
 
@@ -12,7 +12,7 @@ setLocale(lang);
 <BaseLayout meta={{ ...meta, lang}}>
     <Fragment slot="header">
         <nav class="header__menu">
-            <Link class="header__link" href="/en/about">About</Link>
+            <ActiveLink class="header__link" href="/en/about">About</ActiveLink>
         </nav>
     </Fragment>
     <slot />

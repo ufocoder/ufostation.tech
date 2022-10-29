@@ -2,6 +2,7 @@
 layout: "src/layouts/ru/Page.astro"
 title: "О сайте"
 ---
+import Link from 'src/components/Link';
 import {
     PODCAST_SITE_URL,
     DONATE_BOOSTY_URL, 
@@ -9,7 +10,7 @@ import {
     GITHUB_URL
 } from 'src/config'
 
-Добро пожаловать на проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <a href="/ru/posts/">техническими заметками</a> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
+Добро пожаловать на проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <Link href="/ru/posts/">техническими заметками</Link> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
 
 ### Использование материалов
 

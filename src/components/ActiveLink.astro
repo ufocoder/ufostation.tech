@@ -1,0 +1,11 @@
+---
+import Link from './Link.astro';
+
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+
+const { href, class: className, ...props } = Astro.props;
+
+const isActive = (Astro.url.pathname.replace(/\/$/, '') + '/').startsWith(href.toString());
+---
+
+<Link href={href} class:list={[className, { active: isActive }]} {...props}><slot /></Link>

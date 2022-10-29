@@ -1,4 +1,5 @@
 export const SITE_URL = 'http://ufocoder.github.io';
+export const SITE_BASE = '/ufostation';
 export const SITE_TITLE = 'UfoStation';
 export const SITE_DESCRIPTION = 'Welcome to my website!';
 export const SITE_ANALYTICS_ID = 'G-WK7P9RQ307';
