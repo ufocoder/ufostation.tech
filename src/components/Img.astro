@@ -1,0 +1,10 @@
+---
+export interface Props extends astroHTML.JSX.ImgHTMLAttributes {
+    src: string;
+}
+
+const { src:rawSrc, ...props } = Astro.props;
+
+const src = import.meta.env.BASE_URL + rawSrc.toString().replace(/^\//, '');
+---
+<img src={src} {...props} />

@@ -1,5 +1,6 @@
 ---
 import ActiveLink from 'src/components/ActiveLink.astro';
+import Img from 'src/components/Img.astro';
 
 const isArchivePage = '/ru/posts/archive' === Astro.url.pathname.replace(/\/$/, '');
 ---
@@ -17,7 +18,7 @@ const isArchivePage = '/ru/posts/archive' === Astro.url.pathname.replace(/\/$/, 
         )}    
         <li class="posts-header__item">
             <ActiveLink href="/ru/posts/rss.xml">
-                <img class="posts-header__rss" src="/assets/icons/rss.svg" height="18px" width="18px" alt="RSS" />
+                <Img class="posts-header__rss" src="/assets/icons/rss.svg" height="18px" width="18px" alt="RSS" />
             </ActiveLink>
         </li>
     </ul>

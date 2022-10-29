@@ -6,6 +6,7 @@ pubDate: "Dec 25 2020"
 tags: ["browser", "security"]
 description: Изоляция на уровне процессов, да и безопасность браузера в целом реализована так, чтобы исключить доступ к данным одного веб-сайта в браузере из другого веб-сайта. Тажке согласно рассмотренной выше мультипроцессной модели каждая вкладка браузера предполагает работу отдельного процесса рендеринга.
 ---
+import Img from 'src/components/Img.astro';
 
 Изоляция на уровне процессов, да и безопасность браузера в целом реализована так, чтобы исключить доступ к данным одного веб-сайта в браузере из другого веб-сайта. Тажке согласно рассмотренной выше мультипроцессной модели каждая вкладка браузера предполагает работу отдельного процесса рендеринга.  
   
@@ -16,7 +17,7 @@ description: Изоляция на уровне процессов, да и бе
 Сайт [https://evil.com](https://evil.com/) эксплуатирует ошибку браузера, которая позволяет получить доступ к вашей машине и ко встроеной странице [https://banking.com](https://banking.com/), далее нападающий веб-сайт может получить доступ к вашему аккаунту на [https://banking.com](https://banking.com/).  
 
 
-<img src="/assets/posts/2020/browser-security-site-isolation/processes.jpg" />
+<Img src="/assets/posts/2020/browser-security-site-isolation/processes.jpg" />
   
 Как такое возможно?  
   
@@ -28,7 +29,7 @@ description: Изоляция на уровне процессов, да и бе
   
 С технологией Site Isolation эти два веб-сайта ([evil.com](http://evil.com/), [banking.com](http://banking.com/)) будут запущены в отдельных процессах рендеринга (каждый в своей песочнице), как следствие это усложннит эксплуатацию уязвимости браузера, чтобы получить данные.  
 
-<img src="/assets/posts/2020/browser-security-site-isolation/architecture.jpg" />
+<Img src="/assets/posts/2020/browser-security-site-isolation/architecture.jpg" />
 
 Для более детального погружения в тему Site Isolation, строго рекомендую ознакомится с докладом [USENIX Security '19 - Site Isolation: Process Separation for Web Sites within the Browser](https://www.youtube.com/watch?v=YvVwrcaxxbQ).
 

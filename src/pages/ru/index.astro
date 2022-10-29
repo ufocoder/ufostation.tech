@@ -1,10 +1,8 @@
 ---
 import BaseLayout from 'src/layouts/ru/Base.astro';
+import Img from 'src/components/Img.astro';
 import Link from 'src/components/Link.astro'
-import { DONATE_BOOSTY_URL, PAGE_SIZE, PODCAST_SITE_URL } from 'src/config';
-import { getPosts } from 'src/lib/posts.astro';
-
-const lastPosts = (await getPosts()).slice(0, PAGE_SIZE);
+import { DONATE_BOOSTY_URL, PODCAST_SITE_URL } from 'src/config';
 
 const meta = {
 	title: 'Главная',
@@ -56,9 +54,8 @@ const meta = {
 		</p>
 {/* 
 		<p>
-			This site is also available in <Link href="/en">English</Link> <img class="content__inline-icon" width="16px" height="16px" alt="English language" src="/assets/icons/flag-en.svg">
+			This site is also available in <Link href="/en">English</Link> <Img class="content__inline-icon" width="16px" height="16px" alt="English language" src="/assets/icons/flag-en.svg" />
 		</p>
 */}
-
 	</main>
 </BaseLayout>
