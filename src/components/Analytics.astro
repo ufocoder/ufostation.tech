@@ -9,9 +9,10 @@ import { SITE_ANALYTICS_ID } from "src/config";
    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
    ym(id, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
+         defer: true,
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true
    });
 </script>
 <noscript><div><img src={"https://mc.yandex.ru/watch/" + SITE_ANALYTICS_ID} style="position:absolute; left:-9999px;" alt="" /></div></noscript>
