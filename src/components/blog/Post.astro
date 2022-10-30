@@ -7,7 +7,7 @@ const { title, pubDate, updatedDate, description, heroImage, minutesRead } = con
 ---
 <article class="post">
     {heroImage && (
-        <img class="post__hero-image" src={heroImage} alt={`${t('image')}: ${description}`} />
+        <img class="post__hero-image" src={heroImage} alt={`${t('image')}: ${title}`} />
     )}
     <h1 class="post__title">{title}</h1>
     <div class="post__meta">
