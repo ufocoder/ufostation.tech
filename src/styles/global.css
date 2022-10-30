@@ -261,7 +261,7 @@ blockquote {
 	flex: 1;
 	background: #f0f0f0;
 	font-size: 1.5em;
-	padding: 5em 0 7em;
+	padding: 5em 0 4em;
 }
 
 .mainpage__hero-container {
@@ -269,7 +269,8 @@ blockquote {
 	font-size: 1.1em;
 	color: var(--text-secondary);
 	max-width: var(--layout-width-base);
-	margin: 1em auto;
+	margin: 0 auto;
+	height: 3em;
 	z-index: 1;
 }
 
