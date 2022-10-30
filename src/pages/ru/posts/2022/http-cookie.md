@@ -4,6 +4,7 @@ title: "HTTP State Managent Mechanism"
 subtitle: "Краткая история развития HTTP протокола. Серия заметок"
 language: "ru"
 pubDate: "Oct 08 2022"
+series: "http"
 description: "Впервые Cookies появились в браузере [Netscape Navigator](https://en.wikipedia.org/wiki/Netscape_(web_browser)) в 1994 году, поэтому не удивительно, что одним из авторов спецификации был разработчик из [Netscape Communications](https://en.wikipedia.org/wiki/Netscape), [Лу](https://en.wikipedia.org/wiki/Lou_Montulli) [Монтули](https://en.wikipedia.org/wiki/Lou_Montulli). Кстати Лу на тот момент было всего 23 года, и он также являлся одним из авторов браузера [Lynx](https://en.wikipedia.org/wiki/Lynx_(web_browser))"
 ---
 
