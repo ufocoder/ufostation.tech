@@ -2,7 +2,7 @@
 layout: "src/layouts/ru/Post.astro"
 title: "Космический телескоп Джеймса Уэбба, по-видимому, работает на JavaScript"
 language: "ru"
-pubDate: "Sep 17 2022"
+pubDate: "Aug 21 2022"
 tags: ["history"]
 heroImage: "/assets/posts/2022/space-telescope/telescope.jpg"
 description: "Оказывается, JavaScript, на который любят жаловаться разработчики, приложил руку к созданию [потрясающих изображений](https://www.theverge.com/2022/7/12/23202989/james-webb-space-telescope-first-images-vs-hubbles-epic-shots), которые космический телескоп Джеймса Уэбба неоднократно передавал на Землю. 
