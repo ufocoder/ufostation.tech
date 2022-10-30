@@ -32,6 +32,7 @@
 
 :root {
 	--layout-width-base: 820px;
+	--layout-header-height: 90px;
 
 	--color-text-primary: #222;
 	--color-text-secondary: #4e4e4e;
@@ -65,6 +66,7 @@ body {
 	font-family: var(--font-family-base);
 	background-color: var(--background-primary);
 	color: var(--color-text-primary);
+	padding-top: var(--layout-header-height);
 }
 h1,
 h2,
@@ -105,10 +107,16 @@ blockquote {
 
 .header {
 	background: var(--background-header);
-	position: sticky;
+	height: var(--layout-header-height);
+	position: fixed;
+    transition: top 0.2s ease-in-out;
 	top: 0;
 	width: 100%;
 	z-index: 10;
+}
+
+.header--hidden {
+	top: calc(-1 * var(--layout-header-height));
 }
 
 .header__container {

@@ -1,7 +1,6 @@
 ---
 import Link from 'src/components/Link.astro';
 import { SITE_TITLE } from 'src/config';
-
 ---
 <header class="header">
 	<div class="header__container">
@@ -11,3 +10,22 @@ import { SITE_TITLE } from 'src/config';
 		<slot />
 	</div>
 </header>
+<script>
+	var lastScrollTop = 0;
+	var headerElement = document.querySelector('header');
+	var navbarHeight = headerElement.offsetHeight;
+	
+	window.addEventListener('scroll', function(e) {
+		var scrollTop = window.scrollY;
+		var isScrollingToBottom = scrollTop > lastScrollTop;
+
+		if (isScrollingToBottom && scrollTop > navbarHeight) {
+			headerElement.classList.add('header--hidden');
+		} else {
+			headerElement.classList.remove('header--hidden');
+		}
+
+		lastScrollTop = scrollTop;
+
+	}, { passive: true });
+</script>
