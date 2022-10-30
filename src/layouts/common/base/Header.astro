@@ -12,6 +12,7 @@ import { SITE_TITLE } from 'src/config';
 </header>
 <script>
 	var lastScrollTop = 0;
+	var toggleElement = document.querySelector('#header-checkbox') as HTMLFormElement;
 	var headerElement = document.querySelector('header');
 	var navbarHeight = headerElement.offsetHeight;
 	
@@ -19,7 +20,7 @@ import { SITE_TITLE } from 'src/config';
 		var scrollTop = window.scrollY;
 		var isScrollingToBottom = scrollTop > lastScrollTop;
 
-		if (isScrollingToBottom && scrollTop > navbarHeight) {
+		if (isScrollingToBottom && scrollTop > navbarHeight && !toggleElement.checked) {
 			headerElement.classList.add('header--hidden');
 		} else {
 			headerElement.classList.remove('header--hidden');
