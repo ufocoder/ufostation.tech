@@ -15,5 +15,8 @@ setLocale(lang);
             <ActiveLink class="header__link" href="/en/about">About</ActiveLink>
         </nav>
     </Fragment>
+    <Fragment slot="hero">
+        <slot name="hero" />
+    </Fragment>
     <slot />
 </BaseLayout>

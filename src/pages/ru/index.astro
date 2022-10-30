@@ -1,61 +1,77 @@
 ---
 import BaseLayout from 'src/layouts/ru/Base.astro';
-import Img from 'src/components/Img.astro';
+import PostPreview from 'src/components/blog/PostPreview.astro';
 import Link from 'src/components/Link.astro'
-import { DONATE_BOOSTY_URL, PODCAST_SITE_URL } from 'src/config';
+
+import SeriesBrowserSecurity from './_navigation/browser-security.astro'
+import SeriesHttp from './_navigation/http-series.astro';
+
+import { getNonSeriesPosts } from 'src/lib/posts.astro';
+
+import { PODCAST_SITE_URL } from 'src/config';
+
+const posts = await getNonSeriesPosts(3);
+const typedPosts = posts.map(({ url, frontmatter: { title }}) => ({ title, url }));
 
 const meta = {
 	title: 'Главная',
 	description: 'Проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми техническими заметками и выпусками подкаста Станция НЛО',
 };
 ---
-<style>
-	.mainpage__hero-image {
-		height: 200px;
-		background-position: center right;
-		background-image: url(/assets/hero.jpg);
-		background-size: cover;
-	}
-
-	.mainpage__notes {
-		display: flex;
-		flex-direction: row;
-		gap: 2em;
-	
-	}
-
-	.mainpage__notes-description {
-		flex: 1;
-		margin-bottom: 1em;
-	}
-
-	.mainpage__notes-navigation {
-		flex: 1;
-	}
-
-	@media (max-width: 640px) {
-		.mainpage__notes {
-			display: block;
-		}
-	}
-</style>
+<script is:global define:vars={{ typedPosts }}>
+window.typedPosts = typedPosts;
+</script>
+<script>
+import Typed from "typed.js";
+new Typed('#typed', {
+	strings: window.typedPosts.map(post => 
+		'<a href="'+ post.url +'">'+ post.title +'</a>'
+	),
+	typeSpeed: 30,
+	backSpeed: 0,
+	backDelay: 2000,
+	loop: true
+});
+</script>
 <BaseLayout meta={meta}>
+	<div slot="hero" class="mainpage__hero">
+		<div class="mainpage__hero-container">
+			Уже читали? <span id="typed"></span>
+		</div>
+		<div class="mainpage__hero-background"></div>
+	</div>
+
 	<main>
-		<h2>Прием! Как слышно?</h2>
+		<section class="mainpage__section">
+			Прием! Как слышно? Добро пожаловать! Здесь я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <Link href="/ru/posts/">техническими заметками</Link> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
+		</section>
 
-		<div class="mainpage__hero-image" />
-		
-		<p>
-			Добро пожаловать на проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <Link href="/ru/posts/">техническими заметками</Link> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
-		</p>
-
-		<p>
-			Буду рад, если вы <a href={DONATE_BOOSTY_URL}>захотите меня поддержать</a>
-		</p>
 {/* 
 		<p>
 			This site is also available in <Link href="/en">English</Link> <Img class="content__inline-icon" width="16px" height="16px" alt="English language" src="/assets/icons/flag-en.svg" />
 		</p>
 */}
+
+		<section class="mainpage__section">
+			<h3>Серии заметок</h3>
+
+			<div class="mainpage__notes">
+				<div class="mainpage__notes-navigation">
+					<SeriesHttp />
+				</div>
+				<div class="mainpage__notes-navigation">
+					<SeriesBrowserSecurity />
+				</div>
+			</div>
+		</section>
+
+		<section class="mainpage__section">
+			<h3>Интересные посты из <Link href="/ru/posts">блога</Link></h3>
+
+			{posts.map(post => (
+				<PostPreview post={post} />
+			))}
+		</section>
+
 	</main>
 </BaseLayout>

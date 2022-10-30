@@ -24,6 +24,7 @@ const { meta: { title, description, heroImage, lang }} = Astro.props;
 		<Header>
             <slot name="header" />
         </Header>
+        <slot name="hero" />
         <div class="content">
             <div class="content__container">
                 <slot />

@@ -43,8 +43,6 @@
 	--background-primary: #fff;
     --background-secondary: #f9f9fb;
 
-	--border-color-header: #909090;
-
 	--font-family-base: 'Roboto', sans-serif;
 
 	--font-size-heading-h1: 2.488rem;
@@ -110,6 +108,7 @@ blockquote {
 	position: sticky;
 	top: 0;
 	width: 100%;
+	z-index: 10;
 }
 
 .header__container {
@@ -254,6 +253,64 @@ blockquote {
 .content__inline-icon {
 	vertical-align: bottom;
 }
+
+/* mainpage */
+
+.mainpage__hero {
+	position: relative;
+	flex: 1;
+	background: #f0f0f0;
+	font-size: 1.5em;
+	padding: 5em 0 7em;
+}
+
+.mainpage__hero-container {
+	position: relative;
+	font-size: 1.1em;
+	color: var(--text-secondary);
+	max-width: var(--layout-width-base);
+	margin: 1em auto;
+	z-index: 1;
+}
+
+.mainpage__hero-background {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	opacity: 0.2;
+}
+
+.mainpage__section {
+	margin: 3em 0;
+}
+
+.mainpage__notes {
+	display: flex;
+	flex-direction: row;
+	gap: 2em;
+
+}
+
+.mainpage__notes-navigation {
+	flex: 1;
+	margin-bottom: 1em;
+}
+
+@media (max-width: 768px) {
+	.mainpage__hero {
+		padding: 2em 0 3em;
+	}
+	.mainpage__hero-container {
+		font-size: 1em;
+		padding: 0 1em;
+
+	}
+	.mainpage__notes {
+		display: block;
+	}
+}
+
 
 /* archive */
 
