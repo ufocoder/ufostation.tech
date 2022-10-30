@@ -10,3 +10,10 @@ export const formatShortDate = (datetime: string) => new Date(datetime).toLocale
     month: 'short',
     day: 'numeric',
 });
+
+export const processHeroImage = (prefix: string = '', path: string = ''): string => {
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+        return path;
+    }    
+    return prefix.replace(/\/$/, '') + '/' + path.replace(/^\//, '')
+}
