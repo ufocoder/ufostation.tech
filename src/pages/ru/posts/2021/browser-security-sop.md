@@ -3,7 +3,7 @@ layout: "src/pages/ru/_layouts/_with-browser-security-navigation.astro"
 title: "Same Origin Policy"
 language: "ru"
 pubDate: "Jan 02 2021"
-tags: ["browser", "security"]
+series: "browser-security"
 description: "Рассмотрим политику безопасности, связанную со значением origin — Same Origin Policy (или сокращенно SOP). Концепция, [созданная Netscape еще в далеком 1995 году](https://web.archive.org/web/20020808153106/http://wp.netscape.com:80/eng/mozilla/3.0/handbook/javascript/advtopic.htm#1009533), теперь реализована во всех современных веб-браузерах. Также существует [RFC 6454. The Web Origin Concept](https://tools.ietf.org/html/rfc6454) от декабря 2011, который описывает основные термины и принципы, стоящие за origin."
 ---
 
@@ -35,6 +35,7 @@ const message = iframe.contentDocument.getElementById('message').innerText;
 Браузеры используют политику SOP для обеспечения безопасности доступа к ресурсам. Возможно, вы никогда не узнаете, что происходит за кулисами, когда вы посещаете вредоносные сайты. Политика SOP не препятствует выполнению потенциально зловредных действий (отправке запросов), но гарантирует, что злоумышленники не смогут увидеть результаты этих действий: прочитать ответ от сетевого запроса, получить доступ к Cookies или получить доступ к DOM.  
   
 **Дополнительный материал**
+
 - [MDN. Same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) 
 - [W3C. Same Origin Policy](https://www.w3.org/Security/wiki/Same_Origin_Policy) 
 - [web.dev. Same-origin policy](https://web.dev/same-origin-policy/) 
