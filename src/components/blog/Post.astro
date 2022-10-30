@@ -12,7 +12,7 @@ const { title, pubDate, updatedDate, description, heroImage, minutesRead } = con
     <h1 class="post__title">{title}</h1>
     <div class="post__meta">
         {pubDate && <time datetime={pubDate}>{formatFullDate(pubDate)}</time>}
-        {updatedDate && <div>({t('updated')} <time datetime={updatedDate}>{formatFullDate(updatedDate)}</time>)</div>}
+        {updatedDate && <>• ({t('updated')} <time datetime={updatedDate}>{formatFullDate(updatedDate)}</time>)</>}
         •
         {readingTime(minutesRead)}
     </div>
