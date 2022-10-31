@@ -26,4 +26,4 @@ description: "Джулиан Фридман хотел бы сыграть с в
 
 Комментарии вокруг этих понятий, а также как в последствии написать свой контейнер на Golang читайте в этой статье: https://www.infoq.com/articles/build-a-container-golang/
 
-> Хотите попрактиковаться? Попробуйте [docker challenge](https://app.codecrafters.io/courses/docker/overview) от [codecrafters.io](https://codecrafters.io/), где вы вы узнаете о [chroot](https://en.wikipedia.org/wiki/Chroot), [пространствах имен ядра](https://en.wikipedia.org/wiki/Linux_namespaces), [docker registry API](https://docs.docker.com/registry/spec/api/) и многом другом.
+> Хотите попрактиковаться? Попробуйте [docker challenge](https://app.codecrafters.io/courses/docker/overview) от [codecrafters.io](https://codecrafters.io/), где вы разработаете легкий аналог docker и узнаете о [chroot](https://en.wikipedia.org/wiki/Chroot), [пространствах имен ядра](https://en.wikipedia.org/wiki/Linux_namespaces), [docker registry API](https://docs.docker.com/registry/spec/api/) и многом другом.
