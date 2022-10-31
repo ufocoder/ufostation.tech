@@ -1,0 +1,30 @@
+---
+layout: "src/layouts/ru/Post.astro"
+title: "PostgreSQL изнутри"
+language: "ru"
+pubDate: "Apr 23 2022"
+heroImage: "/assets/posts/2022/postgresql-internals/book.jpg"
+description: "Свободно распространяемая книга про внутреннее устройство PostgreSQL. Как пишет автор, Егор Рогов: *Несколько лет назад такая книга сэкономила бы мне много времени. Именно поэтому я ее в конце концов и написал.*"
+---
+import Link from 'src/components/Link.astro';
+import Img from 'src/components/Img.astro';
+
+<Link href="https://edu.postgrespro.ru/postgresql_internals-14.pdf">
+    <div class="post__attachment">
+        <Img src="/assets/icons/file-pdf.png" class="post__attachment-icon" /> 
+        <div class="post__attachment-description">
+            PostgreSQL изнутри<br />
+            Егор Рогов, 2022
+        </div>
+    </div>
+</Link>
+
+Свободно распространяемая книга про внутреннее устройство PostgreSQL. Как пишет автор, Егор Рогов: *Несколько лет назад такая книга сэкономила бы мне много времени. Именно поэтому я ее в конце концов и написал.*
+
+**Краткое содержание книги**
+
+Часть I. Изоляция и многоверсионность  
+Часть II. Буферный кеш и журнал  
+Часть III. Блокировки  
+Часть IV. Выполнение запросов  
+Часть V. Типы индексов  
