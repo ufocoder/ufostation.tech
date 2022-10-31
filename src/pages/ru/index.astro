@@ -10,7 +10,8 @@ import { getNonSeriesPosts } from 'src/lib/posts.astro';
 
 import { PODCAST_SITE_URL } from 'src/config';
 
-const posts = await getNonSeriesPosts(3);
+const posts = await getNonSeriesPosts(7);
+const lastPosts = posts. slice(0, 3);
 const typedPosts = posts.map(({ url, frontmatter: { title }}) => ({ title, url }));
 
 const meta = {
@@ -68,7 +69,7 @@ new Typed('#typed', {
 		<section class="mainpage__section">
 			<h3>Интересные посты из <Link href="/ru/posts">блога</Link></h3>
 
-			{posts.map(post => (
+			{lastPosts.map(post => (
 				<PostPreview post={post} />
 			))}
 		</section>
