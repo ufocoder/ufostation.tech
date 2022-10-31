@@ -99,7 +99,7 @@ blockquote {
     background: var(--background-secondary);
     color: #222;
     padding: 0.5em 1em;
-    margin: 0px;
+    margin: 1.3em 0;
 }
 
 /* header */
