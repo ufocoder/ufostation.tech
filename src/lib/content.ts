@@ -11,9 +11,11 @@ export const formatShortDate = (datetime: string) => new Date(datetime).toLocale
     day: 'numeric',
 });
 
-export const processHeroImage = (prefix: string = '', path: string = ''): string => {
-    if (path.startsWith('http://') || path.startsWith('https://')) {
+export const addUrlPrefix = (prefix: string = '', path: string = ''): string => {
+    if (isExternal(path)) {
         return path;
     }    
     return prefix.replace(/\/$/, '') + '/' + path.replace(/^\//, '')
 }
+
+export const isExternal = (url: string) => url.startsWith('http://') || url.startsWith('https://');

@@ -1,5 +1,5 @@
 ---
-import { formatFullDate, processHeroImage } from 'src/lib/content';
+import { formatFullDate, addUrlPrefix } from 'src/lib/content';
 import { t, readingTime } from 'src/locales';
 
 const { content } = Astro.props;
@@ -7,7 +7,7 @@ const { title, pubDate, updatedDate, heroImage, minutesRead } = content;
 ---
 <article class="post">
     {heroImage && (
-        <img class="post__hero-image" src={processHeroImage(import.meta.env.BASE_URL, heroImage)} alt={`${t('image')}: ${title}`} />
+        <img class="post__hero-image" src={addUrlPrefix(import.meta.env.BASE_URL, heroImage)} alt={`${t('image')}: ${title}`} />
     )}
     <h1 class="post__title">{title}</h1>
     <div class="post__meta">
