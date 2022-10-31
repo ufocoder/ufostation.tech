@@ -2,7 +2,6 @@
 layout: "src/layouts/ru/Post.astro"
 title: "RenderingNG deep-dive: BlinkNG"
 pubDate: "May 07 2022"
-language: "ru"
 heroImage: "/assets/posts/2022/renderingng-deep-dive/blinkng.jpg"
 description: "В прошлом году на канале делал акцент на тему рендеринга в браузере, и в прошлом же году в блоге Google разработчиков появилась [небольшая серия статей](https://developer.chrome.com/tags/rendering/), изучая которые можно приблизится к пониманию браузерного рендеринга. Так вот, несколько недель назад, 19 апреля 2022, в блоге Google разработчиков появилась новая статья про [BlinkNG](https://developer.chrome.com/blog/blinkng/)."
 ---

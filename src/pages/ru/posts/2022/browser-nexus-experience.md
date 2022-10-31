@@ -1,7 +1,6 @@
 ---
 layout: "src/layouts/ru/Post.astro"
 title: "Демонстрация работы первого веб-браузера Nexus"
-language: "ru"
 pubDate: "Sep 10 2022"
 tags: ["history"]
 description: 25 декабря 1990 Тимом Бернерсом-Ли был создан первый браузер WorldWideWeb, который в последствие был переименован в браузер Nexus. Последняя браузера 0.18 была опубликована в 1994.
