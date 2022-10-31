@@ -1,6 +1,6 @@
 ---
 layout: "src/pages/ru/_layouts/_with-http-navigation.astro"
-title: "HTTP 1.1."
+title: "HTTP 1.1. Стандарт на 15 лет"
 subtitle: "Краткая история развития HTTP протокола. Серия заметок"
 language: "ru"
 pubDate: "Sep 25 2022"

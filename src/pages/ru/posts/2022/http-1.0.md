@@ -1,6 +1,6 @@
 ---
 layout: "src/pages/ru/_layouts/_with-http-navigation.astro"
-title: "HTTP 1.0."
+title: "HTTP 1.0. Расширяемость как основа"
 subtitle: "Краткая история развития HTTP протокола. Серия заметок"
 language: "ru"
 pubDate: "Sep 11 2022"
