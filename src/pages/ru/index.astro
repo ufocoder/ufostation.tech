@@ -17,9 +17,11 @@ const meta = {
 };
 ---
 <BaseLayout meta={meta}>
+	<Typed selector="#post-titles" posts={posts} />
+
 	<div slot="hero" class="mainpage__hero">
 		<div class="mainpage__hero-container">
-			Уже читали? <Typed posts={posts} />
+			Уже читали? <span id="post-titles"></span>
 		</div>
 		<div class="mainpage__hero-background"></div>
 	</div>

@@ -2,19 +2,29 @@
 import { shuffleArray } from "src/lib/content";
 
 export interface Props {
-    posts: any[]
+    selector: string;
+    posts: { url: string, frontmatter: { title: string }}[]
 }
 
-const typedPosts = Astro.props.posts.map(({ url, frontmatter: { title }}) => ({ title, url }));
+declare global {
+  interface Window {
+    typedSelector: string;
+    typedPosts: { title: string, url: string }[]
+  }
+}
+
+const { posts, selector: typedSelector } = Astro.props;
+const typedPosts = posts.map(({ url, frontmatter: { title }}) => ({ title, url }));
 
 shuffleArray(typedPosts);
 ---
-<script is:global define:vars={{ typedPosts }}>
+<script is:global define:vars={{ typedSelector, typedPosts }}>
+    window.typedSelector = typedSelector;
     window.typedPosts = typedPosts;
 </script>
 <script>
     import Typed from "typed.js";
-    new Typed('#typed', {
+    new Typed(window.typedSelector, {
         strings: window.typedPosts.map(post => 
             '<a href="'+ post.url +'">'+ post.title +'</a>'
         ),
@@ -24,4 +34,3 @@ shuffleArray(typedPosts);
         loop: true
     });
 </script>
-<span id="typed"></span>
