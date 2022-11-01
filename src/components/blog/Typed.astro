@@ -1,0 +1,27 @@
+---
+import { shuffleArray } from "src/lib/content";
+
+export interface Props {
+    posts: any[]
+}
+
+const typedPosts = Astro.props.posts.map(({ url, frontmatter: { title }}) => ({ title, url }));
+
+shuffleArray(typedPosts);
+---
+<script is:global define:vars={{ typedPosts }}>
+    window.typedPosts = typedPosts;
+</script>
+<script>
+    import Typed from "typed.js";
+    new Typed('#typed', {
+        strings: window.typedPosts.map(post => 
+            '<a href="'+ post.url +'">'+ post.title +'</a>'
+        ),
+        typeSpeed: 30,
+        backSpeed: 0,
+        backDelay: 2000,
+        loop: true
+    });
+</script>
+<span id="typed"></span>

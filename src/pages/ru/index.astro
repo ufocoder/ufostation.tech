@@ -1,43 +1,25 @@
 ---
 import BaseLayout from 'src/layouts/ru/Base.astro';
 import PostPreview from 'src/components/blog/PostPreview.astro';
+import Typed from 'src/components/blog/Typed.astro';
 import Link from 'src/components/Link.astro'
-
 import SeriesBrowserSecurity from './_navigation/browser-security.astro'
 import SeriesHttp from './_navigation/http-series.astro';
-
 import { getNonSeriesPosts } from 'src/lib/posts.astro';
-
 import { PODCAST_SITE_URL } from 'src/config';
 
-const posts = await getNonSeriesPosts(7);
-const lastPosts = posts. slice(0, 3);
-const typedPosts = posts.map(({ url, frontmatter: { title }}) => ({ title, url }));
+const posts = await getNonSeriesPosts(15);
+const lastPosts = posts.slice(0, 3);
 
 const meta = {
 	title: 'Главная',
 	description: 'Проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми техническими заметками и выпусками подкаста Станция НЛО',
 };
 ---
-<script is:global define:vars={{ typedPosts }}>
-window.typedPosts = typedPosts;
-</script>
-<script>
-import Typed from "typed.js";
-new Typed('#typed', {
-	strings: window.typedPosts.map(post => 
-		'<a href="'+ post.url +'">'+ post.title +'</a>'
-	),
-	typeSpeed: 30,
-	backSpeed: 0,
-	backDelay: 2000,
-	loop: true
-});
-</script>
 <BaseLayout meta={meta}>
 	<div slot="hero" class="mainpage__hero">
 		<div class="mainpage__hero-container">
-			Уже читали? <span id="typed"></span>
+			Уже читали? <Typed posts={posts} />
 		</div>
 		<div class="mainpage__hero-background"></div>
 	</div>
