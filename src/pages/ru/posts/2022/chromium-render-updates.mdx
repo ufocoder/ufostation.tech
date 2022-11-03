@@ -1,0 +1,41 @@
+---
+layout: "src/layouts/ru/Post.astro"
+title: "Будущие обновления в рендеринге Chromium."
+pubDate: "May 08 2022"
+description: "В будущих версиях браузера Сhromium разработчики собираются заняться некоторыми улучшениями в производительности отрисовки, в частности изменить модель работы потоков в процессе рендеринга. Первым таким улучшением будет фича Non-Blocking Commit, затем Off-main-thread Compositing."
+---
+import Img from 'src/components/Img.astro';
+
+После ознакомления с этими материалами у вас появится понимание работы браузерного Rendering Pipeline и вы сможете разбираться в новостях подобным тем, что ниже
+
+<Img src="/assets/posts/2022/chromium-render-updates/threaded-compositing.jpg" />
+
+В будущих версиях браузера Сhromium разработчики собираются заняться некоторыми улучшениями в производительности отрисовки, в частности изменить модель работы потоков в процессе рендеринга. Первым таким улучшением будет фича Non-Blocking Commit, затем Off-main-thread Compositing.
+
+Красным цветом на рисунке отмечена проблемная зона в Rendering Pipeline. Во время commit фазы основной поток делаем копии данных рендеринга для данных в потоке компоновщика. Во время этой синхронизации выполнение основного потока останавливается. Это делается для того, чтобы основной поток не модифицировал данные рендеринга, пока поток компоновщика их копирует.
+
+Обсуждение проблемы: [Issue 1255972: Non-Blocking Commit](https://bugs.chromium.org/p/chromium/issues/detail?id=1255972)
+
+
+## Non-Blocking Commit
+
+<Img src="/assets/posts/2022/chromium-render-updates/non-blocking-commit.jpg" />
+
+Реализации **Non-Blocking Commit** устранит задержку основного потока, в нем высвободится время на последующую работу, как следствие производительность отрисовки вырастит.
+
+На момент марта 2022 года у разработчиков Chromium пока что имеется рабочий прототип **Non-Blocking Commit** и они готовится провести анализ влияния фичи на производительность.
+
+## Off-main-thread Compositing
+
+<Img src="/assets/posts/2022/chromium-render-updates/off-main-thread-compositing-1.jpg" />
+
+Реализация этой архитектурной фичи возможна благодаря обновленному движку BlinkNG, в частности другой фиче Composite after paint
+
+Документы описывающие фичи:
+
+— [Off-main-thread Compositing](https://docs.google.com/document/d/1BfIqMcJvmMFdk8e_KKeOEofz16610Mql6gmfeFhrsZk)  
+— [CompositeAfterPaint](https://docs.google.com/document/d/114ie7KJY3e850ZmGh4YfNq8Vq10jGrunZJpaG6trWsQ/edit)  
+
+<Img src="/assets/posts/2022/chromium-render-updates/off-main-thread-compositing-2.jpg" />
+
+Реализация [Off-main-thread Compositing](https://docs.google.com/document/d/1BfIqMcJvmMFdk8e_KKeOEofz16610Mql6gmfeFhrsZk/preview) уменьшит нагрузку на основной поток и переместит работу компоновки в менее загруженный поток, следствие — производительность отрисовки вырастит.
