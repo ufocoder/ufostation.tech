@@ -27,6 +27,8 @@ const pageTitle = title  ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 <meta name="description" content={description} />  
 
 <!-- Open Graph / Facebook -->
+<meta property="og:title" content={pageTitle} />
+<meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />

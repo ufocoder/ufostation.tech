@@ -16,7 +16,7 @@ export interface Props {
 const { meta: { title, description, heroImage, lang }} = Astro.props;
 
 ---
-<html lang={lang}>
+<html lang={lang} prefix="og:http://ogp.me/ns#">
 	<head>
 		<Head title={title} description={description} image={heroImage} />
 	</head>
