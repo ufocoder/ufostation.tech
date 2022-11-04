@@ -73,9 +73,10 @@
 	--header-link-actived-color: #fff;
 
 	--header-menu-toogler-width: 24px;
-	--header-menu-background: #000;
+	--header-menu-background: #384a59;
 	--header-menu-toogler-line-size: 2px;
-	--header-menu-toogler-line-color: #555;
+	--header-menu-toogler-line-color: #fff;
+	--header-menu-separator-color: #ccc;
 
 	/* post */
 
@@ -238,7 +239,7 @@ blockquote {
 }
 
 .header__checkbox:checked ~ .header__menu .header__link {
-    border-top: 1px #ccc solid;
+    border-top: 1px var(--header-menu-separator-color) solid;
     display: block;
     margin: 0;
     padding: 1em;
@@ -271,7 +272,7 @@ blockquote {
 .header__toggler-line {
     background: var(--header-menu-toogler-line-color);
     display: block;
-    height: var(--header-toogler-line-size);
+    height: var(--header-menu-toogler-line-size);
     position: relative;
     width: 100%;
     
