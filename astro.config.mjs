@@ -8,21 +8,13 @@ import { remarkReadingTime } from './src/lib/remark-reading-time';
 
 const swIntegrationOptions = {
   workbox: {
-    navigateFallback: '/ru/fallback/',
+    navigateFallback: '/ru/fallback',
     manifestTransforms: [
       (orignalManifest) => {
-        const manifest = orignalManifest.map(entity => {
-          if (entity.url === "index.html") {
-            return {
-              ...entity,
-              url: "/"
-            };
-          }
-          return {
-            ...entity,
-            url: entity.url.replace(/\/index\.html$/, '')
-          }
-        });
+        const manifest = orignalManifest.map(entity => ({
+          ...entity,
+          url: entity.url.replace(/\/index\.html$/, '')
+        }));
         return { manifest };
       }
     ],
