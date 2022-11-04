@@ -8,7 +8,7 @@ import { remarkReadingTime } from './src/lib/remark-reading-time';
 
 const swIntegrationOptions = {
   workbox: {
-    navigateFallback: 'ru/fallback'
+    navigateFallback: '/ru/fallback/'
   }
 };
 
