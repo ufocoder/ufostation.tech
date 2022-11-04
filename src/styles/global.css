@@ -45,6 +45,7 @@
 
 	--color-text-secondary: #4e4e4e;
 	--color-text-link: #0069c2;
+	--color-text-button: #000;
 
 	--background-primary: #f0f0f0;
     --background-secondary: #fff;
@@ -143,6 +144,20 @@ blockquote {
     color: #222;
     padding: 0.5rem 1rem;
     margin: 1.3rem 0;
+}
+
+.button {
+	background: var(--background-secondary);
+	color: var(--color-text-button);
+	border: 1px solid #999;
+	padding: 0.5em 1em;
+	border-radius: 1em;
+	cursor: pointer;
+	transition: 0.2s all;
+}
+
+.button:active {
+	transform: scale(0.98);
 }
 
 /* header */

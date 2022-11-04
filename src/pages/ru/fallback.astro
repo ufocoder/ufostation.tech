@@ -1,0 +1,38 @@
+---
+import BaseLayout from 'src/layouts/common/Base.astro';
+import Typed from 'src/components/blog/Typed.astro';
+import { getNonSeriesPosts } from 'src/lib/posts.astro';
+
+const posts = await getNonSeriesPosts(15);
+
+const meta = {
+	title: 'Сеть недоступна! Что-то пошло не так..',
+	description: '',
+	lang: 'en'
+};
+---
+<BaseLayout meta={meta}>
+  <Typed selector="#post-titles" posts={posts} />
+
+  <h2>Сеть недоступна :(</h2>
+
+  <div>
+    <button class="button" id="reload-button" type="button">Перезагрузить</button>
+  </div>
+
+  <div>
+    <p>
+      Без интернета вы можете почитать: <span id="post-titles"></span>
+    </p>
+  </div>
+  
+  <script>
+      document.getElementById("reload-button").addEventListener("click", () => {
+        window.location.reload();
+      });
+
+      window.addEventListener('online', () => {
+        window.location.reload();
+      });
+  </script>
+</BaseLayout>
