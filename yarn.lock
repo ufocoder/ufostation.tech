@@ -1638,6 +1638,13 @@ astro@^1.6.1:
     yargs-parser "^21.0.1"
     zod "^3.17.3"
 
+astrojs-service-worker@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/astrojs-service-worker/-/astrojs-service-worker-0.0.8.tgz#704972af2656502c639ea8f143c337abbba314b5"
+  integrity sha512-zBdwgF94vgvaD164g2mvPwbPi5sxRuNL+YF/NgYRVJiXo/WRsZuzy/vbIuB0/znc8GIOnwTGCl5rAWbqIkCE4Q==
+  dependencies:
+    workbox-build "^6.5.4"
+
 async@^3.2.3:
   version "3.2.4"
   resolved "https://registry.npmjs.org/async/-/async-3.2.4.tgz"
