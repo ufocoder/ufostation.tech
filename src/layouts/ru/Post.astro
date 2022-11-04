@@ -9,6 +9,5 @@ const { content: { title, description, heroImage }} = Astro.props;
 <BaseLayout meta={{ title, description, heroImage, lang: 'ru' }}>
 	<Post {...Astro.props}>
 		<slot />
-		<Link href="/ru/posts/" aria-label={t('backToTheBlog') as string}>← {t('backToTheBlog')}</Link>
 	</Post>
 </BaseLayout>
