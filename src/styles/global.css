@@ -198,14 +198,12 @@ blockquote {
 
 .header__link {
     color: var(--header-link-color);
-	opacity: 0.7;
 	position: relative;
     margin: 0 0 0 0.7em;
     padding: 0.3em 0.7em;
 }
 
 .header__link.active {
-	opacity: 1;
 	color: var(--header-link-actived-color);
 }
 
