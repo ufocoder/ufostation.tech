@@ -1,5 +1,5 @@
 ---
-import { formatFullDate, addUrlPrefix } from 'src/lib/content';
+import { formatFullDate, addUrlPrefix, getGithubSourceURL } from 'src/lib/content';
 import { t, readingTime } from 'src/locales';
 import Link from '../Link.astro';
 
@@ -19,6 +19,10 @@ const { title, pubDate, updatedDate, heroImage, minutesRead } = content;
     )}
     <div class="post__content">
         <slot />
+    </div>
+    <div class="post__typo">
+        {t('findATypo')}
+        <Link href={getGithubSourceURL(Astro.props.file)}>{t('fixPageOnGithub')}</Link>
     </div>
     <div class="post__back">
 		<Link href="/ru/posts/" aria-label={t('backToTheBlog') as string}>← {t('backToTheBlog')}</Link>

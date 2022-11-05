@@ -1,3 +1,12 @@
+import { resolve } from 'node:path';
+import { GITHUB_URL } from "src/config"
+
+const cwd = resolve('.'); // @TODO: fix better way
+
+export const getGithubSourceURL = (filepath: string = '') => {
+    return filepath.replace(cwd, GITHUB_URL + '/edit/main');
+}
+
 import { getLocale } from "src/locales";
 
 export const formatFullDate = (datetime: string) => new Date(datetime).toLocaleDateString(getLocale(), {

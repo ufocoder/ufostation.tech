@@ -590,6 +590,12 @@ blockquote {
 	min-height: 400px;
 }
 
+.post__typo {
+	margin: calc(2 * var(--layout-padding-base)) 0;
+	padding: var(--layout-padding-base);
+	background-color: var(--background-secondary);
+}
+
 .post__back {
 	margin: var(--layout-padding-base) 0;
 }
