@@ -1,0 +1,12 @@
+---
+import { addUrlPrefix } from 'src/lib/content';
+
+export interface Props extends astroHTML.JSX.VideoHTMLAttributes {
+    src: string;
+}
+
+const { src:rawSrc, ...props } = Astro.props;
+
+const src = addUrlPrefix(import.meta.env.BASE_URL, rawSrc.toString());
+---
+<video src={src} {...props} />

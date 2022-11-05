@@ -581,6 +581,7 @@ blockquote {
 	padding: 0.2em 0;
 }
 
+.post__content video,
 .post__content iframe {
 	display: block;
 	text-align: center; 
