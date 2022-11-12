@@ -356,14 +356,29 @@ blockquote {
 	margin: 3em 0;
 }
 
-.mainpage__notes {
+.mainpage__series {
 	display: flex;
 	flex-direction: row;
 	gap: 2em;
 
 }
 
-.mainpage__notes-navigation {
+.mainpage__series-section {
+	flex: 1;
+    background: #fff;
+    padding: 1.5em 1.2em;
+}
+
+.mainpage__series-image {
+	display: block;
+	margin: 0 auto;
+}
+
+.mainpage__series-title {
+	text-align: center;
+}
+
+.mainpage__notes {
 	flex: 1;
 	margin-bottom: 1em;
 }
@@ -416,7 +431,7 @@ blockquote {
 }
 
 .posts-header__title {
-	flex: 1;
+	flex: auto;
 	margin: 0;
 }
 

@@ -3,12 +3,11 @@ import BaseLayout from 'src/layouts/ru/Base.astro';
 import PostPreview from 'src/components/blog/PostPreview.astro';
 import Typed from 'src/components/blog/Typed.astro';
 import Link from 'src/components/Link.astro'
-import SeriesBrowserSecurity from './_navigation/browser-security.astro'
-import SeriesHttp from './_navigation/http-series.astro';
-import { getNonSeriesPosts } from 'src/lib/posts.astro';
+import { getFeaturedPosts } from 'src/lib/posts.astro';
 import { PODCAST_SITE_URL } from 'src/config';
+import Img from 'src/components/Img.astro';
 
-const posts = await getNonSeriesPosts(15);
+const posts = await getFeaturedPosts(15);
 const lastPosts = posts.slice(0, 3);
 
 const meta = {
@@ -40,13 +39,25 @@ const meta = {
 		<section class="mainpage__section">
 			<h3>Серии заметок</h3>
 
-			<div class="mainpage__notes">
-				<div class="mainpage__notes-navigation">
-					<SeriesHttp />
-				</div>
-				<div class="mainpage__notes-navigation">
-					<SeriesBrowserSecurity />
-				</div>
+			<div class="mainpage__series">
+				<Link href="/" class="mainpage__series-section">
+					<Img src="/assets/icons/browser_networking.png" width="128" class="mainpage__series-image" />
+					<div class="mainpage__series-title">
+						История развития HTTP протокола
+					</div>
+				</Link>
+				<Link href="/" class="mainpage__series-section">
+					<Img src="/assets/icons/browser_rendering.png" width="128" class="mainpage__series-image" />
+					<div class="mainpage__series-title">
+						Браузерный рендеринг
+					</div>
+				</Link>
+				<Link href="/" class="mainpage__series-section">
+					<Img src="/assets/icons/browser_security.png" width="128" class="mainpage__series-image" />
+					<div class="mainpage__series-title">
+						Безопасность браузера
+					</div>
+				<Link>
 			</div>
 		</section>
 
