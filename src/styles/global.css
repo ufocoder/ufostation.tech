@@ -336,6 +336,7 @@ blockquote {
   color: var(--text-secondary);
   max-width: var(--layout-width-base);
   margin: 0 auto;
+  padding: 0 var(--layout-padding-base);
   height: 3em;
   z-index: 1;
 }
@@ -385,7 +386,6 @@ blockquote {
   }
   .mainpage__hero-container {
     font-size: 1em;
-    padding: 0 1em;
   }
   .mainpage__notes {
     display: block;
