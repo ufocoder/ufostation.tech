@@ -1,12 +1,12 @@
 ---
 import BaseLayout from 'src/layouts/common/Base.astro';
 import Typed from 'src/components/blog/Typed.astro';
-import { getNonSeriesPosts } from 'src/lib/posts.astro';
+import { getFeaturedPosts } from 'src/lib/posts.astro';
 
-const posts = await getNonSeriesPosts(15);
+const posts = await getFeaturedPosts(15);
 
 const meta = {
-	title: 'Сеть недоступна! Что-то пошло не так..',
+	title: 'Что-то пошло не так..',
 	description: '',
 	lang: 'en'
 };
