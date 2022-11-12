@@ -1,11 +1,10 @@
 ---
+import Navigation from "src/components/blog/Navigation.astro";
 import Layout from "src/layouts/ru/Post.astro";
-import NavigationHttpSeries from 'src/pages/ru/_navigation/http-series.astro';
 ---
-
 <Layout {...Astro.props}>
     <Fragment>
-        <NavigationHttpSeries />
+        <Navigation title="История развития HTTP протокола" series="http" />
         <slot />
     </Fragment>
 </Layout>
