@@ -1,22 +1,23 @@
 ---
-import ActiveLink from 'src/components/ActiveLink.astro';
-import BaseLayout from 'src/layouts/common/Base.astro';
-import { setLocale } from 'src/locales';
+import ActiveLink from "src/components/ActiveLink.astro";
+import BaseLayout from "src/layouts/common/Base.astro";
+import { setLocale } from "src/locales";
 
 const { meta } = Astro.props;
 
-const lang = 'en';
+const lang = "en";
 
 setLocale(lang);
 ---
-<BaseLayout meta={{ ...meta, lang}}>
-    <Fragment slot="header">
-        <nav class="header__menu">
-            <ActiveLink class="header__link" href="/en/about">About</ActiveLink>
-        </nav>
-    </Fragment>
-    <Fragment slot="hero">
-        <slot name="hero" />
-    </Fragment>
-    <slot />
+
+<BaseLayout meta={{ ...meta, lang }}>
+  <Fragment slot="header">
+    <nav class="header__menu">
+      <ActiveLink class="header__link" href="/en/about">About</ActiveLink>
+    </nav>
+  </Fragment>
+  <Fragment slot="hero">
+    <slot name="hero" />
+  </Fragment>
+  <slot />
 </BaseLayout>

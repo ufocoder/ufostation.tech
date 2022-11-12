@@ -2,9 +2,10 @@
 import Navigation from "src/components/blog/Navigation.astro";
 import Layout from "src/layouts/ru/Post.astro";
 ---
+
 <Layout {...Astro.props}>
-    <Fragment>
-        <Navigation title="Безопасность браузера" series="browser-security" />
-        <slot />
-    </Fragment>
+  <Fragment>
+    <Navigation title="Безопасность браузера" series="browser-security" />
+    <slot />
+  </Fragment>
 </Layout>

@@ -3,9 +3,9 @@ import { shuffleArray } from "src/lib/content";
 import Typed from "typed.js";
 
 export interface Props {
-    selector: string;
-    options: TypedOptions;
-    posts: { url: string, frontmatter: { title: string }}[]
+  selector: string;
+  options: TypedOptions;
+  posts: { url: string; frontmatter: { title: string } }[];
 }
 
 declare global {
@@ -14,25 +14,34 @@ declare global {
   }
 }
 
-const { id = 'default', posts, selector: typedSelector, typedOptions = {}} = Astro.props;
-const typedPosts = posts.map(({ url, frontmatter: { title }}) => ({ title, url }));
+const {
+  id = "default",
+  posts,
+  selector: typedSelector,
+  typedOptions = {},
+} = Astro.props;
+const typedPosts = posts.map(({ url, frontmatter: { title } }) => ({
+  title,
+  url,
+}));
 
 shuffleArray(typedPosts);
 ---
+
 <script>
-    import Typed from "typed.js";
-    window.Typed = Typed;
+  import Typed from "typed.js";
+  window.Typed = Typed;
 </script>
 <script define:vars={{ typedSelector, typedPosts }}>
-    document.addEventListener('DOMContentLoaded', function() {
-        new window.Typed(typedSelector, {
-            strings: typedPosts.map(post => 
-                '<a href="'+ post.url +'">'+ post.title +'</a>'
-            ),
-            typeSpeed: 30,
-            backSpeed: 0,
-            backDelay: 2000,
-            loop: true,
-        });
+  document.addEventListener("DOMContentLoaded", function () {
+    new window.Typed(typedSelector, {
+      strings: typedPosts.map(
+        (post) => '<a href="' + post.url + '">' + post.title + "</a>"
+      ),
+      typeSpeed: 30,
+      backSpeed: 0,
+      backDelay: 2000,
+      loop: true,
     });
+  });
 </script>

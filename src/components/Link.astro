@@ -1,10 +1,11 @@
 ---
-import { addUrlPrefix } from 'src/lib/content';
+import { addUrlPrefix } from "src/lib/content";
 
 export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
 
-const { href:rawHref = '', class: className, ...props } = Astro.props;
+const { href: rawHref = "", class: className, ...props } = Astro.props;
 
 const href = addUrlPrefix(import.meta.env.BASE_URL, rawHref.toString());
 ---
+
 <a href={href} class:list={className} {...props}><slot /></a>

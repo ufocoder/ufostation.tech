@@ -3,25 +3,26 @@ import { getSeriesPosts } from "src/lib/posts.astro";
 import ActiveLink from "../ActiveLink.astro";
 
 export interface Props {
-    title: string
-    series: string
-} 
+  title: string;
+  series: string;
+}
 
 const { title, series } = Astro.props;
 
 const posts = await getSeriesPosts(series);
 ---
+
 <nav class="post-navigation">
-    <div class="post-navigation__title">
-        {title}
-    </div>
-    <ul class="post-navigation__menu">
-        {posts.map(post => (
-            <li class="post-navigation__item">
-                <ActiveLink href={post.url}>
-                    {post.frontmatter.title}
-                </ActiveLink>
-            </li>
-        ))}
-    </ul>
+  <div class="post-navigation__title">
+    {title}
+  </div>
+  <ul class="post-navigation__menu">
+    {
+      posts.map((post) => (
+        <li class="post-navigation__item">
+          <ActiveLink href={post.url}>{post.frontmatter.title}</ActiveLink>
+        </li>
+      ))
+    }
+  </ul>
 </nav>

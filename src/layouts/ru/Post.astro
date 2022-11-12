@@ -1,13 +1,16 @@
 ---
-import Post from 'src/components/blog/Post.astro';
-import Link from 'src/components/Link.astro';
-import { t } from 'src/locales';
-import BaseLayout from './Base.astro';
+import Post from "src/components/blog/Post.astro";
+import Link from "src/components/Link.astro";
+import { t } from "src/locales";
+import BaseLayout from "./Base.astro";
 
-const { content: { title, description, heroImage }} = Astro.props;
+const {
+  content: { title, description, heroImage },
+} = Astro.props;
 ---
-<BaseLayout meta={{ title, description, heroImage, lang: 'ru' }}>
-	<Post {...Astro.props}>
-		<slot />
-	</Post>
+
+<BaseLayout meta={{ title, description, heroImage, lang: "ru" }}>
+  <Post {...Astro.props}>
+    <slot />
+  </Post>
 </BaseLayout>

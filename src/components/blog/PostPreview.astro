@@ -1,29 +1,38 @@
 ---
-import { marked } from 'marked';
+import { marked } from "marked";
 import { formatFullDate } from "src/lib/content";
 import { t, readingTime } from "src/locales";
 
 const { post } = Astro.props;
 ---
+
 <article class="post-preview">
-    <a href={post.frontmatter.externalUrl || post.url} class="post-preview__title">{post.frontmatter.title}</a>
+  <a href={post.frontmatter.externalUrl || post.url} class="post-preview__title"
+    >{post.frontmatter.title}</a
+  >
 
-    <div class="post-preview__meta">
-        {post.frontmatter.pubDate ? (
-            <time datetime={post.frontmatter.pubDate} class="post-preview__date">
-                {post.frontmatter.pubDate && formatFullDate(post.frontmatter.pubDate)}
-            </time>
-        ) : null}
-        •
-        {readingTime(post.frontmatter.minutesRead)}
-    </div>
+  <div class="post-preview__meta">
+    {
+      post.frontmatter.pubDate ? (
+        <time datetime={post.frontmatter.pubDate} class="post-preview__date">
+          {post.frontmatter.pubDate && formatFullDate(post.frontmatter.pubDate)}
+        </time>
+      ) : null
+    }
+    •
+    {readingTime(post.frontmatter.minutesRead)}
+  </div>
 
-    
-    {post.frontmatter.description && (
-        <div class="post-preview__content" set:html={marked.parse(post.frontmatter.description)} />
-    )}
+  {
+    post.frontmatter.description && (
+      <div
+        class="post-preview__content"
+        set:html={marked.parse(post.frontmatter.description)}
+      />
+    )
+  }
 
-    <div class="post-preview__link">
-        <a href={post.frontmatter.externalUrl || post.url} >{t('readMore')}</a>
-    </div>
+  <div class="post-preview__link">
+    <a href={post.frontmatter.externalUrl || post.url}>{t("readMore")}</a>
+  </div>
 </article>

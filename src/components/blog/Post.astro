@@ -1,30 +1,52 @@
 ---
-import { formatFullDate, addUrlPrefix, getGithubSourceURL } from 'src/lib/content';
-import { t, readingTime } from 'src/locales';
-import Link from '../Link.astro';
+import {
+  formatFullDate,
+  addUrlPrefix,
+  getGithubSourceURL,
+} from "src/lib/content";
+import { t, readingTime } from "src/locales";
+import Link from "../Link.astro";
 
 const { content } = Astro.props;
 const { title, pubDate, updatedDate, heroImage, minutesRead } = content;
 ---
+
 <article class="post">
-    <h2 class="post__title">{title}</h2>
-    <div class="post__meta">
-        {pubDate && <time datetime={pubDate}>{formatFullDate(pubDate)}</time>}
-        {updatedDate && <>• ({t('updated')} <time datetime={updatedDate}>{formatFullDate(updatedDate)}</time>)</>}
-        •
-        {readingTime(minutesRead)}
-    </div>
-    {heroImage && (
-        <img class="post__image" src={addUrlPrefix(import.meta.env.BASE_URL, heroImage)} alt={`${t('image')}: ${title}`} />
-    )}
-    <div class="post__content">
-        <slot />
-    </div>
-    <div class="post__typo">
-        {t('findATypo')}
-        <Link href={getGithubSourceURL(Astro.props.file)}>{t('fixPageOnGithub')}</Link>
-    </div>
-    <div class="post__back">
-		<Link href="/ru/posts/" aria-label={t('backToTheBlog') as string}>← {t('backToTheBlog')}</Link>
-	</div>
+  <h2 class="post__title">{title}</h2>
+  <div class="post__meta">
+    {pubDate && <time datetime={pubDate}>{formatFullDate(pubDate)}</time>}
+    {
+      updatedDate && (
+        <>
+          • ({t("updated")}{" "}
+          <time datetime={updatedDate}>{formatFullDate(updatedDate)}</time>)
+        </>
+      )
+    }
+    •
+    {readingTime(minutesRead)}
+  </div>
+  {
+    heroImage && (
+      <img
+        class="post__image"
+        src={addUrlPrefix(import.meta.env.BASE_URL, heroImage)}
+        alt={`${t("image")}: ${title}`}
+      />
+    )
+  }
+  <div class="post__content">
+    <slot />
+  </div>
+  <div class="post__typo">
+    {t("findATypo")}
+    <Link href={getGithubSourceURL(Astro.props.file)}
+      >{t("fixPageOnGithub")}</Link
+    >
+  </div>
+  <div class="post__back">
+    <Link href="/ru/posts/" aria-label={t("backToTheBlog") as string}
+      >← {t("backToTheBlog")}</Link
+    >
+  </div>
 </article>

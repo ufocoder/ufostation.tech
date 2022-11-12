@@ -4,7 +4,8 @@ title: "Будущие обновления в рендеринге Chromium"
 pubDate: "May 08 2022"
 description: "В будущих версиях браузера Сhromium разработчики собираются заняться некоторыми улучшениями в производительности отрисовки, в частности изменить модель работы потоков в процессе рендеринга. Первым таким улучшением будет фича Non-Blocking Commit, затем Off-main-thread Compositing."
 ---
-import Img from 'src/components/Img.astro';
+
+import Img from "src/components/Img.astro";
 
 После ознакомления с этими материалами у вас появится понимание работы браузерного Rendering Pipeline и вы сможете разбираться в новостях подобным тем, что ниже
 
@@ -15,7 +16,6 @@ import Img from 'src/components/Img.astro';
 Красным цветом на рисунке отмечена проблемная зона в Rendering Pipeline. Во время commit фазы основной поток делаем копии данных рендеринга для данных в потоке компоновщика. Во время этой синхронизации выполнение основного потока останавливается. Это делается для того, чтобы основной поток не модифицировал данные рендеринга, пока поток компоновщика их копирует.
 
 Обсуждение проблемы: [Issue 1255972: Non-Blocking Commit](https://bugs.chromium.org/p/chromium/issues/detail?id=1255972)
-
 
 ## Non-Blocking Commit
 
@@ -34,7 +34,7 @@ import Img from 'src/components/Img.astro';
 Документы описывающие фичи:
 
 — [Off-main-thread Compositing](https://docs.google.com/document/d/1BfIqMcJvmMFdk8e_KKeOEofz16610Mql6gmfeFhrsZk)  
-— [CompositeAfterPaint](https://docs.google.com/document/d/114ie7KJY3e850ZmGh4YfNq8Vq10jGrunZJpaG6trWsQ/edit)  
+— [CompositeAfterPaint](https://docs.google.com/document/d/114ie7KJY3e850ZmGh4YfNq8Vq10jGrunZJpaG6trWsQ/edit)
 
 <Img src="/assets/posts/2022/chromium-render-updates/off-main-thread-compositing-2.jpg" />
 

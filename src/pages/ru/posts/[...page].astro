@@ -1,31 +1,32 @@
 ---
-import { PAGE_SIZE } from 'src/config';
-import Header from './_header.astro';
-import BaseLayout from 'src/layouts/ru/Base.astro';
-import { getPosts } from 'src/lib/posts.astro';
-import PostPreview from 'src/components/blog/PostPreview.astro';
-import Pagination from 'src/components/blog/Pagination.astro';
+import { PAGE_SIZE } from "src/config";
+import Header from "./_header.astro";
+import BaseLayout from "src/layouts/ru/Base.astro";
+import { getPosts } from "src/lib/posts.astro";
+import PostPreview from "src/components/blog/PostPreview.astro";
+import Pagination from "src/components/blog/Pagination.astro";
 
 export async function getStaticPaths({ paginate }) {
-	const posts = await getPosts();
-    return paginate(posts, { pageSize: PAGE_SIZE });
+  const posts = await getPosts();
+  return paginate(posts, { pageSize: PAGE_SIZE });
 }
 
 const { page } = Astro.props;
 
-const title = page.currentPage > 1 ? 'Блог • Страница ' + page.currentPage : 'Блог';
+const title =
+  page.currentPage > 1 ? "Блог • Страница " + page.currentPage : "Блог";
 const meta = {
-	title,
-	description: '',
+  title,
+  description: "",
 };
-
 ---
+
 <BaseLayout meta={meta}>
-	<Fragment>
-		<Header title={title} />
-		<section class="post-previews">
-			{page.data.map((post, key) => <PostPreview key={key} post={post} />)}
-		</section>
-		<Pagination prev={page.url.prev} next={page.url.next} />
-	</Fragment>
+  <Fragment>
+    <Header title={title} />
+    <section class="post-previews">
+      {page.data.map((post, key) => <PostPreview key={key} post={post} />)}
+    </section>
+    <Pagination prev={page.url.prev} next={page.url.next} />
+  </Fragment>
 </BaseLayout>

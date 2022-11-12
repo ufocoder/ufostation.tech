@@ -5,15 +5,16 @@ series: "browser-rendering"
 pubDate: "Jun 17 2021"
 description: ""
 ---
-import Img from 'src/components/Img.astro';
 
-Первым шагом в цепочке рендинга (rendering pipeline stage) является парсинг (parse). Когда мы говорим о веб-страничках, мы в первую очередь имеем ввиду HTML-документ, поэтому начнем рассматривать парсинг HTML  
- 
-То, как должен происходить парсинг определяется спецификацией [HTML. Living Standard. 13.2.1 Overview of the parsing model](https://html.spec.whatwg.org/multipage/parsing.html#overview-of-the-parsing-model). В ней также описывается  
-  
-Интересно, что специфация также определяет набор возможных ошибок парсинга и одновременно с этим говорит, что браузер может прерваться в связи ними парсинг.  
-  
-На деле современные браузеры работают так, что если вы откроете в нем невалидный HTML, предполагающий что-то на экране, то прерывания парсинга не будет и вы вряд ли получите пустую страницу.  
+import Img from "src/components/Img.astro";
+
+Первым шагом в цепочке рендинга (rendering pipeline stage) является парсинг (parse). Когда мы говорим о веб-страничках, мы в первую очередь имеем ввиду HTML-документ, поэтому начнем рассматривать парсинг HTML
+
+То, как должен происходить парсинг определяется спецификацией [HTML. Living Standard. 13.2.1 Overview of the parsing model](https://html.spec.whatwg.org/multipage/parsing.html#overview-of-the-parsing-model). В ней также описывается
+
+Интересно, что специфация также определяет набор возможных ошибок парсинга и одновременно с этим говорит, что браузер может прерваться в связи ними парсинг.
+
+На деле современные браузеры работают так, что если вы откроете в нем невалидный HTML, предполагающий что-то на экране, то прерывания парсинга не будет и вы вряд ли получите пустую страницу.
 
 <Img src="/assets/posts/2021/browser-rendering-parse/parse-spec.jpg" />
 
@@ -43,7 +44,7 @@ import Img from 'src/components/Img.astro';
 
 bytes → characters → tokens → nodes→ object model
 
-Отличие заключается только в том, что на выходе мы имеем CSS Object Model (CCSOM). 
+Отличие заключается только в том, что на выходе мы имеем CSS Object Model (CCSOM).
 
 Для парсинга CSS есть своя спецификация: https://www.w3.org/TR/css-syntax-3/
 

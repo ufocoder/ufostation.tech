@@ -1,32 +1,42 @@
 ---
-import Link from 'src/components/Link.astro';
-import { SITE_TITLE } from 'src/config';
+import Link from "src/components/Link.astro";
+import { SITE_TITLE } from "src/config";
 ---
+
 <header class="header">
-	<div class="header__container">
-		<Link href="/" class="header__title">
-			{SITE_TITLE}
-		</Link>
-		<slot />
-	</div>
+  <div class="header__container">
+    <Link href="/" class="header__title">
+      {SITE_TITLE}
+    </Link>
+    <slot />
+  </div>
 </header>
 <script>
-	var lastScrollTop = 0;
-	var toggleElement = document.querySelector('#header-checkbox') as HTMLFormElement;
-	var headerElement = document.querySelector('header');
-	var navbarHeight = headerElement.offsetHeight;
-	
-	window.addEventListener('scroll', function(e) {
-		var scrollTop = window.scrollY;
-		var isScrollingToBottom = scrollTop > lastScrollTop;
+  var lastScrollTop = 0;
+  var toggleElement = document.querySelector(
+    "#header-checkbox"
+  ) as HTMLFormElement;
+  var headerElement = document.querySelector("header");
+  var navbarHeight = headerElement.offsetHeight;
 
-		if (isScrollingToBottom && scrollTop > navbarHeight && !toggleElement.checked) {
-			headerElement.classList.add('header--hidden');
-		} else {
-			headerElement.classList.remove('header--hidden');
-		}
+  window.addEventListener(
+    "scroll",
+    function (e) {
+      var scrollTop = window.scrollY;
+      var isScrollingToBottom = scrollTop > lastScrollTop;
 
-		lastScrollTop = scrollTop;
+      if (
+        isScrollingToBottom &&
+        scrollTop > navbarHeight &&
+        !toggleElement.checked
+      ) {
+        headerElement.classList.add("header--hidden");
+      } else {
+        headerElement.classList.remove("header--hidden");
+      }
 
-	}, { passive: true });
+      lastScrollTop = scrollTop;
+    },
+    { passive: true }
+  );
 </script>

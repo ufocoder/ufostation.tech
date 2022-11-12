@@ -4,32 +4,34 @@ import Header from "./base/Header.astro";
 import Footer from "./base/Footer.astro";
 
 export interface Props {
-    children?: any;
-    meta: {
-        title: string;
-        description: string;
-        lang: string;
-        heroImage?: string;
-    }
-};
+  children?: any;
+  meta: {
+    title: string;
+    description: string;
+    lang: string;
+    heroImage?: string;
+  };
+}
 
-const { meta: { title, description, heroImage, lang }} = Astro.props;
-
+const {
+  meta: { title, description, heroImage, lang },
+} = Astro.props;
 ---
+
 <html lang={lang} prefix="og:http://ogp.me/ns#">
-	<head>
-		<Head title={title} description={description} image={heroImage} />
-	</head>
-	<body>
-		<Header>
-            <slot name="header" />
-        </Header>
-        <slot name="hero" />
-        <div class="content">
-            <div class="content__container">
-                <slot />
-            </div>
-        </div>
-        <Footer />
-	</body>
+  <head>
+    <Head title={title} description={description} image={heroImage} />
+  </head>
+  <body>
+    <Header>
+      <slot name="header" />
+    </Header>
+    <slot name="hero" />
+    <div class="content">
+      <div class="content__container">
+        <slot />
+      </div>
+    </div>
+    <Footer />
+  </body>
 </html>

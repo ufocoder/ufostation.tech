@@ -1,22 +1,27 @@
 ---
-import BaseLayout from 'src/layouts/en/Base.astro';
-import Link from 'src/components/Link.astro';
-import Img from 'src/components/Img.astro';
+import BaseLayout from "src/layouts/en/Base.astro";
+import Link from "src/components/Link.astro";
+import Img from "src/components/Img.astro";
 
 const meta = {
-	title: 'Home',
-	description: '',
+  title: "Home",
+  description: "",
 };
 ---
 
 <BaseLayout meta={meta}>
-	<main>
-		<h1>Hello, Astronaut!</h1>
-		<p>
-			I'm a software developer who writes about code.
-		</p>
-		<p>
-			Этот сайт также доступен на <Link href="/ru/">Русском языке</Link> <Img class="content__inline-icon" width="16px" height="16px" alt="Русский язык" src="/assets/icons/flag-ru.svg">
-		</p>
-	</main>
+  <main>
+    <h1>Hello, Astronaut!</h1>
+    <p>I'm a software developer who writes about code.</p>
+    <p>
+      Этот сайт также доступен на <Link href="/ru/">Русском языке</Link>
+      <Img
+        class="content__inline-icon"
+        width="16px"
+        height="16px"
+        alt="Русский язык"
+        src="/assets/icons/flag-ru.svg"
+      />
+    </p>
+  </main>
 </BaseLayout>

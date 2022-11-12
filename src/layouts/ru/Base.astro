@@ -1,30 +1,31 @@
 ---
-import ActiveLink from 'src/components/ActiveLink.astro';
-import BaseLayout from 'src/layouts/common/Base.astro';
-import { setLocale } from 'src/locales';
+import ActiveLink from "src/components/ActiveLink.astro";
+import BaseLayout from "src/layouts/common/Base.astro";
+import { setLocale } from "src/locales";
 
 const { meta } = Astro.props;
 
-const lang = 'ru';
+const lang = "ru";
 
 setLocale(lang);
 ---
-<BaseLayout meta={{ ...meta, lang}}>
-    <Fragment slot="header">
-        <input id="header-checkbox" type="checkbox" class="header__checkbox" />
-        <label for="header-checkbox" class="header__toggler">
-            <span class="header__toggler-line"></span>
-        </label>
-        <div class="header__menu">
-            <nav class="header__nav">
-                <ActiveLink class="header__link" href="/ru/posts">Блог</ActiveLink>
-                <ActiveLink class="header__link" href="/ru/podcast">Подкаст</ActiveLink>
-                <ActiveLink class="header__link" href="/ru/about">О сайте</ActiveLink>
-            </nav>
-        </div>
-    </Fragment>
-    <Fragment slot="hero">
-        <slot name="hero" />
-    </Fragment>
-    <slot />
+
+<BaseLayout meta={{ ...meta, lang }}>
+  <Fragment slot="header">
+    <input id="header-checkbox" type="checkbox" class="header__checkbox" />
+    <label for="header-checkbox" class="header__toggler">
+      <span class="header__toggler-line"></span>
+    </label>
+    <div class="header__menu">
+      <nav class="header__nav">
+        <ActiveLink class="header__link" href="/ru/posts">Блог</ActiveLink>
+        <ActiveLink class="header__link" href="/ru/podcast">Подкаст</ActiveLink>
+        <ActiveLink class="header__link" href="/ru/about">О сайте</ActiveLink>
+      </nav>
+    </div>
+  </Fragment>
+  <Fragment slot="hero">
+    <slot name="hero" />
+  </Fragment>
+  <slot />
 </BaseLayout>

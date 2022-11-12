@@ -1,6 +1,6 @@
 ---
-import Parser from 'rss-parser';
-import BaseLayout from 'src/layouts/ru/Base.astro';
+import Parser from "rss-parser";
+import BaseLayout from "src/layouts/ru/Base.astro";
 
 import { PODCAST_RSS_URL } from "src/config";
 
@@ -9,35 +9,44 @@ const feed = await parser.parseURL(PODCAST_RSS_URL);
 
 const seasons: Record<number, any> = {};
 
-feed.items.forEach(item => {
-    const season = item.itunes.season;
+feed.items.forEach((item) => {
+  const season = item.itunes.season;
 
-    if (!Object.hasOwn(seasons, season)) {
-        seasons[season] = [];
-    } 
+  if (!Object.hasOwn(seasons, season)) {
+    seasons[season] = [];
+  }
 
-    seasons[season].push(item);
-});    
+  seasons[season].push(item);
+});
 
 const meta = {
-	title: 'Подкаст',
-	description: `${feed.title}. ${feed.description}`
+  title: "Подкаст",
+  description: `${feed.title}. ${feed.description}`,
 };
 ---
+
 <BaseLayout meta={meta}>
-    <main>
-        <h2>Подкаст</h2>
-        {Object.keys(seasons).reverse().map(season => {
-            return (
-                <div class="archive">
-                    <h3 class="archive__items-title">{season} сезон</h3>
-                    <ul class="archive__items">
-                        {seasons[season].map(podcast => (
-                            <li class="archive__item"><a href={podcast.link} target="_blank">{podcast.title}</a></li>
-                        ))}
-                    </ul>
-                </div>
-            );
-        })}
-    </main>
+  <main>
+    <h2>Подкаст</h2>
+    {
+      Object.keys(seasons)
+        .reverse()
+        .map((season) => {
+          return (
+            <div class="archive">
+              <h3 class="archive__items-title">{season} сезон</h3>
+              <ul class="archive__items">
+                {seasons[season].map((podcast) => (
+                  <li class="archive__item">
+                    <a href={podcast.link} target="_blank">
+                      {podcast.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })
+    }
+  </main>
 </BaseLayout>

@@ -1,23 +1,26 @@
 ---
-import BaseLayout from 'src/layouts/common/Base.astro';
-import Typed from 'src/components/blog/Typed.astro';
-import { getFeaturedPosts } from 'src/lib/posts.astro';
+import BaseLayout from "src/layouts/common/Base.astro";
+import Typed from "src/components/blog/Typed.astro";
+import { getFeaturedPosts } from "src/lib/posts.astro";
 
 const posts = await getFeaturedPosts(15);
 
 const meta = {
-	title: 'Что-то пошло не так..',
-	description: '',
-	lang: 'en'
+  title: "Что-то пошло не так..",
+  description: "",
+  lang: "en",
 };
 ---
+
 <BaseLayout meta={meta}>
   <Typed selector="#post-titles" posts={posts} />
 
   <h2>Сеть недоступна :(</h2>
 
   <div>
-    <button class="button" id="reload-button" type="button">Перезагрузить</button>
+    <button class="button" id="reload-button" type="button"
+      >Перезагрузить</button
+    >
   </div>
 
   <div>
@@ -25,14 +28,14 @@ const meta = {
       Без интернета вы можете почитать: <span id="post-titles"></span>
     </p>
   </div>
-  
-  <script>
-      document.getElementById("reload-button").addEventListener("click", () => {
-        window.location.reload();
-      });
 
-      window.addEventListener('online', () => {
-        window.location.reload();
-      });
+  <script>
+    document.getElementById("reload-button").addEventListener("click", () => {
+      window.location.reload();
+    });
+
+    window.addEventListener("online", () => {
+      window.location.reload();
+    });
   </script>
 </BaseLayout>

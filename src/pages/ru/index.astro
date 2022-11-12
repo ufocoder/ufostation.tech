@@ -1,78 +1,96 @@
 ---
-import BaseLayout from 'src/layouts/ru/Base.astro';
-import PostPreview from 'src/components/blog/PostPreview.astro';
-import Typed from 'src/components/blog/Typed.astro';
-import Link from 'src/components/Link.astro'
-import { getFeaturedPosts } from 'src/lib/posts.astro';
-import { PODCAST_SITE_URL } from 'src/config';
-import Img from 'src/components/Img.astro';
+import BaseLayout from "src/layouts/ru/Base.astro";
+import PostPreview from "src/components/blog/PostPreview.astro";
+import Typed from "src/components/blog/Typed.astro";
+import Link from "src/components/Link.astro";
+import { getFeaturedPosts } from "src/lib/posts.astro";
+import { PODCAST_SITE_URL } from "src/config";
+import Img from "src/components/Img.astro";
 
 const posts = await getFeaturedPosts(15);
 const lastPosts = posts.slice(0, 3);
 
 const meta = {
-	title: 'Главная',
-	description: 'Проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми техническими заметками и выпусками подкаста Станция НЛО',
+  title: "Главная",
+  description:
+    "Проект, где я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми техническими заметками и выпусками подкаста Станция НЛО",
 };
 ---
+
 <BaseLayout meta={meta}>
-	<Typed selector="#post-titles" posts={posts} />
+  <Typed selector="#post-titles" posts={posts} />
 
-	<div slot="hero" class="mainpage__hero">
-		<div class="mainpage__hero-container">
-			Уже читали? <span id="post-titles"></span>
-		</div>
-		<div class="mainpage__hero-background"></div>
-	</div>
+  <div slot="hero" class="mainpage__hero">
+    <div class="mainpage__hero-container">
+      Уже читали? <span id="post-titles"></span>
+    </div>
+    <div class="mainpage__hero-background"></div>
+  </div>
 
-	<main>
-		<section class="mainpage__section">
-			Прием! Как слышно? Добро пожаловать! Здесь я пытаюсь собрать контент, который когда-то выпускал, также делюсь новыми <Link href="/ru/posts/">техническими заметками</Link> и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>. 
-		</section>
+  <main>
+    <section class="mainpage__section">
+      Прием! Как слышно? Добро пожаловать! Здесь я пытаюсь собрать контент,
+      который когда-то выпускал, также делюсь новыми <Link href="/ru/posts/"
+        >техническими заметками</Link
+      > и выпусками подкаста <a href={PODCAST_SITE_URL}>Станция НЛО</a>.
+    </section>
 
-{/* 
+    {
+      /* 
 		<p>
 			This site is also available in <Link href="/en">English</Link> <Img class="content__inline-icon" width="16px" height="16px" alt="English language" src="/assets/icons/flag-en.svg" />
 		</p>
-*/}
+*/
+    }
 
-		<section class="mainpage__section">
-			<h3>Серии заметок</h3>
+    <section class="mainpage__section">
+      <h3>Серии заметок</h3>
 
-			<div class="mainpage__series">
-				<Link href="/ru/posts/2022/http-0.9" class="mainpage__series-section">
-					<Img src="/assets/icons/browser_networking.png" width="128" class="mainpage__series-image" />
-					<div class="mainpage__series-title">
-						История развития HTTP протокола
-					</div>
-				</Link>
-				<Link href="/ru/posts/2021/browser-rendering-pipeline" class="mainpage__series-section">
-					<Img src="/assets/icons/browser_rendering.png" width="128" class="mainpage__series-image" />
-					<div class="mainpage__series-title">
-						Браузерный рендеринг
-					</div>
-				</Link>
-				<Link href="/ru/posts/2020/browser-multi-process-architecture" class="mainpage__series-section">
-					<Img src="/assets/icons/browser_security.png" width="128" class="mainpage__series-image" />
-					<div class="mainpage__series-title">
-						Безопасность браузера
-					</div>
-				</Link>
-			</div>
-		</section>
+      <div class="mainpage__series">
+        <Link href="/ru/posts/2022/http-0.9" class="mainpage__series-section">
+          <Img
+            src="/assets/icons/browser_networking.png"
+            width="128"
+            class="mainpage__series-image"
+          />
+          <div class="mainpage__series-title">
+            История развития HTTP протокола
+          </div>
+        </Link>
+        <Link
+          href="/ru/posts/2021/browser-rendering-pipeline"
+          class="mainpage__series-section"
+        >
+          <Img
+            src="/assets/icons/browser_rendering.png"
+            width="128"
+            class="mainpage__series-image"
+          />
+          <div class="mainpage__series-title">Браузерный рендеринг</div>
+        </Link>
+        <Link
+          href="/ru/posts/2020/browser-multi-process-architecture"
+          class="mainpage__series-section"
+        >
+          <Img
+            src="/assets/icons/browser_security.png"
+            width="128"
+            class="mainpage__series-image"
+          />
+          <div class="mainpage__series-title">Безопасность браузера</div>
+        </Link>
+      </div>
+    </section>
 
-		<section class="mainpage__section">
-			<h3>Интересные посты из <Link href="/ru/posts">блога</Link></h3>
+    <section class="mainpage__section">
+      <h3>Интересные посты из <Link href="/ru/posts">блога</Link></h3>
 
-			{lastPosts.map(post => (
-				<PostPreview post={post} />
-			))}
+      {lastPosts.map((post) => <PostPreview post={post} />)}
 
-			<div class="posts-pagination">
-				<Link class="posts-pagination__next" href="/ru/posts">Все записи →</Link>
-			</div>
-
-		</section>
-
-	</main>
+      <div class="posts-pagination">
+        <Link class="posts-pagination__next" href="/ru/posts">Все записи →</Link
+        >
+      </div>
+    </section>
+  </main>
 </BaseLayout>

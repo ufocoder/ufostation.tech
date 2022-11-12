@@ -4,15 +4,15 @@ title: "Не делайте анимации через изменение DOM �
 pubDate: "Nov 3 2021"
 description: "Заметка о том, почему лучше не делать анимации через изменение DOM атрибутов (padding, margin) или через изменение CSS-свойств left, top при значении position заданным как absolute"
 ---
-import Img from 'src/components/Img.astro';
-import Video from 'src/components/Video.astro';
+
+import Img from "src/components/Img.astro";
+import Video from "src/components/Video.astro";
 
 Заметка о том, почему лучше не делать анимации через изменение DOM атрибутов (padding, margin) или через изменение CSS-свойств left, top при значении position заданным как absolute
 
 Предположим у вас есть вот такая анимация (взято из статьи, [How to create high-performance CSS animations](https://web.dev/animations-guide/))
 
 <Video src="/assets/posts/2021/better-animations/animation.mp4" controls />
-
 
 Есть два способа как можно реализовать анимацию. Первый способ через изменение свойств `top` и `left`
 
@@ -26,8 +26,8 @@ import Video from 'src/components/Video.astro';
 
 @keyframes move {
   50% {
-     top: calc(90vh - 160px);
-     left: calc(90vw - 200px);
+    top: calc(90vh - 160px);
+    left: calc(90vw - 200px);
   }
 }
 ```
@@ -44,7 +44,7 @@ import Video from 'src/components/Video.astro';
 
 @keyframes move {
   50% {
-     transform: translate(calc(90vw - 200px), calc(90vh - 160px));
+    transform: translate(calc(90vw - 200px), calc(90vh - 160px));
   }
 }
 ```
@@ -57,7 +57,7 @@ import Video from 'src/components/Video.astro';
 
 Существует [список триггеров](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/), благодаря которым элементы выносятся в отдельные слои
 
-Если использовать анимацию через изменение `left/top`, то вам необходимо перерисовывать всю область на экране. На основном слое будет находится и фон и квадрат, и придется соверщать больше работы связанной с редерингом (тайлинг,  растеризация и тп)
+Если использовать анимацию через изменение `left/top`, то вам необходимо перерисовывать всю область на экране. На основном слое будет находится и фон и квадрат, и придется соверщать больше работы связанной с редерингом (тайлинг, растеризация и тп)
 
 <Img src="/assets/posts/2021/better-animations/layers-top-left.jpg" />
 
@@ -71,9 +71,12 @@ import Video from 'src/components/Video.astro';
 
 <Img src="/assets/posts/2021/better-animations/devtools-top-left.jpg" />
 
-Когда-то разработчики из компании Google сделали [csstriggers.com](https://csstriggers.com/), чтобы понять что создает новые задачи в main thread 
+Когда-то разработчики из компании Google сделали [csstriggers.com](https://csstriggers.com/), чтобы понять что создает новые задачи в main thread
 
-<Img src="/assets/posts/2021/better-animations/css-triggers.jpg" style="max-width: 600px" />
+<Img
+  src="/assets/posts/2021/better-animations/css-triggers.jpg"
+  style="max-width: 600px"
+/>
 
 Если посмотреть на задачи создаваемые с помощью `transform: translate`, то main thread практически пустой, по крайней мере вышеупомянутых задач нет. Нет задач — нет новых paint операций
 
@@ -85,14 +88,19 @@ import Video from 'src/components/Video.astro';
 
 Если на странице изменится DOM, то мы породим цепочку задач, между 3 процессами участвующими в отрисовке:
 
-<Img src="/assets/posts/2021/better-animations/pipeline-transform.jpg" style="max-width: 600px" />
+<Img
+  src="/assets/posts/2021/better-animations/pipeline-transform.jpg"
+  style="max-width: 600px"
+/>
 
 В случае с анимацией через `transform: translate` цепочка сократится задач и участвующих в ней потоков сократится:
 
-<Img src="/assets/posts/2021/better-animations/pipeline-transform.jpg" style="max-width: 600px" />
+<Img
+  src="/assets/posts/2021/better-animations/pipeline-transform.jpg"
+  style="max-width: 600px"
+/>
 
 **Сопроводительный материал**  
 — [How to create high-performance CSS animations](https://web.dev/animations-guide/)  
 — [GPU Accelerated Compositing in Chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/)  
 — [Overview of the RenderingNG architecture](https://developer.chrome.com/articles/renderingng-architecture/)
-

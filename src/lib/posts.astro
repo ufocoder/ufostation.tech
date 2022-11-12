@@ -1,61 +1,68 @@
 ---
 export const getPosts = async () => {
-    return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`)).sort((a, b) => (
-        new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-    ))
-}
+  return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`)).sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).valueOf() -
+      new Date(a.frontmatter.pubDate).valueOf()
+  );
+};
 
 export const getSeriesPosts = async (seriesName: string) => {
-    return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
-        .filter(post => post.frontmatter.series === seriesName)
-        .sort((a, b) => (
-            new Date(a.frontmatter.pubDate).valueOf() - new Date(b.frontmatter.pubDate).valueOf()
-        ));
-}
+  return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
+    .filter((post) => post.frontmatter.series === seriesName)
+    .sort(
+      (a, b) =>
+        new Date(a.frontmatter.pubDate).valueOf() -
+        new Date(b.frontmatter.pubDate).valueOf()
+    );
+};
 
 export const getFeaturedPosts = async (limit: number) => {
-    return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
-        .filter(post => !post.frontmatter.series && !post.frontmatter.externalUrl)
-        .sort((a, b) => (
-            new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-        ))
-        .slice(0, limit)
-}
+  return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
+    .filter((post) => !post.frontmatter.series && !post.frontmatter.externalUrl)
+    .sort(
+      (a, b) =>
+        new Date(b.frontmatter.pubDate).valueOf() -
+        new Date(a.frontmatter.pubDate).valueOf()
+    )
+    .slice(0, limit);
+};
 
 export const getTags = async () => {
-    const posts = await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`);
-    const tags: Record<string, number> = {};
+  const posts = await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`);
+  const tags: Record<string, number> = {};
 
-    posts.forEach(post => {
-        if (post.frontmatter.tags) {
-            post.frontmatter.tags.forEach(tag => {
-                if (!Object.hasOwn(tags, tag)) {
-                    tags[tag] = 0;
-                }
-
-                tags[tag] += 1;
-            })
+  posts.forEach((post) => {
+    if (post.frontmatter.tags) {
+      post.frontmatter.tags.forEach((tag) => {
+        if (!Object.hasOwn(tags, tag)) {
+          tags[tag] = 0;
         }
-    });
 
-    return Object.entries(tags).sort((a, b) => b[1] - a[1]);
-}
+        tags[tag] += 1;
+      });
+    }
+  });
+
+  return Object.entries(tags).sort((a, b) => b[1] - a[1]);
+};
 
 export const getArchive = async () => {
-    const archive: Record<number, any> = {};
+  const archive: Record<number, any> = {};
 
-    (await getPosts())
-        .forEach(post => {
-            const date = new Date(post.frontmatter.pubDate);
-            const year = date.getFullYear();
+  (await getPosts()).forEach((post) => {
+    const date = new Date(post.frontmatter.pubDate);
+    const year = date.getFullYear();
 
-            if (!Object.hasOwn(archive, year)) {
-                archive[year] = [];
-            } 
+    if (!Object.hasOwn(archive, year)) {
+      archive[year] = [];
+    }
 
-            archive[year].push(post);
-        });    
+    archive[year].push(post);
+  });
 
-    return Object.entries(archive).sort(([yearA, _], [yearB, __]) => parseInt(yearB, 10) - parseInt(yearA, 10));
-}
+  return Object.entries(archive).sort(
+    ([yearA, _], [yearB, __]) => parseInt(yearB, 10) - parseInt(yearA, 10)
+  );
+};
 ---
