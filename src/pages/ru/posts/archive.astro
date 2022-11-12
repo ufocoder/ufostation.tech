@@ -21,7 +21,7 @@ const meta = {
 				<ul class="archive__items">
 					{posts.map((post) => (
 						<li class="archive__item">
-							<a href={post.url}>{post.frontmatter.title}</a>    
+							<a href={post.frontmatter.externalUrl || post.url}>{post.frontmatter.title}</a>    
 
 							{post.frontmatter.pubDate ? (
 								<time class="archive__item-time" datetime={post.frontmatter.pubDate}>

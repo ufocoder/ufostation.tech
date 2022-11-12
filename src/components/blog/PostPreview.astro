@@ -6,7 +6,7 @@ import { t, readingTime } from "src/locales";
 const { post } = Astro.props;
 ---
 <article class="post-preview">
-    <a href={post.url} class="post-preview__title">{post.frontmatter.title}</a>
+    <a href={post.frontmatter.externalUrl || post.url} class="post-preview__title">{post.frontmatter.title}</a>
 
     <div class="post-preview__meta">
         {post.frontmatter.pubDate ? (
@@ -24,6 +24,6 @@ const { post } = Astro.props;
     )}
 
     <div class="post-preview__link">
-        <a href={post.url} >{t('readMore')}</a>
+        <a href={post.frontmatter.externalUrl || post.url} >{t('readMore')}</a>
     </div>
 </article>
