@@ -1,7 +1,6 @@
 ---
 layout: "src/pages/ru/_layouts/_with-http-navigation.astro"
 title: "HTTP 0.9. Однострочный протокол"
-subtitle: "Краткая история развития HTTP протокола. Серия заметок"
 pubDate: "Sep 10 2022"
 series: "http"
 description: "Вне зависимости от того каким веб-разработчиком вы являетесь, [frontend](https://roadmap.sh/frontend) или [backend](https://roadmap.sh/backend), знания HTTP-протокола всегда будут актуальными, поскольку сетевая составляющая является неотъемлемой частью веб'а."

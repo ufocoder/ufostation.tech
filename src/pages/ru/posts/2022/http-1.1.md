@@ -1,9 +1,7 @@
 ---
 layout: "src/pages/ru/_layouts/_with-http-navigation.astro"
 title: "HTTP 1.1 Стабильная версия"
-subtitle: "Краткая история развития HTTP протокола. Серия заметок"
 pubDate: "Sep 25 2022"
-tags: ["http", "history"]
 series: "http"
 description: "Спустя год после появления на свет HTTP 1.0, [RFC](https://tools.ietf.org/html/rfc1945) [1945](https://tools.ietf.org/html/rfc1945), в январе 1997 года выходит новая версия протокола HTTP 1.1, [RFC](https://datatracker.ietf.org/doc/html/rfc2068) [2068](https://datatracker.ietf.org/doc/html/rfc2068). На самом деле нововведений, особенно если спускаться до деталей, много, ниже мы отметим некоторые важные из них."
 ---
