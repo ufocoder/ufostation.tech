@@ -1,0 +1,40 @@
+---
+layout: "src/pages/ru/_layouts/_with-browser-rendering-navigation.astro"
+title: "Style stage"
+series: "browser-rendering"
+pubDate: "Jul 06 2021"
+description: ""
+---
+import Img from 'src/components/Img.astro';
+
+Продолжаем рассматривать работу Rendering Pipeline в Chrome.
+
+Напомню, что ранее мы рассмотрели шаг парсинга, результатом парсинга является объектная модель (OM). Для HTML и CSS это будут DOM и CSSOM соответственно. Также напомню что, то как происходит парсинг описывается в соответствующей спецификации. Например, согласно спецификации HTML может парситься частями и прерываться выполнением JavaScript, поэтому в devtools можно найти задачу на парсинг html, в которой указан диапазона HTML, который парсится в рамках текущей задачи. 
+
+Дополню также то, что некоторые HTML элементы могут являться Web компонентами, со своим скрытым Shadow DOM. 
+
+На этапе парсинга, как правило, сам парсинг HTML выполняется при загрузке странице, а JavaScript код может выполняться на любом моменте жизни документа, возможно поэтому в цепочке rendering pipeline вместо написания стадии Parse иногда используют JavaScript: 
+
+```
+JavaScript → Style → Layout → Paint → Compose
+```
+
+<Img src="/assets/posts/2021/browser-rendering-style/style-stage.jpg" />
+
+После парсинга (или выполнения JavaScript) следующим шагом в Rendering Pipeline является стилизация — Style. 
+
+<Img src="/assets/posts/2021/browser-rendering-style/style-computed.jpg" />
+
+С тем как и где представлены результаты вычисления стилей, уверен, вы уже встречались в devtools во вкладке Elements при выделении конкретного элемента в DOM.
+
+<Img src="/assets/posts/2021/browser-rendering-style/style-task.jpg" />
+
+Задача Recalculate Style, которую можно найти в devtools performance, занимается тем, что пытается совместить эти две модели (или дерева) DOM и CSSOM и получить новое дерево, которое называют Render Tree. 
+
+В Render Tree, еще встречал такой перевод как "модель визуализации", попадают те элементы, которые действительно отобразятся на странице. 
+
+<Img src="/assets/posts/2021/browser-rendering-style/style-render-tree.jpg" />
+
+В Render Tree не попадут элементы, которые спрятаны CSS-стилями, то есть не занимают никакого места, например, элементы со свойством display:none. 
+
+В Render Tree также не попадут элементы у которых, если так можно выразиться, нет отображения, например, все те элементы, которые присутствуют в {`<head>`}: title, meta, script, link и так далее.

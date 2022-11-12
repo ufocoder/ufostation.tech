@@ -1,0 +1,55 @@
+---
+layout: "src/pages/ru/_layouts/_with-browser-rendering-navigation.astro"
+title: "Немного о производительности селекторов"
+series: "browser-rendering"
+pubDate: "Jul 07 2021"
+description: ""
+---
+import Img from 'src/components/Img.astro';
+
+Немного о производительности селекторов
+
+Может показаться, что "вычисление стилей", а именно "вычисление селекторов" дешевая по времени операция, но это может стать проблемой, если у вас очень большое DOM дерево и составные селекторы.
+
+Например, есть большой список div-элемент у каждого установлено имя класса "box", также присутствует следующие описание стилей:
+
+```css
+body.toggled .box:nth-child(2n) {
+    background: red;
+}
+```
+
+И где-то в вашем коде, например, по клику на кнопку выполняется следующий JavaScript-код:
+
+
+```js
+const clickHandler = () => {
+  document.body.classList.toggle('toggled');
+}
+```
+
+После того как DOM-элементу body будет назначен стиль toggled все дочерние div-элементы согласно селектору будут перекрашены. 
+
+Что здесь не так? Это может быть медленным решение! 
+Как ни странно именно в этом случае небольшой код  JavaScript отработает быстрее:
+
+```js
+const clickHandler = (e) => {
+    document.body.classList.toggle('toggled');
+    const elements = document.body.querySelector('div');
+    const isToggled = document.body.classList.contains('toggled');
+    for (let i = 1; i < elements.length; i += 2) {
+        elements[i].classList.toggle('box', isToggled)
+    }
+}
+```
+
+Поэкспериментировать с этим примером оптимизации [можно здесь](http://udacity.github.io/60fps/lesson5/recalcStyles/index-slow.html).
+
+Убедиться в том, что время работы селекторов зависит от размера дерева — несложно. Можно также сделать большой список элементов и затем попробовать выбрать первый и последний элементы. 
+
+Лично у меня получились такие результаты:
+
+<Img src="/assets/posts/2021/browser-rendering-selectors-performance/selectors-performance.jpg" />
+
+При желании, но уже самостоятельно, можно измерить как растет время работы селекторов, при росте дерева вглубь.

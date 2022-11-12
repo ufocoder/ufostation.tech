@@ -1,0 +1,32 @@
+---
+layout: "src/pages/ru/_layouts/_with-browser-rendering-navigation.astro"
+title: "Rendering pipeline"
+series: "browser-rendering"
+pubDate: "June 10 2021"
+description: ""
+---
+import Img from 'src/components/Img.astro';
+
+Начнем говорить о новой большой теме — Rendering Pipeline. 
+
+Это последовательность шагов необходимая, чтобы отобразить контент на экране, или превратить его в пиксели, если хотите.
+
+Очевидно, что у каждого браузера могут быть свои особенности в реализации этой последовательности шагов, как и сами шаги, тем не менее, если не вдаваться в детали и смотреть на все из подзорной трубы, то за последние ~10 лет, концептуально, на мой взгляд мало, что изменилось.
+
+<Img src="/assets/posts/2021/browser-rendering-pipeline/rendering-2008.jpg" style="width: 400px" />
+
+[Faster HTML and CSS: Layout Engine Internals for Web Developers](https://www.youtube.com/watch?v=a2_6bGNZ7bA) — доклад 2008 года, упомянутый здесь pipeline относится к браузеру Mozilla 
+
+<Img src="/assets/posts/2021/browser-rendering-pipeline/how-browsers-work.jpg" style="width: 400px" />
+
+[How Browsers Work: Behind the scenes of modern web browsers](https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/) - популярная статья о работе современных на тот момент браузеров, которой в этом году будет ровно как 10 лет.
+
+На то время rendering pipeline можно было представить как набор следующих шагов: 
+
+Parse → Style → Layout → Paint
+
+Спустя еще несколько лет, появляется еще один шаг компоновка, который связан с выделением слоев и прочими вытекающими оптимизациями, и теперь pipeline стал принимать следующий вид:
+
+Parse → Style → Layout → Paint → Compose
+
+О том, что означает каждый шаг и какие конкретные действия за ним стоят будем разбираться далее на примере работы [Chromium](https://www.chromium.org/), а также изредко будем поглядывать в [Gecko](https://wiki.mozilla.org/Gecko:Overview) и [Webkit](https://webkit.org/).

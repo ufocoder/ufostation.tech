@@ -1,0 +1,46 @@
+---
+layout: "src/pages/ru/_layouts/_with-browser-rendering-navigation.astro"
+title: "Почему Paint stage не одна большая операция"
+series: "browser-rendering"
+pubDate: "Aug 31 2021"
+description: ""
+---
+import Img from 'src/components/Img.astro';
+
+В прошлый раз мы остановись на шаге Layout в Rendering Pipeline, на котором вычисляется Layout Tree, то есть положение и геометрия объектов на странице.  Также напомню, что в общем виде Rendering Pipeline выглядит так: 
+
+```
+JavaScript → Style → Layout → Paint → Compose
+```
+
+Следующий шаг, это отрисовка — Paint. 
+
+Браузер — приложение, и как правило использует библиотеку для вывода примитивов на экранах через вызовы операционной системы, в которой работает. И кажется, если не вдаваться в детали реализации, то вроде бы ничего сложного, нужно согласно ранее полученному Render Tree и Layout Tree понять какой набор API-вызовов будет вызван,, но посмотрите на то, как это все устроено в [Rendering pipeline structure](https://developer.chrome.com/blog/renderingng-architecture/#rendering-pipeline-structure) в Chromium:
+
+<Img src="/assets/posts/2021/browser-rendering-paint/pipeline.jpg" />
+
+Схема [Rendering pipeline structure](https://developer.chrome.com/blog/renderingng-architecture/#rendering-pipeline-structure) из статьи [Overview of the RenderingNG architecture](https://developer.chrome.com/blog/renderingng-architecture/)
+
+Почему отрисовка это не одна (большая) операция? 
+
+Во-первых, дело в оптимизациях! Перерисовывать всю страницу может быть дорогой операцией, особенно, если ее размер больше, чем видимая область экрана.
+
+Во-вторых, дело в безопасности! Предоставлять ресурсы всей операционной системы процессу отрисовки может быть не безопасно, а это также влияет на финальный pipeline.
+
+Далее я попробую логически показать как совершить переход к тому, что вы видели выше (или подобию этого) из общей схемы рендеринга:  
+
+```
+JavaScript → Style → Layout → Paint
+```
+
+Начну с того, что процесс отрисовки работает в [песочнице](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/design/sandbox.md), то есть доступ к ресурсам операционной системы у него ограничен, поэтому отрисовкой на экран занимается непосредственно GPU-процесс, отсюда наш Rendering Pipeline разбивается на два процесса:  
+  
+```
+Render process
+Main thread: Parse (JavaScript) → Style → Layout → Paint
+
+Viz GPU process
+Main thread: Raster → Draw
+```
+
+После того как мы сформировали набор команд для отрисовки, мы отправляем их из процесса рендеринга в GPU-процесс, здесь же, кстати, происходит и растеризация существующих на странице изображений.
