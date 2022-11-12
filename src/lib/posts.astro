@@ -5,9 +5,17 @@ export const getPosts = async () => {
     ))
 }
 
-export const getNonSeriesPosts = async (limit: number) => {
+export const getSeriesPosts = async (seriesName: string) => {
     return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
-        .filter(post => !post.frontmatter.series)
+        .filter(post => post.frontmatter.series === seriesName)
+        .sort((a, b) => (
+            new Date(a.frontmatter.pubDate).valueOf() - new Date(b.frontmatter.pubDate).valueOf()
+        ));
+}
+
+export const getFeaturedPosts = async (limit: number) => {
+    return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
+        .filter(post => !post.frontmatter.series && !post.frontmatter.externalUrl)
         .sort((a, b) => (
             new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
         ))
