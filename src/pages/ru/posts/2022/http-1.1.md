@@ -1,9 +1,9 @@
 ---
-layout: "src/pages/ru/_layouts/_with-http-navigation.astro"
-title: "HTTP 1.1 Стабильная версия"
-pubDate: "Sep 25 2022"
-series: "http"
-description: "Спустя год после появления на свет HTTP 1.0, [RFC](https://tools.ietf.org/html/rfc1945) [1945](https://tools.ietf.org/html/rfc1945), в январе 1997 года выходит новая версия протокола HTTP 1.1, [RFC](https://datatracker.ietf.org/doc/html/rfc2068) [2068](https://datatracker.ietf.org/doc/html/rfc2068). На самом деле нововведений, особенно если спускаться до деталей, много, ниже мы отметим некоторые важные из них."
+layout: 'src/pages/ru/_layouts/_with-http-navigation.astro'
+title: 'HTTP 1.1 Стабильная версия'
+pubDate: 'Sep 25 2022'
+series: 'http'
+description: 'Спустя год после появления на свет HTTP 1.0, [RFC](https://tools.ietf.org/html/rfc1945) [1945](https://tools.ietf.org/html/rfc1945), в январе 1997 года выходит новая версия протокола HTTP 1.1, [RFC](https://datatracker.ietf.org/doc/html/rfc2068) [2068](https://datatracker.ietf.org/doc/html/rfc2068). На самом деле нововведений, особенно если спускаться до деталей, много, ниже мы отметим некоторые важные из них.'
 ---
 
 _Спустя год после появления на свет HTTP 1.0,_ [_RFC_](https://tools.ietf.org/html/rfc1945) [_1945_](https://tools.ietf.org/html/rfc1945)_, в январе 1997 года выходит новая версия протокола HTTP 1.1,_ [_RFC_](https://datatracker.ietf.org/doc/html/rfc2068) [_2068_](https://datatracker.ietf.org/doc/html/rfc2068)_. На самом деле нововведений, особенно если спускаться до деталей, много, ниже мы отметим некоторые важные из них._
@@ -34,7 +34,7 @@ HTTP-заголовок [Keep-Alive](https://datatracker.ietf.org/doc/html/rfc20
 
 HTTP-запросы и ответы могут быть конвейеризированы по соединению. Эта особенность называется [HTTP](https://datatracker.ietf.org/doc/html/rfc2068#section-8.1.2.2) [Pipelining](https://datatracker.ietf.org/doc/html/rfc2068#section-8.1.2.2). Конвейерная обработка позволяет клиенту делать несколько запросов, не дожидаясь каждого ответа, что позволяет использовать одно TCP-соединение гораздо эффективнее и с гораздо меньшими затратами времени.
 
-**Сопроводительный материал**
+**Сопроводительные материалы**
 
 — [HTTP Caching – HTTP 1.0 vs HTTP 1.1](https://www.fir3net.com/Networking/Protocols/http-caching-http-1-0-vs-http-1-1.html)  
 — [Understanding The Vary Header](https://www.smashingmagazine.com/2017/11/understanding-vary-header/)  

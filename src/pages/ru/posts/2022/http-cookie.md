@@ -1,9 +1,9 @@
 ---
-layout: "src/pages/ru/_layouts/_with-http-navigation.astro"
-title: "HTTP State Managent Mechanism"
-pubDate: "Oct 08 2022"
-series: "http"
-description: "Впервые Cookies появились в браузере [Netscape Navigator](https://en.wikipedia.org/wiki/Netscape_(web_browser)) в 1994 году, поэтому не удивительно, что одним из авторов спецификации был разработчик из [Netscape Communications](https://en.wikipedia.org/wiki/Netscape), [Лу](https://en.wikipedia.org/wiki/Lou_Montulli) [Монтули](https://en.wikipedia.org/wiki/Lou_Montulli). Кстати Лу на тот момент было всего 23 года, и он также являлся одним из авторов браузера [Lynx](https://en.wikipedia.org/wiki/Lynx_(web_browser))"
+layout: 'src/pages/ru/_layouts/_with-http-navigation.astro'
+title: 'HTTP State Managent Mechanism'
+pubDate: 'Oct 08 2022'
+series: 'http'
+description: 'Впервые Cookies появились в браузере [Netscape Navigator](https://en.wikipedia.org/wiki/Netscape_(web_browser)) в 1994 году, поэтому не удивительно, что одним из авторов спецификации был разработчик из [Netscape Communications](https://en.wikipedia.org/wiki/Netscape), [Лу](https://en.wikipedia.org/wiki/Lou_Montulli) [Монтули](https://en.wikipedia.org/wiki/Lou_Montulli). Кстати Лу на тот момент было всего 23 года, и он также являлся одним из авторов браузера [Lynx](https://en.wikipedia.org/wiki/Lynx_(web_browser))'
 ---
 
 _Спустя месяц после публикации_ [_RFC1945_](https://tools.ietf.org/html/rfc1945)_, в феврале 1997 года выходит в свет спецификация_ [_RFC2109_](https://www.rfc-editor.org/rfc/rfc2109)_, в которой описывается механизм управления состоянием для HTTP протокола_, _или проще говоря_, _она вводит всем известные Cookies. Теперь протокол имеет постоянное соединение и состояние, а версию HTTP/1.0 с этих пор можно называть connectionless и stateless._
@@ -32,7 +32,7 @@ _Спустя месяц после публикации_ [_RFC1945_](https://to
 
 Существуют и другие проблемы, например, приватность и трекинг пользователей и прочие, каждая из которых имеет свое развитие и свои варианты решений. Так или иначе, вы стали свидетелем того, как безобидные дополнительные 4kb в HTTP-заголовках впоследствии привели к немалому числу сложностей.
 
-**Сопроводительный материал**
+**Сопроводительные материалы**
 
 — [The magic cookie: How Lou Montully cured the Web's Amnesia](https://hiddenheroes.netguru.com/lou-montulli)  
 — [MDN. HTTP Cookies](https://developer.mozilla.org/ru/docs/Web/HTTP/Cookies)  

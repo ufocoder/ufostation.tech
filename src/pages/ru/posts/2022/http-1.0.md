@@ -1,8 +1,8 @@
 ---
-layout: "src/pages/ru/_layouts/_with-http-navigation.astro"
-title: "HTTP 1.0. Расширяемость как основа"
-pubDate: "Sep 11 2022"
-series: "http"
+layout: 'src/pages/ru/_layouts/_with-http-navigation.astro'
+title: 'HTTP 1.0. Расширяемость как основа'
+pubDate: 'Sep 11 2022'
+series: 'http'
 description: "Период с 1991 по 1995 год характеризуется быстрым развитием спецификации HTML, появлением нового поколения программного обеспечения, известного как 'веб-браузер', а также появлением и быстрым ростом ориентированной на потребителя публичной инфраструктуры Интернета."
 ---
 
@@ -52,7 +52,7 @@ Content-Length: 150
 org=Distributed%20Systems&professor=Marazakis&browsers=lynx
 ```
 
-**Сопроводительный материал**
+**Сопроводительные материалы**
 
 — [HyperText Transfer Protocol: A Short Course](https://condor.depaul.edu/dmumaugh/readings/handouts/SE435/HTTP/), John Yannakopoulos, 2003  
 — [Brief History of HTTP](https://hpbn.co/brief-history-of-http/), High Performance Browser Networking

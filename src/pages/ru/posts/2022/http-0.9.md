@@ -1,8 +1,8 @@
 ---
-layout: "src/pages/ru/_layouts/_with-http-navigation.astro"
-title: "HTTP 0.9. Однострочный протокол"
-pubDate: "Sep 10 2022"
-series: "http"
+layout: 'src/pages/ru/_layouts/_with-http-navigation.astro'
+title: 'HTTP 0.9. Однострочный протокол'
+pubDate: 'Sep 10 2022'
+series: 'http'
 description: "Вне зависимости от того каким веб-разработчиком вы являетесь, [frontend](https://roadmap.sh/frontend) или [backend](https://roadmap.sh/backend), знания HTTP-протокола всегда будут актуальными, поскольку сетевая составляющая является неотъемлемой частью веб'а."
 ---
 
@@ -30,7 +30,7 @@ GET /index.html
 
 Первая спецификация протокола определила понятия connection, request, response, disconnection; и привела к упорядочению правил взаимодействия между HTTP-клиентами и серверами, а также чёткому разделению функций между ними.
 
-**Сопроводительный материал**
+**Сопроводительные материалы**
 
 — [The Original HTTP as defined in 1991](https://www.w3.org/Protocols/HTTP/AsImplemented.html)  
 — [Сэр Тимоти Джон Бернерс-Ли](https://ru.m.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%BD%D0%B5%D1%80%D1%81-%D0%9B%D0%B8,_%D0%A2%D0%B8%D0%BC)
