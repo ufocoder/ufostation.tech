@@ -1,5 +1,5 @@
 ---
-layout: 'src/pages/ru/_layouts/_with-http-navigation.astro'
+layout: './_navigation.astro'
 title: 'HTTP State Managent Mechanism'
 pubDate: 'Oct 08 2022'
 series: 'http'

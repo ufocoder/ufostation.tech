@@ -1,12 +1,12 @@
 ---
-layout: "src/pages/ru/_layouts/_with-browser-rendering-navigation.astro"
-title: "Layout stage"
-series: "browser-rendering"
-pubDate: "Jul 10 2021"
-description: ""
+layout: './_navigation.astro'
+title: 'Layout stage'
+series: 'browser-rendering'
+pubDate: 'Jul 10 2021'
+description: ''
 ---
 
-import Img from "src/components/Img.astro";
+import Img from 'src/components/Img.astro';
 
 После того как мы вычислили какие элементы будут на странице и как они будут выглядеть (вычислили стили), нам необходимо понять, а где же они будут представлены на странице и какие размеры будут занимать. Другими словами нам необходимо вычислить геометрию элементов.
 
@@ -22,9 +22,9 @@ import Img from "src/components/Img.astro";
 
 ```html
 <div style="max-width: 100px">
-  <div style="float: left; padding: 1ex">F</div>
-  <br />The <b>quick brown</b> fox
-  <div style="margin: -60px 0 0 80px">jumps</div>
+	<div style="float: left; padding: 1ex">F</div>
+	<br />The <b>quick brown</b> fox
+	<div style="margin: -60px 0 0 80px">jumps</div>
 </div>
 ```
 

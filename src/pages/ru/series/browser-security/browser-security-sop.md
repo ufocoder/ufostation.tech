@@ -1,9 +1,9 @@
 ---
-layout: "src/pages/ru/_layouts/_with-browser-security-navigation.astro"
-title: "Same Origin Policy"
-pubDate: "Jan 02 2021"
-series: "browser-security"
-description: "Рассмотрим политику безопасности, связанную со значением origin — Same Origin Policy (или сокращенно SOP). Концепция, [созданная Netscape еще в далеком 1995 году](https://web.archive.org/web/20020808153106/http://wp.netscape.com:80/eng/mozilla/3.0/handbook/javascript/advtopic.htm#1009533), теперь реализована во всех современных веб-браузерах. Также существует [RFC 6454. The Web Origin Concept](https://tools.ietf.org/html/rfc6454) от декабря 2011, который описывает основные термины и принципы, стоящие за origin."
+layout: './_navigation.astro'
+title: 'Same Origin Policy'
+pubDate: 'Jan 02 2021'
+series: 'browser-security'
+description: 'Рассмотрим политику безопасности, связанную со значением origin — Same Origin Policy (или сокращенно SOP). Концепция, [созданная Netscape еще в далеком 1995 году](https://web.archive.org/web/20020808153106/http://wp.netscape.com:80/eng/mozilla/3.0/handbook/javascript/advtopic.htm#1009533), теперь реализована во всех современных веб-браузерах. Также существует [RFC 6454. The Web Origin Concept](https://tools.ietf.org/html/rfc6454) от декабря 2011, который описывает основные термины и принципы, стоящие за origin.'
 ---
 
 Рассмотрим политику безопасности, связанную со значением origin — Same Origin Policy (или сокращенно SOP). Концепция, [созданная Netscape еще в далеком 1995 году](https://web.archive.org/web/20020808153106/http://wp.netscape.com:80/eng/mozilla/3.0/handbook/javascript/advtopic.htm#1009533), теперь реализована во всех современных веб-браузерах. Также существует [RFC 6454. The Web Origin Concept](https://tools.ietf.org/html/rfc6454) от декабря 2011, который описывает основные термины и принципы, стоящие за origin.

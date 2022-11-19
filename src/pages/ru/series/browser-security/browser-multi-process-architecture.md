@@ -1,5 +1,5 @@
 ---
-layout: "src/pages/ru/_layouts/_with-browser-security-navigation.astro"
+layout: './_navigation.astro'
 title: "Мультипроцессная архитектура"
 pubDate: "Dec 21 2020"
 series: "browser-security"

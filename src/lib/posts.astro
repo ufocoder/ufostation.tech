@@ -8,7 +8,7 @@ export const getPosts = async () => {
 };
 
 export const getSeriesPosts = async (seriesName: string) => {
-  return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
+  return (await Astro.glob(`../pages/*/series/**/*.{md,mdx}`))
     .filter((post) => post.frontmatter.series === seriesName)
     .sort(
       (a, b) =>
