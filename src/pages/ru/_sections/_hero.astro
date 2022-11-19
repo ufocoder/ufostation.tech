@@ -1,0 +1,100 @@
+---
+
+import Typed from "src/components/blog/Typed.astro";
+import Link from "src/components/Link.astro";
+import { PODCAST_SITE_URL } from "src/config";
+import { getFeaturedPosts } from "src/lib/posts.astro";
+
+const posts = await getFeaturedPosts(15);
+---
+<style>
+  .section-hero {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - var(--header-layout-height));
+  }
+  
+  .section-hero__container {
+    position: relative;
+    color: var(--text-secondary);
+    max-width: var(--layout-width-base);
+    margin: 0 auto;
+    padding: 0 var(--layout-padding-base);
+    z-index: 1;
+  }
+  
+  .section-hero__title {
+    font-family: var(--font-family-primary);
+    font-style: normal;
+    font-size: 7.5em;
+    line-height: 1.2em;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .section-hero__subtitle {
+    font-family: var(--font-family-primary);
+    color: #7588a4;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2em;
+    line-height: 1.1em;
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+  }
+  
+  .section-hero__more {
+    margin: 6em 0 2em;
+  }
+  
+  .section-hero__more-label {
+    font-size: 1.5em;
+    font-weight: 300;
+    font-family: var(--font-family-secondary);
+    text-align: center;
+    line-height: 2em;
+  }
+  
+  .section-hero__more-article {
+    font-size: 1.5em;
+    font-weight: 300;
+    font-family: var(--font-family-secondary);
+    text-align: center;
+    line-height: 1.1;
+    height: 2.2em;
+  
+  }
+  
+  .section-hero__more-article .typed-cursor {
+    color: #000;
+  }
+    
+  @media (max-width: 768px) {
+    .section-hero__container {
+      font-size: 1em;
+    }
+  }
+</style>
+
+<Typed selector="#post-titles" posts={posts} />
+
+<div class="section-hero">    
+    <div class="section-hero__container">
+      <div class="section-hero__title">
+        Станция НЛО
+      </div>
+      <div class="section-hero__subtitle">
+        технические <Link href="/ru/series">статьи</Link>, 
+        <Link href="/ru/blog">заметки</Link>, 
+        <Link href={PODCAST_SITE_URL}>подкаст</Link><br>
+        про информационные технологии
+      </div>
+      <div class="section-hero__more">
+        <div class="section-hero__more-label">Уже читали?</div>
+        <div class="section-hero__more-article"><span id="post-titles"></span></div>
+      </div>
+    </div>
+</div>

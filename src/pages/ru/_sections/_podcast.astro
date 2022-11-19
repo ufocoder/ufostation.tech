@@ -1,0 +1,56 @@
+---
+import { PODCAST_SITE_URL } from "src/config";
+---
+<style>
+.section-podcast {
+    padding: 2em;
+    background: #243144;
+    display: flex;
+}
+
+.section-podcast__column--left {
+    flex: 2;
+}
+.section-podcast__column--right {
+    flex: 1;
+    text-align: right;
+    align-self: center;
+}
+.section-podcast__title {
+    font-size: 3em;
+}
+.section-podcast__content {
+    font-size: 1.4em;
+    font-weight: 300;
+    margin: 2em 0;
+}
+.section-podcast__link {
+    font-size: 1.5em;
+}
+.section-podcast__icon {
+    width: 250px;
+    height: 250px;
+}
+</style>
+<div class="section-podcast">
+
+    <div class="section-podcast__column section-podcast__column--left">
+        <div class="section-podcast__title">
+            Больше как слушатель ?
+        </div>
+
+        <div class="section-podcast__content">
+            Познакомьтесь с <a href={PODCAST_SITE_URL}>подкастом</a>, где вы узнаете о том, как работает браузер, что такое блокчейн, в чем красота функционального программирования, а также о многом другом.
+        </div>
+
+        <div class="section-podcast__link">
+            <a href={PODCAST_SITE_URL}>Слушать выпуски →</a>
+        </div>
+
+    </div>
+
+    <div class="section-podcast__column section-podcast__column--right ">
+        <img src="/assets/icons/mic.svg" class="section-podcast__icon" />
+    </div>
+
+</div>

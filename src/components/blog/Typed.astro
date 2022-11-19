@@ -4,8 +4,7 @@ import Typed from "typed.js";
 
 export interface Props {
   selector: string;
-  options: TypedOptions;
-  posts: { url: string; frontmatter: { title: string } }[];
+  posts: any[];
 }
 
 declare global {
@@ -15,10 +14,8 @@ declare global {
 }
 
 const {
-  id = "default",
   posts,
   selector: typedSelector,
-  typedOptions = {},
 } = Astro.props;
 const typedPosts = posts.map(({ url, frontmatter: { title } }) => ({
   title,

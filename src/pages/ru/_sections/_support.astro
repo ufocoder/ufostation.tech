@@ -1,0 +1,29 @@
+---
+import { DONATE_BOOSTY_URL, GITHUB_URL } from "src/config";
+
+
+---
+<style>
+.section-support {
+}
+.section-support__title {
+    font-size: 2em;
+}
+.section-support__content {
+    font-size: 1em;
+    margin: 2em 0;
+}
+</style>
+<div class="section-support">
+    <div class="section-support__title">
+        Внести вклад в проект
+    </div>
+    <div class="section-support__content">
+
+        <p>Нашли очепатку или хотите улучшить исходный код проекта? Отправьте <a href={GITHUB_URL}>Pull Request</a> или <a href={`${GITHUB_URL}/issues/new`}>создайте issue</a></p>
+
+        Check out my podcast Chats with Kent and learn about software development, career, life, and more
+
+        <a href={DONATE_BOOSTY_URL} target="_blank">boosty</a>
+    </div>
+</div>
