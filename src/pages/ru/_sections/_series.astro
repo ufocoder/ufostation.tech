@@ -9,7 +9,6 @@ import Navigation from "src/components/blog/Navigation.astro";
   background: var(--background-secondary);
   gap: 4em;
 }
-
 .section-series__column--left {
     flex: 1.6;
 }
@@ -37,6 +36,17 @@ import Navigation from "src/components/blog/Navigation.astro";
 .section-series__icon {
     width: 250px;
     height: 250px;
+}
+@media (max-width: 768px) {
+    .section-series__title {
+        font-size: 2em;
+    }
+    .section-series__content {
+        font-size: 1.1em;
+    }
+    .section-series {
+        display: block;
+    }
 }
 </style>
 <div class="section-series">
