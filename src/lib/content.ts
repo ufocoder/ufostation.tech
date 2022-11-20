@@ -1,5 +1,5 @@
 import { resolve } from "node:path";
-import { GITHUB_URL } from "src/config";
+import { GITHUB_URL, TWITTER_ACCOUNT } from "src/config";
 
 const cwd = resolve("."); // @TODO: fix better way
 
@@ -43,3 +43,9 @@ export const shuffleArray = (array) => {
     array[j] = temp;
   }
 };
+
+export const createTwitterShareURL = (title: string, url) => {
+  const text = encodeURI(title) + ", " + TWITTER_ACCOUNT + " " + url;
+
+  return 'https://twitter.com/intent/tweet?text=' + text;
+}

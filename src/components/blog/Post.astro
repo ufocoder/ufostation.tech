@@ -3,12 +3,13 @@ import {
   formatFullDate,
   addUrlPrefix,
   getGithubSourceURL,
+  createTwitterShareURL,
 } from "src/lib/content";
 import { t, readingTime } from "src/locales";
 import Link from "../Link.astro";
 
 const { content } = Astro.props;
-const { title, pubDate, updatedDate, heroImage, minutesRead } = content;
+const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
 ---
 
 <article class="post">
@@ -39,10 +40,11 @@ const { title, pubDate, updatedDate, heroImage, minutesRead } = content;
     <slot />
   </div>
   <div class="post__typo">
-    {t("findATypo")}
-    <Link href={getGithubSourceURL(Astro.props.file)}
-      >{t("fixPageOnGithub")}</Link
-    >
+    {t("wantToShare")}
+
+    <a href={createTwitterShareURL(title, new URL(url, Astro.url))}>twitter</a>
+
+    <Link href={getGithubSourceURL(Astro.props.file)}>{t("fixPageOnGithub")}</Link>
   </div>
   <div class="post__back">
     <Link href="/ru/posts/" aria-label={t("backToTheBlog") as string}
