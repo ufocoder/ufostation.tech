@@ -459,29 +459,3 @@ blockquote {
 .post__back {
 	margin: var(--layout-padding-base) 0;
 }
-
-/* footer */
-
-.footer {
-	background: var(--footer-background-color);
-}
-
-.footer__container {
-	max-width: var(--layout-width-base);
-	padding: 0 var(--layout-padding-base);
-	margin: calc(2 * var(--layout-padding-base)) auto;
-	display: flex;
-	color: var(--text-secondary);
-	font-size: var(--font-size-smaller);
-	max-width: var(--layout-width-base);
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-
-.footer__copyright {
-	flex: 0 1 auto;
-}
-
-.footer__build-with {
-	flex: auto;
-}
