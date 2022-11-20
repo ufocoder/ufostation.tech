@@ -75,7 +75,7 @@ import Video from 'src/components/Video.astro';
 
 <Img
 	src="/assets/posts/2021/better-animations/css-triggers.jpg"
-	style="max-width: 600px"
+	style="max-width: 600px; width: 100%;"
 />
 
 Если посмотреть на задачи создаваемые с помощью `transform: translate`, то main thread практически пустой, по крайней мере вышеупомянутых задач нет. Нет задач — нет новых paint операций
@@ -90,14 +90,14 @@ import Video from 'src/components/Video.astro';
 
 <Img
 	src="/assets/posts/2021/better-animations/pipeline-top-left.jpg"
-	style="max-width: 600px"
+	style="max-width: 600px; width: 100%;"
 />
 
 В случае с анимацией через `transform: translate` цепочка сократится задач и участвующих в ней потоков сократится:
 
 <Img
 	src="/assets/posts/2021/better-animations/pipeline-transform.jpg"
-	style="max-width: 600px"
+	style="max-width: 600px; width: 100%;"
 />
 
 **Сопроводительные материалы**  
