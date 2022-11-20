@@ -5,7 +5,9 @@ import Layout from "src/layouts/ru/Post.astro";
 
 <Layout {...Astro.props}>
   <Fragment>
-    <Navigation title="История развития HTTP протокола" series="http" />
+    <div style="background: var(--background-secondary);">
+      <Navigation title="История развития HTTP протокола" series="http" />
+    </div>
     <slot />
   </Fragment>
 </Layout>

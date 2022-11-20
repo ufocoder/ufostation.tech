@@ -4,7 +4,20 @@ import Link from "../Link.astro";
 
 const { prev, next } = Astro.props;
 ---
-
+<style>
+.posts-pagination {
+	display: flex;
+	flex-direction: row;
+}
+.posts-pagination__prev {
+	flex: 1;
+	text-align: left;
+}
+.posts-pagination__next {
+	flex: 1;
+	text-align: right;
+}
+</style>
 <div class="posts-pagination">
   {
     prev ? (

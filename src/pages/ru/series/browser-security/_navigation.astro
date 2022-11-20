@@ -5,7 +5,9 @@ import Layout from "src/layouts/ru/Post.astro";
 
 <Layout {...Astro.props}>
   <Fragment>
-    <Navigation title="Безопасность браузера" series="browser-security" />
+    <div style="background: var(--background-secondary);">
+      <Navigation title="Безопасность браузера" series="browser-security" />
+    </div>
     <slot />
   </Fragment>
 </Layout>

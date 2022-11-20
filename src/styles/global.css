@@ -1,51 +1,3 @@
-@font-face {
-	src: url('/fonts/Oswald-Bold.ttf') format('ttf');
-	font-family: 'Oswald';
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-}
-
-@font-face {
-	src: url('/fonts/Oswald-Regular.ttf') format('ttf');
-	font-family: 'Oswald', sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-}
-
-@font-face {
-	src: url('/fonts/Roboto-Regular.ttf') format('ttf');
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-}
-
-@font-face {
-	src: url('/fonts/Roboto-Italic.ttf') format('ttf');
-	font-family: 'Roboto', sans-serif;
-	font-style: italic;
-	font-weight: 400;
-	font-display: swap;
-}
-
-@font-face {
-	src: url('/fonts/Roboto-Bold.ttf') format('ttf');
-	font-family: 'Roboto', sans-serif;
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-}
-
-@font-face {
-	src: url('/fonts/Roboto-BoldItalic.ttf') format('ttf');
-	font-family: 'Roboto', sans-serif;
-	font-style: italic;
-	font-weight: 700;
-	font-display: swap;
-}
-
 /* base vars */
 
 :root {
@@ -58,11 +10,11 @@
 	--color-text-heading: #ccc;
 
 	--color-text-secondary: #4e4e4e;
-	--color-text-link: #007dff;
+	--color-text-link: #2892ff;
 	--color-text-button: #000;
 
 	--background-primary: #18202c;
-	--background-secondary: #fff;
+	--background-secondary: #111822;
 
 	--font-family-primary: 'Oswald', sans-serif;
 	--font-family-secondary: 'Roboto Condensed', sans-serif;
@@ -73,9 +25,9 @@
 	--font-size-heading-h4: 1.44rem;
 	--font-size-heading-h5: 1.2rem;
 
-	--font-size-base: 1rem;
-	--font-size-smaller: 0.84rem;
-	--font-size-tiny: 0.67rem;
+	--font-size-base: 1.1rem;
+	--font-size-smaller: 0.96rem;
+	--font-size-tiny: 0.84rem;
 
 	/* header */
 
@@ -99,9 +51,7 @@
 	--post-preview-line-color: #384252;
 
 	--post-blockquote-background-color: #18202c;
-
-	/* mainpage */
-	--mainpage-hero-background-color: #18202c;
+	--post-footer-background-color: #111822;
 
 	/* footer */
 	--footer-background-color: #111822;
@@ -353,8 +303,7 @@ blockquote {
 .content__inline-icon {
 	vertical-align: bottom;
 }
-
-/* mainpage */
+/
 
 /* archive */
 
@@ -445,7 +394,7 @@ blockquote {
 
 .post-preview__meta {
 	margin: 0.5em 0;
-	color: #555;
+	color: #868686;
 	font-size: var(--font-size-smaller);
 }
 
@@ -453,66 +402,6 @@ blockquote {
 	margin: 1em 0;
 	font-size: var(--font-size-base);
 	line-height: 1.3em;
-}
-
-/* posts / navigation */
-
-.post-navigation {
-	background: var(--background-secondary);
-	padding: var(--layout-padding-base);
-}
-
-.post-navigation__title {
-	font-weight: 700;
-}
-
-.post-navigation__menu {
-	margin: 1em 0 0 0;
-	padding: 0 0 0 1.5em;
-}
-
-.post-navigation__item {
-	margin: 0;
-	padding: 0 0 0.5em 0;
-}
-
-/* post / attachment */
-
-.post__attachment {
-	margin: var(--layout-padding-base) 0;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-
-.post__attachment-icon {
-	display: block;
-	width: 50px;
-	margin: 0;
-	padding-right: 10px;
-	flex: 0 0 50px;
-	margin: 0;
-}
-
-.post__attachment-description {
-	flex: 1;
-}
-
-/* posts / pagination */
-
-.posts-pagination {
-	display: flex;
-	flex-direction: row;
-}
-
-.posts-pagination__prev {
-	flex: 1;
-	text-align: left;
-}
-
-.posts-pagination__next {
-	flex: 1;
-	text-align: right;
 }
 
 /* posts / post */
@@ -536,6 +425,7 @@ blockquote {
 
 .post__content {
 	margin: calc(2 * var(--layout-padding-base)) 0;
+	font-size: 1.1em;
 }
 
 .post__content img {
@@ -557,13 +447,13 @@ blockquote {
 	text-align: center;
 	margin: 1em auto;
 	width: 100%;
-	min-height: 400px;
+	min-height: 500px;
 }
 
 .post__typo {
 	margin: calc(2 * var(--layout-padding-base)) 0;
 	padding: var(--layout-padding-base);
-	background-color: var(--background-secondary);
+	background-color: var(--post-footer-background-color);
 }
 
 .post__back {
