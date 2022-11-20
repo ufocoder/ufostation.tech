@@ -42,7 +42,7 @@ const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
   <div class="post__typo">
     {t("wantToShare")}
 
-    <a href={createTwitterShareURL(title, new URL(url, Astro.url))}>twitter</a>
+    <a href={createTwitterShareURL(title, new URL(url, Astro.url))} target="_blank">twitter</a>
 
     <Link href={getGithubSourceURL(Astro.props.file)}>{t("fixPageOnGithub")}</Link>
   </div>
