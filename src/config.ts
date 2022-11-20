@@ -1,4 +1,4 @@
-export const SITE_URL = "http://ufocoder.tech";
+export const SITE_URL = "http://ufostation.tech";
 export const SITE_BASE = "/";
 export const SITE_TITLE = "UfoStation";
 export const SITE_DESCRIPTION = "Welcome to my website!";
