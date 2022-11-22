@@ -4,11 +4,11 @@ import Header from "./base/Header.astro";
 import Footer from "./base/Footer.astro";
 
 export interface Props {
+  ['with-transparent-header']?: boolean;
   children?: any;
   meta: {
     title: string;
     description: string;
-    lang: string;
     heroImage?: string;
   };
 }
@@ -23,7 +23,7 @@ const {
     <Head title={title} description={description} image={heroImage} />
   </head>
   <body>
-    <Header>
+    <Header transparent={Astro.props['with-transparent-header']}>
       <slot name="header" />
     </Header>
     <slot name="hero" />

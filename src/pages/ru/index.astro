@@ -7,22 +7,33 @@ import PodcastSection from "./_sections/_podcast.astro";
 import SeriesSection from "./_sections/_series.astro";
 import SupportSection from "./_sections/_support.astro";
 
-
 const meta = {
   title: "Главная",
   description: "Технические статьи, заметки, подкаст про информационные технологии",
 };
 ---
 <style>
-  .mainpage__section:first-child {
-    margin: 0;
-  }
-  .mainpage__section {
-    margin: 5em 0;
-  }
+.mainpage__section:first-child {
+  margin: 0;
+}
+.mainpage__section {
+  margin: 5em 0;
+}
 </style>
+<script>
+  var headerElement = document.querySelector("header");
 
-<BaseLayout meta={meta}>
+  window.addEventListener("scroll", function () {
+      if (window.scrollY > 20) {
+        headerElement.classList.remove("header--transparent");
+      } else {
+        headerElement.classList.add("header--transparent");
+      }
+    },
+    { passive: true }
+  );
+</script>
+<BaseLayout with-transparent-header meta={meta}>
   <HeroSection slot="hero" />
 
   <section class="mainpage__section">
