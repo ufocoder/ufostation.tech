@@ -389,6 +389,7 @@ blockquote {
 .post-preview__content {
 	margin: 1em 0;
 	font-size: var(--font-size-base);
+	font-weight: 300;
 	line-height: 1.3em;
 }
 
@@ -416,6 +417,7 @@ blockquote {
 .post__content {
 	margin: calc(2 * var(--layout-padding-base)) 0;
 	font-size: 1.1em;
+	font-weight: 300;
 }
 
 .post__content img {
