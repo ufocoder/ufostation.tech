@@ -1,10 +1,10 @@
 ---
 import { PAGE_SIZE } from "src/config";
-import Header from "./_header.astro";
+import Sidebar from "./_sidebar.astro";
 import BaseLayout from "src/layouts/ru/Base.astro";
 import { getPosts } from "src/lib/posts.astro";
-import PostPreview from "src/components/blog/PostPreview.astro";
-import Pagination from "src/components/blog/Pagination.astro";
+import PostPreviews from "src/components/posts/Previews.astro";
+import Pagination from "src/components/posts/Pagination.astro";
 
 export async function getStaticPaths({ paginate }) {
   const posts = await getPosts();
@@ -15,18 +15,17 @@ const { page } = Astro.props;
 
 const title =
   page.currentPage > 1 ? "Блог • Страница " + page.currentPage : "Блог";
+
 const meta = {
   title,
   description: "",
 };
 ---
-
 <BaseLayout meta={meta}>
   <Fragment>
-    <Header title={title} />
-    <section class="post-previews">
-      {page.data.map((post, key) => <PostPreview key={key} post={post} />)}
-    </section>
+    <PostPreviews title={title}  posts={page.data}>
+      <Sidebar slot="sidebar" />
+    </PostPreviews>
     <Pagination prev={page.url.prev} next={page.url.next} />
   </Fragment>
 </BaseLayout>
