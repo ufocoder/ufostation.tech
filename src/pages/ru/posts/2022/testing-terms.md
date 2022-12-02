@@ -1,6 +1,7 @@
 ---
 layout: 'src/layouts/ru/Post.astro'
 title: 'Небольшой ликбез по видам тестирования'
+heroImage: 'https://images.unsplash.com/photo-1543393716-375f47996a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
 pubDate: 'Aug 11 2022'
 tags: ['testing']
 description: Недавно в личной беседе выяснилось, что некоторые разработчики путают виды тестирования и уровни тестирования. В свое время мне помог разобраться ресурс www.protesting.ru во всех этих терминах. В зависимости от преследуемых целей тестирования выделяют следующие виды…
