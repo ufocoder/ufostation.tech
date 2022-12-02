@@ -12,12 +12,12 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^0.11.6",
+		"@astrojs/mdx": "^0.12.0",
 		"@astrojs/rss": "^1.0.3",
 		"@astrojs/sitemap": "^1.0.0",
 		"@types/marked": "^4.0.7",
-		"astro": "^1.6.10",
-		"astro-compress": "^1.1.9",
+		"astro": "^1.6.12",
+		"astro-compress": "^1.1.15",
 		"astrojs-service-worker": "^0.0.8",
 		"marked": "^4.2.3",
 		"mdast-util-to-string": "^3.1.0",
@@ -30,8 +30,8 @@
 		"@commitlint/cli": "^17.3.0",
 		"@commitlint/config-conventional": "^17.3.0",
 		"husky": "^8.0.0",
-		"lint-staged": ">=10",
-		"prettier": "^2.7.1",
+		"lint-staged": "^13.0.4",
+		"prettier": "^2.8.0",
 		"prettier-plugin-astro": "^0.7.0",
 		"pretty-quick": "^3.1.3"
 	},
