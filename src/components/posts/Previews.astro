@@ -1,0 +1,105 @@
+---
+import { readingTime } from "src/locales";
+import Link from "../Link.astro";
+
+export interface Props {
+  title?: string;
+  posts: any[];
+}
+
+const { title, posts } = Astro.props;
+const defaultHeroImage = "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bm90ZWJvb2t8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+---
+<style>
+.section-posts__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.section-posts__title {
+  display: block;
+  font-size: 2.4em;
+  margin-bottom: 1em;
+}
+.section-posts__sidebar {
+  display: block;
+  font-size: 1.5em;
+}
+.section-posts__sections {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+.section-posts__section {
+  flex: 1 1 30%;
+  margin-bottom: 1em;
+}
+.section__post-meta {
+  font-size: 0.8em;
+  color: #999;
+  margin: 1em 0;
+}
+.section__post-title {
+  color: #fff;
+  font-size: 1.5em;
+  margin: 1em 0;
+}
+.section__post-image {
+  min-height: 250px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 5px;
+  opacity: 0.7;
+  transition: all 0.5s;
+}
+.section__post-image:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .section-posts__header {
+    display: block;
+  }
+  .section-posts__section:last-child {
+    display: none;
+  }
+}  
+@media (max-width: 576px) {
+  .section-posts__section:first-child {
+    display: block;
+  }
+  .section-posts__section {
+    display: none;
+  }
+}
+</style>
+
+<div class="section-posts__container">
+  <div class="section-posts__header">
+    <h2 class="section-posts__title">
+        {title}
+    </h2>
+    <div class="section-posts__sidebar">
+      <slot name="sidebar">
+        <Link href="/ru/posts">все записи →</Link>
+      </slot>
+    </div>
+  </div>  
+  <div class="section-posts__sections">
+    {posts.map((post) => (        
+      <Link href={post.url} class={`section-posts__section`}>
+        <div class="section__post-image" style={`background-image: url('${post.frontmatter.heroImage || defaultHeroImage}')`}></div>
+        <div class="section__post-meta">
+            {post.frontmatter.pubDate}
+            {post.frontmatter.minutesRead ? <>— {readingTime(post.frontmatter.minutesRead)}</>: null}
+        </div>
+        <div class="section__post-title">
+            {post.frontmatter.title}
+        </div>
+      </Link>
+    ))}
+  </div>
+</div>

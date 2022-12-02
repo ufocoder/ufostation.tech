@@ -1,17 +1,62 @@
 ---
 import {
   formatFullDate,
-  addUrlPrefix,
-  getGithubSourceURL,
-  createTwitterShareURL,
+  addUrlPrefix
 } from "src/lib/content";
 import { t, readingTime } from "src/locales";
 import Link from "../Link.astro";
+import SharePost from "../post/Share.astro";
 
 const { content } = Astro.props;
 const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
 ---
+<style>
+.post__title {
+	color: #fff;
+	margin-bottom: 0.2em;
+	font-family: var(--font-family-primary);
+}
+.post__meta {
+	color: #aaa;
+	font-size: var(--font-size-smaller);
+	margin-bottom: var(--layout-padding-base);
+}
 
+.post__image {
+	margin: calc(2 * var(--layout-padding-base)) auto;
+	max-width: 100%;
+	max-height: 500px;
+	display: block;
+}
+</style>
+<style is:global>
+.post__content {
+	margin: calc(2 * var(--layout-padding-base)) 0;
+	font-size: 1.1em;
+	font-weight: 300;
+}
+
+.post__content img {
+	max-width: 100%;
+}
+
+.post__content p {
+	line-height: 1.4em;
+	margin: 1.3em 0;
+}
+
+.post__content li {
+	padding: 0.2em 0;
+}
+.post__content video,
+.post__content iframe {
+	display: block;
+	text-align: center;
+	margin: 1em auto;
+	width: 100%;
+	min-height: 500px;
+}
+</style>
 <article class="post">
   <h2 class="post__title">{title}</h2>
   <div class="post__meta">
@@ -24,8 +69,7 @@ const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
         </>
       )
     }
-    •
-    {readingTime(minutesRead)}
+    {minutesRead ? <>• {readingTime(minutesRead)}</>: null}
   </div>
   {
     heroImage && (
@@ -39,16 +83,5 @@ const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
   <div class="post__content">
     <slot />
   </div>
-  <div class="post__typo">
-    {t("wantToShare")}
-
-    <a href={createTwitterShareURL(title, new URL(url, Astro.url))} target="_blank">twitter</a>
-
-    <Link href={getGithubSourceURL(Astro.props.file)}>{t("fixPageOnGithub")}</Link>
-  </div>
-  <div class="post__back">
-    <Link href="/ru/posts/" aria-label={t("backToTheBlog") as string}
-      >← {t("backToTheBlog")}</Link
-    >
-  </div>
+  <SharePost title={title} url={url} />
 </article>
