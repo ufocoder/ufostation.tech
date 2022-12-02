@@ -12,4 +12,4 @@ export const TWITTER_ACCOUNT = "@xufostation";
 export const DONATE_BOOSTY_URL = "https://boosty.to/ufocoder";
 export const DONATE_BUYMEACOFFEE_URL = "https://buymeacoffee.com/xufocoder";
 
-export const PAGE_SIZE = 10;
+export const PAGE_SIZE = 9;
