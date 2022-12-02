@@ -28,6 +28,18 @@ export const getFeaturedPosts = async (limit: number) => {
     .slice(0, limit);
 };
 
+export const getTaggedPosts  = async (tags: string[] = [], limit: number, excludeUrl: string = "") => {
+  return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
+    .filter((post) => Boolean(
+      !post.frontmatter.series && 
+      !post.frontmatter.externalUrl &&
+      post.url !== excludeUrl &&
+      post.frontmatter.tags &&
+      post.frontmatter.tags.some(tag => tags.includes(tag)
+    )))
+    .slice(0, limit);
+};
+
 export const getTags = async () => {
   const posts = await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`);
   const tags: Record<string, number> = {};
