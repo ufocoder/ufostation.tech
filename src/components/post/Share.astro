@@ -1,0 +1,58 @@
+---
+import Img from 'src/components/Img.astro';
+import { createFacebookShareURL, createTwitterShareURL } from 'src/lib/content';
+import { t } from "src/locales";
+
+export interface Props {
+    title: string;
+    url: URL
+}
+
+const { title, url } = Astro.props;
+---
+<style>
+.post__share {
+	margin: calc(2 * var(--layout-padding-base)) 0;
+	padding: var(--layout-padding-base);
+	background-color: var(--post-footer-background-color);
+}
+.post__share-icons {
+  display: inline;
+}
+.post__share-icon {
+  height: 20px;
+  width: 20px;
+  vertical-align: text-bottom;
+  margin-left: 4px;
+  opacity: 1;
+}
+.post__share-icon:hover {
+  filter: sepia(1);
+}
+</style>
+
+<div class="post__share">
+    {t("wantToShare")}
+
+    <div class="post__share-icons">
+      <a href={createTwitterShareURL(title, new URL(url, Astro.url))} target="_blank">
+        <Img
+          class="post__share-icon"
+          width="20px"
+          height="20px"
+          alt={t("shareTwitter") as string}
+          src="/assets/icons/social_twitter.svg"
+        />
+      </a>
+
+      <a href={createFacebookShareURL(title, new URL(url, Astro.url))} target="_blank">
+        <Img
+          class="post__share-icon"
+          width="20px"
+          height="20px"
+          alt={t("shareFacebook") as string}
+          src="/assets/icons/social_facebook.svg"
+        />
+      </a>
+    </div>
+</div>
