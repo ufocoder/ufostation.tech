@@ -44,8 +44,12 @@ export const shuffleArray = (array) => {
   }
 };
 
-export const createTwitterShareURL = (title: string, url) => {
+export const createTwitterShareURL = (title: string, url: URL) => {
   const text = encodeURI(title) + ", " + TWITTER_ACCOUNT + " " + url;
 
   return 'https://twitter.com/intent/tweet?text=' + text;
+}
+
+export const createFacebookShareURL = (title: string, url: URL) => {
+  return 'http://www.facebook.com/share.php?u=' + url + '&title=' + encodeURI(title);
 }
