@@ -1,16 +1,20 @@
 ---
+import PostPreviews from "src/components/posts/Previews.astro";
 import Post from "src/components/blog/Post.astro";
-import Link from "src/components/Link.astro";
-import { t } from "src/locales";
 import BaseLayout from "./Base.astro";
 
+import { getTaggedPosts } from "src/lib/posts.astro";
+
 const {
-  content: { title, description, heroImage },
+  content: { title, url, tags = [], description, heroImage },
 } = Astro.props;
+
+const posts = await getTaggedPosts(tags, 3, url);
 ---
 
-<BaseLayout meta={{ title, description, heroImage, lang: "ru" }}>
+<BaseLayout meta={{ title, description, heroImage }}>
   <Post {...Astro.props}>
     <slot />
   </Post>
+  {posts.length ? <PostPreviews title="Похожие посты" posts={posts} /> : null}
 </BaseLayout>
