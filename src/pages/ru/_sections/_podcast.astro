@@ -5,6 +5,9 @@ import { PODCAST_SITE_URL } from "src/config";
 .section-podcast {
     padding: 2em;
     background: #243144;
+}
+
+.section-podcast__columns {
     display: flex;
 }
 
@@ -33,8 +36,11 @@ import { PODCAST_SITE_URL } from "src/config";
     opacity: 0.9;
 }
 @media (max-width: 768px) {
-    .section-podcast {
-        display: block;
+    .section-podcast__columns {
+        flex-direction: column-reverse;
+    }
+    .section-podcast__icon {
+        margin-top: 2em;
     }
     .section-podcast__title {
         font-size: 1.5em;
@@ -42,30 +48,29 @@ import { PODCAST_SITE_URL } from "src/config";
     .section-podcast__content {
         font-size: 1.2em;
     }
-    .section-podcast__column--right {
-        display: none;
-    }
 }
 </style>
 <div class="section-podcast">
 
-    <div class="section-podcast__column section-podcast__column--left">
-        <div class="section-podcast__title">
-            Больше как слушатель ?
-        </div>
-
-        <div class="section-podcast__content">
-            Познакомьтесь с <a href={PODCAST_SITE_URL}>подкастом</a>, где вы узнаете о том, как работает браузер, что такое блокчейн, в чем красота функционального программирования, а также о многом другом.
-        </div>
-
-        <div class="section-podcast__link">
-            <a href={PODCAST_SITE_URL}>Слушать выпуски →</a>
-        </div>
-
+    <div class="section-podcast__title">
+        Больше как слушатель ?
     </div>
 
-    <div class="section-podcast__column section-podcast__column--right">
-        <img src="/assets/icons/mic.svg" class="section-podcast__icon" alt="Изображение: микрофон"/>
-    </div>
+    <div class="section-podcast__columns">
+        <div class="section-podcast__column section-podcast__column--left">
 
+            <div class="section-podcast__content">
+                Познакомьтесь с <a href={PODCAST_SITE_URL}>подкастом</a>, где вы узнаете о том, как работает браузер, что такое блокчейн, в чем красота функционального программирования, а также о многом другом.
+            </div>
+
+            <div class="section-podcast__link">
+                <a href={PODCAST_SITE_URL}>Слушать выпуски →</a>
+            </div>
+
+        </div>
+
+        <div class="section-podcast__column section-podcast__column--right">
+            <img src="/assets/icons/mic.svg" class="section-podcast__icon" alt="Изображение: микрофон"/>
+        </div>
+    </div>
 </div>
