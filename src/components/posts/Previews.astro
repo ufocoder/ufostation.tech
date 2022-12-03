@@ -46,33 +46,33 @@ const defaultHeroImage = "https://images.unsplash.com/photo-1498050108023-c5249f
   font-size: 1.5em;
   margin: 1em 0;
 }
-.section__post-image {
-  min-height: 250px;
+.section__image-container {
+  height: 250px;
+  overflow: hidden;
+}
+.section__image {
+  transition: all 0.5s;
+  height: 250px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   border-radius: 5px;
-  opacity: 0.7;
-  transition: all 0.5s;
 }
-.section__post-image:hover {
-  opacity: 1;
+.section__image:hover {
+  padding: 25px;
 }
 
 @media (max-width: 768px) {
-  .section-posts__header {
-    display: block;
+  .section-posts__section {
+    flex: 1 1 45%;
   }
-  .section-posts__section:last-child {
-    display: none;
-  }
-}  
+}
 @media (max-width: 576px) {
   .section-posts__section:first-child {
     display: block;
   }
   .section-posts__section {
-    display: none;
+    flex: 1 auto;
   }
 }
 </style>
@@ -91,7 +91,9 @@ const defaultHeroImage = "https://images.unsplash.com/photo-1498050108023-c5249f
   <div class="section-posts__sections">
     {posts.map((post) => (        
       <Link href={post.url} class={`section-posts__section`}>
-        <div class="section__post-image" style={`background-image: url('${post.frontmatter.heroImage || defaultHeroImage}')`}></div>
+        <div class="section__image-container">
+          <div class="section__image" style={`background-image: url('${post.frontmatter.heroImage || defaultHeroImage}')`}></div>
+        </div> 
         <div class="section__post-meta">
             {post.frontmatter.pubDate}
             {post.frontmatter.minutesRead ? <>— {readingTime(post.frontmatter.minutesRead)}</>: null}
