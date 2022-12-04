@@ -2,6 +2,7 @@
 layout: 'src/layouts/ru/Post.astro'
 title: 'Для чего годятся типы'
 pubDate: 'Jul 12 2020'
+heroImage: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80'
 tags: ['cs']
 description: 'По мотивам главы из книги "Типы в языках программирования", Бенджамин Пирса. Для чего годятся типы: выявление ошибок, абстракция, документация, безопасность, эффективность'
 ---
