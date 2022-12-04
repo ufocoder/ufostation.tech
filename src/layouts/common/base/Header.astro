@@ -171,10 +171,8 @@ const { transparent } = Astro.props;
   var headerElement = document.querySelector("header");
   var navbarHeight = headerElement.offsetHeight;
 
-  window.addEventListener(
-    "scroll",
-    function (e) {
-      var scrollTop = window.scrollY;
+  function toggleHeaderVisibility() {
+	var scrollTop = window.scrollY;
       var isScrollingToBottom = scrollTop > lastScrollTop;
 
       if (
@@ -187,7 +185,9 @@ const { transparent } = Astro.props;
         headerElement.classList.remove("header--hidden");
       }
       lastScrollTop = scrollTop;
-    },
-    { passive: true }
-  );
+    }
+
+  window.addEventListener("scroll", toggleHeaderVisibility, { passive: true });
+
+  toggleHeaderVisibility();
 </script>
