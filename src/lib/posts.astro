@@ -12,7 +12,13 @@ export const getPosts = async (fn?: (post: Post) => boolean) => {
 };
 
 export const getSeriesPosts = async (seriesName: string) => {
-  return await getPosts((post) => post.frontmatter.series === seriesName);
+  return (await Astro.glob(`../pages/*/series/**/*.{md,mdx}`))
+    .filter((post) => post.frontmatter.series === seriesName)
+    .sort(
+      (a, b) =>
+        new Date(a.frontmatter.pubDate).valueOf() -
+        new Date(b.frontmatter.pubDate).valueOf()
+    );
 };
 
 export const getFeaturedPosts = async () => {
