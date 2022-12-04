@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
 import { GITHUB_URL, TWITTER_ACCOUNT } from "src/config";
 
-const cwd = resolve("."); // @TODO: fix better way
+const cwd = resolve("."); // @TODO: find better way
 
 export const getGithubSourceURL = (filepath: string = "") => {
   return filepath.replace(cwd, GITHUB_URL + "/edit/main");
