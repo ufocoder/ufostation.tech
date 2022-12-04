@@ -90,7 +90,8 @@ const defaultHeroImage = "https://images.unsplash.com/photo-1498050108023-c5249f
         <Link href="/ru/posts">все записи →</Link>
       </slot>
     </div>
-  </div>  
+  </div>
+  <slot name="tags"></slot>
   <div class="section-posts__sections">
     {posts.map((post) => (        
       <Link href={post.url} class={`section-posts__section`}>
