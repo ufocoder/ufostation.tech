@@ -1,0 +1,40 @@
+---
+import Link from "src/components/Link.astro";
+import { t } from "src/locales";
+
+export interface Props {
+    tags: [string, number][];
+    selectedTag?: string;
+}
+
+const { tags, selectedTag = "" } = Astro.props;
+---
+<style>
+.tags {
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1em 0;
+}
+.tags__tag {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    border-radius: 20px;
+    margin: 0 0.7em 0.7em 0;
+    padding: 1em;
+}
+.tags__tag--selected {
+    background: #2592ff;
+}
+.tags__tag:hover {
+    background: #444;
+}
+</style>
+<div class="tags">
+  {tags.map(([tag]) => (
+    <Link href={`/ru/posts/tags/${tag}/`} class={`tags__tag ${selectedTag == tag ? 'tags__tag--selected' : ''}`}>
+        {t(tag)}
+    </Link>
+  ))}
+</div>
