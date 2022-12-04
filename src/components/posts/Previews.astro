@@ -53,13 +53,14 @@ const defaultHeroImage = "https://images.unsplash.com/photo-1498050108023-c5249f
 .section__image {
   transition: all 0.5s;
   height: 250px;
+  padding: 25px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   border-radius: 5px;
 }
 .section__image:hover {
-  padding: 25px;
+  padding: 0;
 }
 
 @media (max-width: 768px) {
@@ -94,7 +95,7 @@ const defaultHeroImage = "https://images.unsplash.com/photo-1498050108023-c5249f
   <slot name="tags"></slot>
   <div class="section-posts__sections">
     {posts.map((post) => (        
-      <Link href={post.url} class={`section-posts__section`}>
+      <Link href={post.frontmatter.externalUrl || post.url} class={`section-posts__section`}>
         <div class="section__image-container">
           <div class="section__image" style={`background-image: url('${post.frontmatter.heroImage || defaultHeroImage}')`}></div>
         </div> 
