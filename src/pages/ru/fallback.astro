@@ -3,7 +3,7 @@ import BaseLayout from "src/layouts/common/Base.astro";
 import Typed from "src/components/Typed.astro";
 import { getFeaturedPosts } from "src/lib/posts.astro";
 
-const posts = await getFeaturedPosts(15);
+const posts = (await getFeaturedPosts()).slice(15);
 
 const meta = {
   title: "Что-то пошло не так..",

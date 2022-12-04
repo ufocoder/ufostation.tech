@@ -5,7 +5,7 @@ import Link from "src/components/Link.astro";
 import { PODCAST_SITE_URL } from "src/config";
 import { getFeaturedPosts } from "src/lib/posts.astro";
 
-const posts = await getFeaturedPosts(15);
+const posts = await (await getFeaturedPosts()).slice(0, 15);
 ---
 <style>
   .section-hero {

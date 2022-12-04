@@ -1,47 +1,38 @@
 ---
-export const getPosts = async () => {
-  return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`)).sort(
+type Post = Record<string, any>
+
+export const getPosts = async (fn?: (post: Post) => boolean) => {
+  const posts: Post[] = (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`)).sort(
     (a, b) =>
       new Date(b.frontmatter.pubDate).valueOf() -
       new Date(a.frontmatter.pubDate).valueOf()
   );
+
+  return fn ? posts.filter(fn) : posts;
 };
 
 export const getSeriesPosts = async (seriesName: string) => {
-  return (await Astro.glob(`../pages/*/series/**/*.{md,mdx}`))
-    .filter((post) => post.frontmatter.series === seriesName)
-    .sort(
-      (a, b) =>
-        new Date(a.frontmatter.pubDate).valueOf() -
-        new Date(b.frontmatter.pubDate).valueOf()
-    );
+  return await getPosts((post) => post.frontmatter.series === seriesName);
 };
 
-export const getFeaturedPosts = async (limit: number) => {
-  return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
-    .filter((post) => !post.frontmatter.series && !post.frontmatter.externalUrl)
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.pubDate).valueOf() -
-        new Date(a.frontmatter.pubDate).valueOf()
-    )
-    .slice(0, limit);
+export const getFeaturedPosts = async () => {
+  return await getPosts((post) => !post.frontmatter.series && !post.frontmatter.externalUrl);
 };
 
-export const getTaggedPosts  = async (tags: string[] = [], limit: number, excludeUrl: string = "") => {
-  return (await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`))
-    .filter((post) => Boolean(
-      !post.frontmatter.series && 
-      !post.frontmatter.externalUrl &&
-      post.url !== excludeUrl &&
-      post.frontmatter.tags &&
-      post.frontmatter.tags.some(tag => tags.includes(tag)
-    )))
-    .slice(0, limit);
+export const getTaggedPosts  = async (tags: string[] = [],  excludeUrl: string = "") => {
+  return await getPosts((post) => 
+      Boolean(
+        !post.frontmatter.series && 
+        !post.frontmatter.externalUrl &&
+        post.url !== excludeUrl &&
+        post.frontmatter.tags &&
+        post.frontmatter.tags.some(tag => tags.includes(tag)
+      )
+    ));
 };
 
 export const getTags = async () => {
-  const posts = await Astro.glob(`../pages/*/posts/**/*.{md,mdx}`);
+  const posts = await getPosts();
   const tags: Record<string, number> = {};
 
   posts.forEach((post) => {
