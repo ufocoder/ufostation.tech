@@ -4,6 +4,7 @@ import Post from "src/components/blog/Post.astro";
 import BaseLayout from "./Base.astro";
 
 import { getTaggedPosts } from "src/lib/posts.astro";
+import Link from "src/components/Link.astro";
 
 const {
   content: { title, url, tags = [], description, heroImage },
@@ -11,10 +12,17 @@ const {
 
 const posts = await getTaggedPosts(tags, url);
 ---
-
+<style>
+  .post__more {
+    font-size: 1.2em;
+  }
+</style>
 <BaseLayout meta={{ title, description, heroImage }}>
   <Post {...Astro.props}>
     <slot />
   </Post>
-  {posts.length ? <PostPreviews title="Похожие посты" posts={posts.slice(0, 3)} /> : null}
+  {posts.length 
+    ? <PostPreviews title="Похожие посты" posts={posts.slice(0, 3)} /> 
+    : <Link href="/ru/posts" class="post__more">← Вернуться в блог</Link>
+  }
 </BaseLayout>
