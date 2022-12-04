@@ -2,6 +2,7 @@
 layout: 'src/layouts/ru/Post.astro'
 title: 'Создание собственного контейнера меньше чем за 100 строк кода на Golang'
 pubDate: 'May 03 2022'
+heroImage: 'https://images.unsplash.com/photo-1493946740644-2d8a1f1a6aff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1790&q=80'
 tags: ['development']
 description: 'Джулиан Фридман хотел бы сыграть с вами в одну игру. Прямо сейчас, скажите про себя, что такое «контейнер». Сказали? Отлично. Посмотрим, сможет ли он угадать, что вы могли сказать. Возможно, вы сказали одно или несколько из следующих утверждений...'
 ---
