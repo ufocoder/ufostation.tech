@@ -15,5 +15,11 @@
 	"wantToShare": "Поделиться статьей",
 	"shareTwitter": "Поделиться в Twitter",
 	"shareFacebook": "Поделиться в Facebook",
-	"readMore": "Читать дальше"
+	"readMore": "Читать дальше",
+	"cs": "Computer Science",
+	"fp": "Функциональное программирование",
+	"rendering": "Browser rendering",
+	"development": "Разработка",
+	"browser": "Браузер",
+	"history": "История"
 }

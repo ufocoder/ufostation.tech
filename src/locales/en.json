@@ -15,5 +15,11 @@
 	"wantToShare": "Share the post",
 	"shareTwitter": "Share the post on Twitter",
 	"shareFacebook": "Share the post on Facebook",
-	"readMore": "read more"
+	"readMore": "read more",
+	"cs": "Computer Science",
+	"fp": "Functional programming",
+	"rendering": "Browser rendering",
+	"development": "Development",
+	"browser": "Browser",
+	"history": "History"
 }
