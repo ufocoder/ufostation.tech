@@ -24,17 +24,24 @@ const { tags, selectedTag = "" } = Astro.props;
     margin: 0 0.7em 0.7em 0;
     padding: 1em;
 }
+.tags__tag-count {
+    color: #777;
+    padding: 0 0 0 0.5em;
+}
 .tags__tag--selected {
     background: #2592ff;
+}
+.tags__tag--selected .tags__tag-count {
+    color: #fff;
 }
 .tags__tag:hover {
     background: #444;
 }
 </style>
 <div class="tags">
-  {tags.map(([tag]) => (
+  {tags.map(([tag, count]) => (
     <Link href={`/ru/posts/tags/${tag}/`} class={`tags__tag ${selectedTag == tag ? 'tags__tag--selected' : ''}`}>
-        {t(tag)}
+        {t(tag)}<span class="tags__tag-count">{count}</span>
     </Link>
   ))}
 </div>
