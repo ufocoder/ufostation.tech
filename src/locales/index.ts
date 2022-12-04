@@ -23,7 +23,7 @@ export const getLocale = (): Locale => {
 export const t = (
   key: TranslationKey
 ): string | [string, string] | [string, string, string] => {
-  return translations[locale][key];
+  return translations[locale][key] || key;
 };
 
 // declination of numbers
