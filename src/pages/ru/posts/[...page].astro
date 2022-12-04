@@ -2,7 +2,8 @@
 import { PAGE_SIZE } from "src/config";
 import Sidebar from "./_sidebar.astro";
 import BaseLayout from "src/layouts/ru/Base.astro";
-import { getPosts } from "src/lib/posts.astro";
+import { getPosts, getTags } from "src/lib/posts.astro";
+import Tags from "src/components/posts/Tags.astro";
 import PostPreviews from "src/components/posts/Previews.astro";
 import Pagination from "src/components/posts/Pagination.astro";
 
@@ -10,6 +11,8 @@ export async function getStaticPaths({ paginate }) {
   const posts = await getPosts();
   return paginate(posts, { pageSize: PAGE_SIZE });
 }
+
+const tags = await getTags();
 
 const { page } = Astro.props;
 
@@ -23,7 +26,8 @@ const meta = {
 ---
 <BaseLayout meta={meta}>
   <Fragment>
-    <PostPreviews title={title}  posts={page.data}>
+    <PostPreviews title={title} tags={tags} posts={page.data}>
+      <Tags slot="tags" tags={tags} />
       <Sidebar slot="sidebar" />
     </PostPreviews>
     <Pagination prev={page.url.prev} next={page.url.next} />

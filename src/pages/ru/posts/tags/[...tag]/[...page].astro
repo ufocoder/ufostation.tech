@@ -1,0 +1,52 @@
+---
+import { PAGE_SIZE } from "src/config";
+import BaseLayout from "src/layouts/ru/Base.astro";
+import { getPosts, getTags } from "src/lib/posts.astro";
+import Tags from "src/components/posts/Tags.astro";
+import PostPreviews from "src/components/posts/Previews.astro";
+import Pagination from "src/components/posts/Pagination.astro";
+import { t } from "src/locales";
+
+const { tag } = Astro.params;
+const { page } = Astro.props;
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts: any[] = await getPosts()
+  const allTags = new Set();
+
+  allPosts.forEach(post => {
+    if (post.frontmatter.tags) {
+      post.frontmatter.tags.forEach(tag => 
+        allTags.add(tag.toLowerCase())
+      )
+    }
+  });
+
+  return Array.from(allTags).map((tag) => {
+    const filteredPosts = allPosts.filter((post) => post.frontmatter.tags && post.frontmatter.tags.includes(tag))
+
+    return paginate(filteredPosts, {
+      params: { tag },
+      pageSize: PAGE_SIZE,
+    });
+  });
+}
+
+const tags = await getTags();
+
+const title = page.currentPage > 1 ? `Блог / ${t(tag)} • Страница ${page.currentPage}` : "Блог";
+
+const meta = {
+  title,
+  description: "",
+};
+
+---
+<BaseLayout meta={meta}>
+  <Fragment>
+    <PostPreviews title={title} posts={page.data}>
+      <Tags slot="tags" selectedTag={tag} tags={tags} />
+    </PostPreviews>
+    <Pagination prev={page.url.prev} next={page.url.next} />
+  </Fragment>
+</BaseLayout>
