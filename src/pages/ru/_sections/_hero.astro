@@ -24,7 +24,16 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
     padding: 0 var(--layout-padding-base);
     z-index: 1;
   }
+
+  .section-hero__logo {
+    margin-top: 1em;
+  }
   
+  .section-hero__logo-image {
+    margin: 0 auto;
+    display: block;
+  }
+
   .section-hero__title {
     font-family: var(--font-family-primary);
     font-style: normal;
@@ -94,6 +103,9 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
 
 <div class="section-hero">    
     <div class="section-hero__container">
+      <div class="section-hero__logo">
+        <img src="/assets/logo.png" width="200" height="200" class="section-hero__logo-image"  />
+      </div>
       <div class="section-hero__title">
         Станция НЛО
       </div>
