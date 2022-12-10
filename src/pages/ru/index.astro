@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "src/layouts/ru/Base.astro";
+import HttpHistory from "./series/_http-history.astro";
 
 import HeroSection from "./_sections/_hero.astro";
 import BlogSection from "./_sections/_blog.astro";
 import PodcastSection from "./_sections/_podcast.astro";
-import SeriesSection from "./_sections/_series.astro";
 import SupportSection from "./_sections/_support.astro";
 
 const meta = {
@@ -37,7 +37,7 @@ const meta = {
   <HeroSection slot="hero" />
 
   <section class="mainpage__section">
-    <SeriesSection />
+    <HttpHistory />
   </section>
   
   <section class="mainpage__section">

@@ -175,6 +175,10 @@ const { transparent } = Astro.props;
 	var scrollTop = window.scrollY;
       var isScrollingToBottom = scrollTop > lastScrollTop;
 
+	  if (!headerElement || !toggleElement) {
+		return 
+	  }
+
       if (
         isScrollingToBottom &&
         scrollTop > navbarHeight &&
@@ -184,6 +188,7 @@ const { transparent } = Astro.props;
       } else {
         headerElement.classList.remove("header--hidden");
       }
+	  
       lastScrollTop = scrollTop;
     }
 
