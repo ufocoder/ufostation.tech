@@ -8,6 +8,7 @@ import { remarkReadingTime } from "./src/lib/remark-reading-time";
 
 const swIntegrationOptions = {
   workbox: {
+    skipWaiting: true,
     manifestTransforms: [
       (orignalManifest) => {
         const manifest = orignalManifest.map((entity) => ({
