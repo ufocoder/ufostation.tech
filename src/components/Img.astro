@@ -1,8 +1,8 @@
 ---
-import { addUrlPrefix } from "src/lib/content";
+import { addUrlPrefix } from 'src/lib/content';
 
 export interface Props extends astroHTML.JSX.ImgHTMLAttributes {
-  src: string;
+	src: string;
 }
 
 const { src: rawSrc, ...props } = Astro.props;

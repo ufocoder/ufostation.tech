@@ -1,38 +1,38 @@
 ---
-import Head from "./base/Head.astro";
-import Header from "./base/Header.astro";
-import Footer from "./base/Footer.astro";
+import Head from './base/Head.astro';
+import Header from './base/Header.astro';
+import Footer from './base/Footer.astro';
 
 export interface Props {
-  ['with-transparent-header']?: boolean;
-  children?: any;
-  meta: {
-    title: string;
-    description: string;
-    heroImage?: string;
-    lang: string;
-  };
+	['with-transparent-header']?: boolean;
+	children?: any;
+	meta: {
+		title: string;
+		description: string;
+		heroImage?: string;
+		lang: string;
+	};
 }
 
 const {
-  meta: { title, description, heroImage, lang },
+	meta: { title, description, heroImage, lang },
 } = Astro.props;
 ---
 
 <html lang={lang} prefix="og:http://ogp.me/ns#">
-  <head>
-    <Head title={title} description={description} image={heroImage} />
-  </head>
-  <body>
-    <Header transparent={Astro.props['with-transparent-header']}>
-      <slot name="header" />
-    </Header>
-    <slot name="hero" />
-    <div class="content">
-      <div class="content__container">
-        <slot />
-      </div>
-    </div>
-    <Footer />
-  </body>
+	<head>
+		<Head title={title} description={description} image={heroImage} />
+	</head>
+	<body>
+		<Header transparent={Astro.props['with-transparent-header']}>
+			<slot name="header" />
+		</Header>
+		<slot name="hero" />
+		<div class="content">
+			<div class="content__container">
+				<slot />
+			</div>
+		</div>
+		<Footer />
+	</body>
 </html>

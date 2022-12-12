@@ -1,64 +1,65 @@
 ---
-import ActiveLink from "src/components/ActiveLink.astro";
-import Img from "src/components/Img.astro";
-
+import ActiveLink from 'src/components/ActiveLink.astro';
+import Img from 'src/components/Img.astro';
 
 const isArchivePage =
-  import.meta.env.BASE_URL + "ru/posts/archive" ===
-  Astro.url.pathname.replace(/\/$/, "");
-
+	import.meta.env.BASE_URL + 'ru/posts/archive' ===
+	Astro.url.pathname.replace(/\/$/, '');
 ---
+
 <style>
-.posts-header {
-	display: flex;
-	align-items: center;
-}
+	.posts-header {
+		display: flex;
+		align-items: center;
+	}
 
-.posts-header__title {
-	flex: auto;
-	margin: 0;
-}
+	.posts-header__title {
+		flex: auto;
+		margin: 0;
+	}
 
-.posts-header__menu {
-	text-align: right;
-	flex: auto;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
+	.posts-header__menu {
+		text-align: right;
+		flex: auto;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
 
-.posts-header__item {
-	display: inline-block;
-	padding-left: 0.2em;
-}
+	.posts-header__item {
+		display: inline-block;
+		padding-left: 0.2em;
+	}
 
-.posts-header__rss {
-	vertical-align: middle;
-    height: 24px;
-    width: 24px;
-}
+	.posts-header__rss {
+		vertical-align: middle;
+		height: 24px;
+		width: 24px;
+	}
 </style>
 <div>
-    <ul class="posts-header__menu">
-    {isArchivePage ? (
-        <li class="posts-header__item">
-            <ActiveLink href="/ru/posts">Все посты</ActiveLink>
-        </li>
-    ) : (
-        <li class="posts-header__item">
-            <ActiveLink href="/ru/posts/archive">Архив</ActiveLink>
-        </li>
-    )}
-      <li class="posts-header__item">
-        <ActiveLink href="/ru/posts/rss.xml">
-          <Img
-            class="posts-header__rss"
-            src="/assets/icons/rss.svg"
-            height="18px"
-            width="18px"
-            alt="RSS"
-          />
-        </ActiveLink>
-      </li>
-    </ul>
+	<ul class="posts-header__menu">
+		{
+			isArchivePage ? (
+				<li class="posts-header__item">
+					<ActiveLink href="/ru/posts">Все посты</ActiveLink>
+				</li>
+			) : (
+				<li class="posts-header__item">
+					<ActiveLink href="/ru/posts/archive">Архив</ActiveLink>
+				</li>
+			)
+		}
+		<li class="posts-header__item">
+			<ActiveLink href="/ru/posts/rss.xml">
+				<Img
+					class="posts-header__rss"
+					src="/assets/icons/rss.svg"
+					height="18px"
+					width="18px"
+					alt="RSS"
+				/>
+			</ActiveLink>
+		</li>
+	</ul>
 </div>

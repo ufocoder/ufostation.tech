@@ -1,13 +1,13 @@
 ---
-import Navigation from "src/components/post/Navigation.astro";
-import Layout from "src/layouts/ru/Post.astro";
+import Navigation from 'src/components/post/Navigation.astro';
+import Layout from 'src/layouts/ru/Post.astro';
 ---
 
 <Layout {...Astro.props}>
-  <Fragment>
-    <div style="background: var(--background-secondary);">
-      <Navigation title="История развития HTTP протокола" series="http" />
-    </div>
-    <slot />
-  </Fragment>
+	<Fragment>
+		<div style="background: var(--background-secondary);">
+			<Navigation title="История развития HTTP протокола" series="http" />
+		</div>
+		<slot />
+	</Fragment>
 </Layout>

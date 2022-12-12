@@ -1,32 +1,33 @@
 ---
-import Img from "../Img.astro";
+import Img from '../Img.astro';
 
 const { url } = Astro.props;
 ---
+
 <style>
-.post__attachment {
-	margin: calc(2 * var(--layout-padding-base)) 0;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-.post__attachment-icon {
-	display: block;
-	width: 50px;
-	margin: 0;
-	padding-right: 10px;
-	flex: 0 0 50px;
-	margin: 0;
-}
-.post__attachment-description {
-	flex: 1;
-}
+	.post__attachment {
+		margin: calc(2 * var(--layout-padding-base)) 0;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	.post__attachment-icon {
+		display: block;
+		width: 50px;
+		margin: 0;
+		padding-right: 10px;
+		flex: 0 0 50px;
+		margin: 0;
+	}
+	.post__attachment-description {
+		flex: 1;
+	}
 </style>
 <a href={url} target="_blank">
-  <div class="post__attachment">
-    <Img src="/assets/icons/file-pdf.png" class="post__attachment-icon" />
-    <div class="post__attachment-description">
-      <slot />
-    </div>
-  </div>
+	<div class="post__attachment">
+		<Img src="/assets/icons/file-pdf.png" class="post__attachment-icon" />
+		<div class="post__attachment-description">
+			<slot />
+		</div>
+	</div>
 </a>

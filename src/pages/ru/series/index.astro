@@ -1,22 +1,21 @@
 ---
-import Series from "src/components/Series.astro";
-import BaseLayout from "src/layouts/ru/Base.astro";
-import BrowserRendering from "./_browser-rendering.astro";
-import BrowserSecurity from "./_browser-security.astro";
-import HttpHistory from "./_http-history.astro";
+import Series from 'src/components/Series.astro';
+import BaseLayout from 'src/layouts/ru/Base.astro';
+import BrowserRendering from './_browser-rendering.astro';
+import BrowserSecurity from './_browser-security.astro';
+import HttpHistory from './_http-history.astro';
 
 const meta = {
-  title: "Series",
-  description: "",
-  lang: "en",
+	title: 'Series',
+	description: '',
+	lang: 'en',
 };
 ---
 
 <BaseLayout meta={meta}>
-  <h2>Серии заметок</h2>
+	<h2>Серии заметок</h2>
 
-  <HttpHistory />
-  <BrowserRendering />
-  <BrowserSecurity />
-
+	<HttpHistory />
+	<BrowserRendering />
+	<BrowserSecurity />
 </BaseLayout>

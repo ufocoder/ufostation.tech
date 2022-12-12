@@ -1,73 +1,73 @@
 ---
-import Navigation from "src/components/post/Navigation.astro";
+import Navigation from 'src/components/post/Navigation.astro';
 
 export interface Props {
-    title: string
-    series: string
+	title: string;
+	series: string;
 }
 
-const { title, series } = Astro.props
-
+const { title, series } = Astro.props;
 ---
+
 <style>
-.series {
-  display: flex;
-  padding: 2em;
-  background: var(--background-secondary);
-  gap: 4em;
-  margin: 2em 0;
-}
-.series__column--left {
-    flex: 1.6;
-}
-.series__column--right {
-    flex: 1;
-    padding: 1em;
-    background: #080b0e;
-    align-self: center;
-}
-.series__column--right nav {
-  background: none;
-}
-.series__title {
-    font-size: 2.6em;
-    font-weight: 400;
-}
-.series__content {
-    font-size: 1.4em;
-    font-weight: 300;
-    margin: 2em 0;
-}
-.series__link {
-    font-size: 1.5em;
-}
-.series__icon {
-    width: 250px;
-    height: 250px;
-}
-@media (max-width: 768px) {
-    .series__title {
-        font-size: 2em;
-    }
-    .series__content {
-        font-size: 1.1em;
-    }
-    .series {
-        display: block;
-    }
-}
+	.series {
+		display: flex;
+		padding: 2em;
+		background: var(--background-secondary);
+		gap: 4em;
+		margin: 2em 0;
+	}
+	.series__column--left {
+		flex: 1.6;
+	}
+	.series__column--right {
+		flex: 1;
+		padding: 1em;
+		background: #080b0e;
+		align-self: center;
+	}
+	.series__column--right nav {
+		background: none;
+	}
+	.series__title {
+		font-size: 2.6em;
+		font-weight: 400;
+	}
+	.series__content {
+		font-size: 1.4em;
+		font-weight: 300;
+		margin: 2em 0;
+	}
+	.series__link {
+		font-size: 1.5em;
+	}
+	.series__icon {
+		width: 250px;
+		height: 250px;
+	}
+	@media (max-width: 768px) {
+		.series__title {
+			font-size: 2em;
+		}
+		.series__content {
+			font-size: 1.1em;
+		}
+		.series {
+			display: block;
+		}
+	}
 </style>
 <div class="series">
-    <div class="series__column series__column--left">
-        <div class="series__title">
-            {title}
-        </div>
-        <div class="series__content">
-            <slot />
-        </div>
-    </div>
-    <div class="series__column series__column--right">
-        Содержание серии
-        <Navigation series={series} />
-    </div>
+	<div class="series__column series__column--left">
+		<div class="series__title">
+			{title}
+		</div>
+		<div class="series__content">
+			<slot />
+		</div>
+	</div>
+	<div class="series__column series__column--right">
+		Содержание серии
+		<Navigation series={series} />
+	</div>
 </div>

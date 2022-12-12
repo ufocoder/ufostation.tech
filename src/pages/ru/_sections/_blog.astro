@@ -1,7 +1,8 @@
 ---
-import PostPreviews from "src/components/posts/Previews.astro";
-import { getFeaturedPosts } from "src/lib/posts.astro";
+import PostPreviews from 'src/components/posts/Previews.astro';
+import { getFeaturedPosts } from 'src/lib/posts.astro';
 
 const lastPosts = (await getFeaturedPosts()).slice(0, 3);
 ---
+
 <PostPreviews title="Интересные заметки" posts={lastPosts} />

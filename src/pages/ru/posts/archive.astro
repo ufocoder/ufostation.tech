@@ -1,89 +1,92 @@
 ---
-import Sidebar from "./_sidebar.astro";
-import BaseLayout from "src/layouts/ru/Base.astro";
-import { getArchive } from "src/lib/posts.astro";
-import { formatShortDate } from "src/lib/content";
+import Sidebar from './_sidebar.astro';
+import BaseLayout from 'src/layouts/ru/Base.astro';
+import { getArchive } from 'src/lib/posts.astro';
+import { formatShortDate } from 'src/lib/content';
 
 const archive = await getArchive();
 
-const title = "Архив записей";
+const title = 'Архив записей';
 const meta = {
-  title,
-  description: "",
+	title,
+	description: '',
 };
 ---
+
 <style>
-.archive__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-}
-.archive__title {
-  display: block;
-  font-size: 2.4em;
-  margin-bottom: 1em;
-}
-.archive__sidebar {
-  display: block;
-  font-size: 1.5em;
-}
+	.archive__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: row;
+	}
+	.archive__title {
+		display: block;
+		font-size: 2.4em;
+		margin-bottom: 1em;
+	}
+	.archive__sidebar {
+		display: block;
+		font-size: 1.5em;
+	}
 
-.archive-description {
-	font-size: var(--font-size-smaller);
-}
+	.archive-description {
+		font-size: var(--font-size-smaller);
+	}
 
-.archive__items-title {
-	padding: 0;
-	font-size: 1.15em;
-}
+	.archive__items-title {
+		padding: 0;
+		font-size: 1.15em;
+	}
 
-.archive__items {
-	margin: var(--layout-padding-base) 0;
-	padding: 0 0 0 var(--layout-padding-base);
-}
+	.archive__items {
+		margin: var(--layout-padding-base) 0;
+		padding: 0 0 0 var(--layout-padding-base);
+	}
 
-.archive__item {
-	font-size: 1.1em;
-}
+	.archive__item {
+		font-size: 1.1em;
+	}
 
-.archive__item-time {
-	display: inline-block;
-	color: #999;
-}
+	.archive__item-time {
+		display: inline-block;
+		color: #999;
+	}
 </style>
 <BaseLayout meta={meta}>
-  <main>
-    <div class="archive__header">
-      <h2 class="archive__title">
-          {title}
-      </h2>
-      <div class="archive__sidebar">
-        <Sidebar title={title} />
-      </div>
-    </div>
-    {archive.map(([year, posts]) => (
-      <section class="archive__content">
-        <h3 class="archive__items-title">{year}</h3>
-        <ul class="archive__items">
-          {posts.map((post) => (
-            <li class="archive__item">
-              <a href={post.frontmatter.externalUrl || post.url}>
-                {post.frontmatter.title}
-              </a>
-              {post.frontmatter.pubDate ? (
-                <time
-                  class="archive__item-time"
-                  datetime={post.frontmatter.pubDate}
-                >
-                  {post.frontmatter.pubDate &&
-                    formatShortDate(post.frontmatter.pubDate)}
-                </time>
-              ) : null}
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))}
-  </main>
+	<main>
+		<div class="archive__header">
+			<h2 class="archive__title">
+				{title}
+			</h2>
+			<div class="archive__sidebar">
+				<Sidebar title={title} />
+			</div>
+		</div>
+		{
+			archive.map(([year, posts]) => (
+				<section class="archive__content">
+					<h3 class="archive__items-title">{year}</h3>
+					<ul class="archive__items">
+						{posts.map((post) => (
+							<li class="archive__item">
+								<a href={post.frontmatter.externalUrl || post.url}>
+									{post.frontmatter.title}
+								</a>
+								{post.frontmatter.pubDate ? (
+									<time
+										class="archive__item-time"
+										datetime={post.frontmatter.pubDate}
+									>
+										{post.frontmatter.pubDate &&
+											formatShortDate(post.frontmatter.pubDate)}
+									</time>
+								) : null}
+							</li>
+						))}
+					</ul>
+				</section>
+			))
+		}
+	</main>
 </BaseLayout>

@@ -1,46 +1,47 @@
 ---
-import { t } from "src/locales";
-import Link from "../Link.astro";
+import { t } from 'src/locales';
+import Link from '../Link.astro';
 
 const { prev, next } = Astro.props;
 ---
+
 <style>
-.posts-pagination {
-	display: flex;
-	flex-direction: row;
-}
-.posts-pagination__prev {
-	flex: 1;
-	font-size: 1.2em;
-	text-align: left;
-}
-.posts-pagination__next {
-	flex: 1;
-	font-size: 1.2em;
-	text-align: right;
-}
+	.posts-pagination {
+		display: flex;
+		flex-direction: row;
+	}
+	.posts-pagination__prev {
+		flex: 1;
+		font-size: 1.2em;
+		text-align: left;
+	}
+	.posts-pagination__next {
+		flex: 1;
+		font-size: 1.2em;
+		text-align: right;
+	}
 </style>
 <div class="posts-pagination">
-  {
-    prev ? (
-      <Link
-        class="posts-pagination__prev"
-        href={prev}
-        aria-label={t("PrevPage") as string}
-      >
-        ← {t("toTheFuture")}
-      </Link>
-    ) : null
-  }
-  {
-    next ? (
-      <Link
-        class="posts-pagination__next"
-        href={next}
-        aria-label={t("NextPage") as string}
-      >
-        {t("toThePast")} →
-      </Link>
-    ) : null
-  }
+	{
+		prev ? (
+			<Link
+				class="posts-pagination__prev"
+				href={prev}
+				aria-label={t('PrevPage') as string}
+			>
+				← {t('toTheFuture')}
+			</Link>
+		) : null
+	}
+	{
+		next ? (
+			<Link
+				class="posts-pagination__next"
+				href={next}
+				aria-label={t('NextPage') as string}
+			>
+				{t('toThePast')} →
+			</Link>
+		) : null
+	}
 </div>
