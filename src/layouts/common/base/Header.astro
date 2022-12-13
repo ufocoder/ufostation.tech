@@ -3,197 +3,197 @@ import Link from 'src/components/Link.astro';
 import { SITE_TITLE } from 'src/config';
 
 export interface Props {
-	transparent?: boolean;
+  transparent?: boolean;
 }
 
 const { transparent } = Astro.props;
 ---
 
 <style is:global>
-	.header {
-		background: var(--header-background-color);
-		height: var(--header-layout-height);
-		position: sticky;
-		transition: top 0.2s ease-in-out;
-		display: flex;
-		top: 0;
-		width: 100%;
-		z-index: 10;
-	}
+  .header {
+    background: var(--header-background-color);
+    height: var(--header-layout-height);
+    position: sticky;
+    transition: top 0.2s ease-in-out;
+    display: flex;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
 
-	.header--hidden {
-		top: calc(-1 * var(--header-layout-height));
-	}
+  .header--hidden {
+    top: calc(-1 * var(--header-layout-height));
+  }
 
-	.header--transparent {
-		background: transparent;
-	}
+  .header--transparent {
+    background: transparent;
+  }
 
-	.header__container {
-		display: flex;
-		flex: 1;
-		margin: 0 auto;
-		justify-content: space-between;
-		align-items: center;
-		max-width: var(--layout-width-base);
-		padding: 0 var(--layout-padding-base);
-	}
+  .header__container {
+    display: flex;
+    flex: 1;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--layout-width-base);
+    padding: 0 var(--layout-padding-base);
+  }
 
-	.header__title {
-		font-size: var(--header-text-size);
-		color: var(--header-text-color);
-	}
+  .header__title {
+    font-size: var(--header-text-size);
+    color: var(--header-text-color);
+  }
 
-	.header__nav {
-		display: flex;
-	}
+  .header__nav {
+    display: flex;
+  }
 
-	.header__link {
-		color: var(--header-link-color);
-		position: relative;
-		margin: 0 0 0 0.7em;
-		padding: 0.3em 0.7em;
-	}
+  .header__link {
+    color: var(--header-link-color);
+    position: relative;
+    margin: 0 0 0 0.7em;
+    padding: 0.3em 0.7em;
+  }
 
-	.header__link.active {
-		color: var(--header-link-actived-color);
-	}
+  .header__link.active {
+    color: var(--header-link-actived-color);
+  }
 
-	.header__link:hover:not(.active) {
-		opacity: 1;
-		color: var(--header-link-actived-color);
-	}
+  .header__link:hover:not(.active) {
+    opacity: 1;
+    color: var(--header-link-actived-color);
+  }
 
-	/* header / menu + checkbox */
+  /* header / menu + checkbox */
 
-	.header__menu {
-		display: none;
-	}
+  .header__menu {
+    display: none;
+  }
 
-	.header__checkbox {
-		display: none;
-	}
+  .header__checkbox {
+    display: none;
+  }
 
-	.header__checkbox:checked ~ .header__menu {
-		display: block;
-		position: fixed;
-		top: var(--header-layout-height);
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background: var(--header-menu-background);
-		padding: 0;
-	}
+  .header__checkbox:checked ~ .header__menu {
+    display: block;
+    position: fixed;
+    top: var(--header-layout-height);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--header-menu-background);
+    padding: 0;
+  }
 
-	.header__checkbox:checked ~ .header__menu .header__nav {
-		display: block;
-	}
+  .header__checkbox:checked ~ .header__menu .header__nav {
+    display: block;
+  }
 
-	.header__checkbox:checked ~ .header__menu .header__link {
-		border-top: 1px var(--header-menu-separator-color) solid;
-		display: block;
-		margin: 0;
-		padding: 1em;
-		border-radius: 0;
-	}
+  .header__checkbox:checked ~ .header__menu .header__link {
+    border-top: 1px var(--header-menu-separator-color) solid;
+    display: block;
+    margin: 0;
+    padding: 1em;
+    border-radius: 0;
+  }
 
-	.header__checkbox:checked ~ .header__toggler .header__toggler-line {
-		background: transparent;
-	}
+  .header__checkbox:checked ~ .header__toggler .header__toggler-line {
+    background: transparent;
+  }
 
-	.header__checkbox:checked ~ .header__toggler .header__toggler-line::before {
-		transform: rotate(-45deg);
-		top: 0;
-	}
+  .header__checkbox:checked ~ .header__toggler .header__toggler-line::before {
+    transform: rotate(-45deg);
+    top: 0;
+  }
 
-	.header__checkbox:checked ~ .header__toggler .header__toggler-line::after {
-		transform: rotate(45deg);
-		top: 0;
-	}
+  .header__checkbox:checked ~ .header__toggler .header__toggler-line::after {
+    transform: rotate(45deg);
+    top: 0;
+  }
 
-	/* header / toggler */
+  /* header / toggler */
 
-	.header__toggler {
-		cursor: pointer;
-		padding: 20px 10px;
-		margin: 0 -10px;
-		width: var(--header-menu-toogler-width);
-	}
+  .header__toggler {
+    cursor: pointer;
+    padding: 20px 10px;
+    margin: 0 -10px;
+    width: var(--header-menu-toogler-width);
+  }
 
-	.header__toggler-line {
-		background: var(--header-menu-toogler-line-color);
-		display: block;
-		height: var(--header-menu-toogler-line-size);
-		position: relative;
-		width: 100%;
-	}
+  .header__toggler-line {
+    background: var(--header-menu-toogler-line-color);
+    display: block;
+    height: var(--header-menu-toogler-line-size);
+    position: relative;
+    width: 100%;
+  }
 
-	.header__toggler-line::before,
-	.header__toggler-line::after {
-		background: var(--header-menu-toogler-line-color);
-		content: '';
-		display: block;
-		height: 100%;
-		position: absolute;
-		transition: all 0.2s ease-out;
-		width: 100%;
-	}
+  .header__toggler-line::before,
+  .header__toggler-line::after {
+    background: var(--header-menu-toogler-line-color);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+  }
 
-	.header__toggler-line::before {
-		top: 6px;
-	}
+  .header__toggler-line::before {
+    top: 6px;
+  }
 
-	.header__toggler-line::after {
-		top: -6px;
-	}
+  .header__toggler-line::after {
+    top: -6px;
+  }
 
-	@media (min-width: 768px) {
-		.header__menu {
-			display: block;
-		}
-		.header__toggler {
-			display: none;
-		}
-	}
+  @media (min-width: 768px) {
+    .header__menu {
+      display: block;
+    }
+    .header__toggler {
+      display: none;
+    }
+  }
 </style>
 <header class={`header${transparent ? ' header--transparent' : ''}`}>
-	<div class="header__container">
-		<Link href="/" class="header__title">
-			{SITE_TITLE}
-		</Link>
-		<slot />
-	</div>
+  <div class="header__container">
+    <Link href="/" class="header__title">
+      {SITE_TITLE}
+    </Link>
+    <slot />
+  </div>
 </header>
 <script>
-	var lastScrollTop = 0;
-	var toggleElement = document.querySelector(
-		'#header-checkbox'
-	) as HTMLFormElement;
-	var headerElement = document.querySelector('header');
-	var navbarHeight = headerElement.offsetHeight;
+  var lastScrollTop = 0;
+  var toggleElement = document.querySelector(
+    '#header-checkbox'
+  ) as HTMLFormElement;
+  var headerElement = document.querySelector('header');
+  var navbarHeight = headerElement.offsetHeight;
 
-	function toggleHeaderVisibility() {
-		var scrollTop = window.scrollY;
-		var isScrollingToBottom = scrollTop > lastScrollTop;
+  function toggleHeaderVisibility() {
+    var scrollTop = window.scrollY;
+    var isScrollingToBottom = scrollTop > lastScrollTop;
 
-		if (!headerElement || !toggleElement) {
-			return;
-		}
+    if (!headerElement || !toggleElement) {
+      return;
+    }
 
-		if (
-			isScrollingToBottom &&
-			scrollTop > navbarHeight &&
-			!toggleElement.checked
-		) {
-			headerElement.classList.add('header--hidden');
-		} else {
-			headerElement.classList.remove('header--hidden');
-		}
+    if (
+      isScrollingToBottom &&
+      scrollTop > navbarHeight &&
+      !toggleElement.checked
+    ) {
+      headerElement.classList.add('header--hidden');
+    } else {
+      headerElement.classList.remove('header--hidden');
+    }
 
-		lastScrollTop = scrollTop;
-	}
+    lastScrollTop = scrollTop;
+  }
 
-	window.addEventListener('scroll', toggleHeaderVisibility, { passive: true });
+  window.addEventListener('scroll', toggleHeaderVisibility, { passive: true });
 
-	toggleHeaderVisibility();
+  toggleHeaderVisibility();
 </script>

@@ -6,45 +6,45 @@ const today = new Date();
 ---
 
 <style>
-	.footer {
-		background: var(--footer-background-color);
-	}
-	.footer__container {
-		padding: 0 var(--layout-padding-base);
-		margin: calc(2 * var(--layout-padding-base)) auto;
-		display: flex;
-		color: var(--text-secondary);
-		font-size: var(--font-size-smaller);
-		max-width: var(--layout-width-base);
-		flex-wrap: wrap;
-		justify-content: space-between;
-	}
-	.footer__copyright {
-		flex: 0 1 auto;
-	}
-	.footer__built-with {
-		flex: 0 1 auto;
-	}
-	@media (max-width: 576px) {
-		.footer__container {
-			flex-direction: column-reverse;
-			text-align: center;
-		}
-		.footer__built-with {
-			margin-bottom: 0.5em;
-		}
-	}
+  .footer {
+    background: var(--footer-background-color);
+  }
+  .footer__container {
+    padding: 0 var(--layout-padding-base);
+    margin: calc(2 * var(--layout-padding-base)) auto;
+    display: flex;
+    color: var(--text-secondary);
+    font-size: var(--font-size-smaller);
+    max-width: var(--layout-width-base);
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .footer__copyright {
+    flex: 0 1 auto;
+  }
+  .footer__built-with {
+    flex: 0 1 auto;
+  }
+  @media (max-width: 576px) {
+    .footer__container {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+    .footer__built-with {
+      margin-bottom: 0.5em;
+    }
+  }
 </style>
 <footer class="footer">
-	<div class="footer__container">
-		<div class="footer__copyright">
-			&copy; {today.getFullYear()}
-			{SITE_TITLE}, <a href="https://creativecommons.org/licenses/by-sa/4.0/"
-				>CC BY-SA 4.0</a
-			>
-		</div>
-		<div class="footer__built-with">
-			{t('builtWith')} 🚀 <a href="https://astro.build/">astro</a>
-		</div>
-	</div>
+  <div class="footer__container">
+    <div class="footer__copyright">
+      &copy; {today.getFullYear()}
+      {SITE_TITLE}, <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+        >CC BY-SA 4.0</a
+      >
+    </div>
+    <div class="footer__built-with">
+      {t('builtWith')} 🚀 <a href="https://astro.build/">astro</a>
+    </div>
+  </div>
 </footer>

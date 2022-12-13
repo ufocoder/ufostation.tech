@@ -14,7 +14,7 @@ import Img from 'src/components/Img.astro';
 
 ```css
 body.toggled .box:nth-child(2n) {
-	background: red;
+  background: red;
 }
 ```
 
@@ -22,7 +22,7 @@ body.toggled .box:nth-child(2n) {
 
 ```js
 const clickHandler = () => {
-	document.body.classList.toggle('toggled');
+  document.body.classList.toggle('toggled');
 };
 ```
 
@@ -33,12 +33,12 @@ const clickHandler = () => {
 
 ```js
 const clickHandler = (e) => {
-	document.body.classList.toggle('toggled');
-	const elements = document.body.querySelector('div');
-	const isToggled = document.body.classList.contains('toggled');
-	for (let i = 1; i < elements.length; i += 2) {
-		elements[i].classList.toggle('box', isToggled);
-	}
+  document.body.classList.toggle('toggled');
+  const elements = document.body.querySelector('div');
+  const isToggled = document.body.classList.contains('toggled');
+  for (let i = 1; i < elements.length; i += 2) {
+    elements[i].classList.toggle('box', isToggled);
+  }
 };
 ```
 

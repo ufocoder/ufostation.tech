@@ -9,10 +9,10 @@ const normalize = (url: string): string => url.replace(/\/$/, '');
 
 const currentURL = normalize(Astro.url.pathname) + '/';
 const activeURL =
-	normalize(import.meta.env.BASE_URL) + normalize(href as string) + '/';
+  normalize(import.meta.env.BASE_URL) + normalize(href as string) + '/';
 const isActive = currentURL.startsWith(activeURL);
 ---
 
 <Link href={href} class:list={[className, { active: isActive }]} {...props}
-	><slot />
+  ><slot />
 </Link>

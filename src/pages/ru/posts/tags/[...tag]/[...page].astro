@@ -11,45 +11,45 @@ const { tag } = Astro.params;
 const { page } = Astro.props;
 
 export async function getStaticPaths({ paginate }) {
-	const allPosts: any[] = await getPosts();
-	const allTags = new Set();
+  const allPosts: any[] = await getPosts();
+  const allTags = new Set();
 
-	allPosts.forEach((post) => {
-		if (post.frontmatter.tags) {
-			post.frontmatter.tags.forEach((tag) => allTags.add(tag.toLowerCase()));
-		}
-	});
+  allPosts.forEach((post) => {
+    if (post.frontmatter.tags) {
+      post.frontmatter.tags.forEach((tag) => allTags.add(tag.toLowerCase()));
+    }
+  });
 
-	return Array.from(allTags).map((tag) => {
-		const filteredPosts = allPosts.filter(
-			(post) => post.frontmatter.tags && post.frontmatter.tags.includes(tag)
-		);
+  return Array.from(allTags).map((tag) => {
+    const filteredPosts = allPosts.filter(
+      (post) => post.frontmatter.tags && post.frontmatter.tags.includes(tag)
+    );
 
-		return paginate(filteredPosts, {
-			params: { tag },
-			pageSize: PAGE_SIZE,
-		});
-	});
+    return paginate(filteredPosts, {
+      params: { tag },
+      pageSize: PAGE_SIZE,
+    });
+  });
 }
 
 const tags = await getTags();
 
 const title =
-	page.currentPage > 1
-		? `Блог / ${t(tag)} • Страница ${page.currentPage}`
-		: 'Блог';
+  page.currentPage > 1
+    ? `Блог / ${t(tag)} • Страница ${page.currentPage}`
+    : 'Блог';
 
 const meta = {
-	title,
-	description: '',
+  title,
+  description: '',
 };
 ---
 
 <BaseLayout meta={meta}>
-	<Fragment>
-		<PostPreviews title={title} posts={page.data}>
-			<Tags slot="tags" selectedTag={tag} tags={tags} />
-		</PostPreviews>
-		<Pagination prev={page.url.prev} next={page.url.next} />
-	</Fragment>
+  <Fragment>
+    <PostPreviews title={title} posts={page.data}>
+      <Tags slot="tags" selectedTag={tag} tags={tags} />
+    </PostPreviews>
+    <Pagination prev={page.url.prev} next={page.url.next} />
+  </Fragment>
 </BaseLayout>

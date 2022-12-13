@@ -1,5 +1,5 @@
 module.exports = {
-	plugins: ['prettier-plugin-astro'],
+	plugins: ["./node_modules/prettier-plugin-astro"],
 	overrides: [
 		{
 			files: '*.astro',
@@ -9,8 +9,7 @@ module.exports = {
 		},
 	],
 	tabWidth: 2,
-	useTabs: true,
-	printWidth: 80,
+	useTabs: false,
 	semi: true,
 	trailingComma: 'es5',
 	singleQuote: true,

@@ -2,13 +2,13 @@
 import BaseLayout from './Base.astro';
 
 const {
-	content: { title, description, heroImage },
+  content: { title, description, heroImage },
 } = Astro.props;
 ---
 
 <BaseLayout meta={{ title, description, heroImage, lang: 'en' }}>
-	<h2>{title}</h2>
-	<main>
-		<slot />
-	</main>
+  <h2>{title}</h2>
+  <main>
+    <slot />
+  </main>
 </BaseLayout>

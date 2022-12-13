@@ -4,10 +4,10 @@ import Layout from 'src/layouts/ru/Post.astro';
 ---
 
 <Layout {...Astro.props}>
-	<Fragment>
-		<div style="background: var(--background-secondary);">
-			<Navigation title="Браузерный рендеринг" series="browser-rendering" />
-		</div>
-		<slot />
-	</Fragment>
+  <Fragment>
+    <div style="background: var(--background-secondary);">
+      <Navigation title="Браузерный рендеринг" series="browser-rendering" />
+    </div>
+    <slot />
+  </Fragment>
 </Layout>

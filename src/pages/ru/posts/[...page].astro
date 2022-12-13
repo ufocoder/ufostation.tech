@@ -8,8 +8,8 @@ import PostPreviews from 'src/components/posts/Previews.astro';
 import Pagination from 'src/components/posts/Pagination.astro';
 
 export async function getStaticPaths({ paginate }) {
-	const posts = await getPosts();
-	return paginate(posts, { pageSize: PAGE_SIZE });
+  const posts = await getPosts();
+  return paginate(posts, { pageSize: PAGE_SIZE });
 }
 
 const tags = await getTags();
@@ -17,20 +17,20 @@ const tags = await getTags();
 const { page } = Astro.props;
 
 const title =
-	page.currentPage > 1 ? 'Блог • Страница ' + page.currentPage : 'Блог';
+  page.currentPage > 1 ? 'Блог • Страница ' + page.currentPage : 'Блог';
 
 const meta = {
-	title,
-	description: '',
+  title,
+  description: '',
 };
 ---
 
 <BaseLayout meta={meta}>
-	<Fragment>
-		<PostPreviews title={title} tags={tags} posts={page.data}>
-			<Tags slot="tags" tags={tags} />
-			<Sidebar slot="sidebar" />
-		</PostPreviews>
-		<Pagination prev={page.url.prev} next={page.url.next} />
-	</Fragment>
+  <Fragment>
+    <PostPreviews title={title} tags={tags} posts={page.data}>
+      <Tags slot="tags" tags={tags} />
+      <Sidebar slot="sidebar" />
+    </PostPreviews>
+    <Pagination prev={page.url.prev} next={page.url.next} />
+  </Fragment>
 </BaseLayout>

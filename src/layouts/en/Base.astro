@@ -11,13 +11,13 @@ setLocale(lang);
 ---
 
 <BaseLayout meta={{ ...meta, lang }}>
-	<Fragment slot="header">
-		<nav class="header__menu">
-			<ActiveLink class="header__link" href="/en/about">About</ActiveLink>
-		</nav>
-	</Fragment>
-	<Fragment slot="hero">
-		<slot name="hero" />
-	</Fragment>
-	<slot />
+  <Fragment slot="header">
+    <nav class="header__menu">
+      <ActiveLink class="header__link" href="/en/about">About</ActiveLink>
+    </nav>
+  </Fragment>
+  <Fragment slot="hero">
+    <slot name="hero" />
+  </Fragment>
+  <slot />
 </BaseLayout>

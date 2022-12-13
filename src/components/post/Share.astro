@@ -4,59 +4,59 @@ import { createFacebookShareURL, createTwitterShareURL } from 'src/lib/content';
 import { t } from 'src/locales';
 
 export interface Props {
-	title: string;
-	url: URL;
+  title: string;
+  url: URL;
 }
 
 const { title, url } = Astro.props;
 ---
 
 <style>
-	.post__share {
-		margin: calc(2 * var(--layout-padding-base)) 0;
-		padding: var(--layout-padding-base);
-		background-color: var(--post-footer-background-color);
-	}
-	.post__share-icons {
-		display: inline;
-		margin-left: 5px;
-	}
-	.post__share-icon {
-		height: 24px;
-		width: 24px;
-		vertical-align: text-bottom;
-		margin-left: 8px;
-	}
+  .post__share {
+    margin: calc(2 * var(--layout-padding-base)) 0;
+    padding: var(--layout-padding-base);
+    background-color: var(--post-footer-background-color);
+  }
+  .post__share-icons {
+    display: inline;
+    margin-left: 5px;
+  }
+  .post__share-icon {
+    height: 24px;
+    width: 24px;
+    vertical-align: text-bottom;
+    margin-left: 8px;
+  }
 </style>
 
 <div class="post__share">
-	{t('wantToShare')}
+  {t('wantToShare')}
 
-	<div class="post__share-icons">
-		<a
-			href={createTwitterShareURL(title, new URL(url, Astro.url))}
-			target="_blank"
-		>
-			<Img
-				class="post__share-icon"
-				width="20px"
-				height="20px"
-				alt={t('shareTwitter') as string}
-				src="/assets/icons/social_twitter.svg"
-			/>
-		</a>
+  <div class="post__share-icons">
+    <a
+      href={createTwitterShareURL(title, new URL(url, Astro.url))}
+      target="_blank"
+    >
+      <Img
+        class="post__share-icon"
+        width="20px"
+        height="20px"
+        alt={t('shareTwitter') as string}
+        src="/assets/icons/social_twitter.svg"
+      />
+    </a>
 
-		<a
-			href={createFacebookShareURL(title, new URL(url, Astro.url))}
-			target="_blank"
-		>
-			<Img
-				class="post__share-icon"
-				width="20px"
-				height="20px"
-				alt={t('shareFacebook') as string}
-				src="/assets/icons/social_facebook.svg"
-			/>
-		</a>
-	</div>
+    <a
+      href={createFacebookShareURL(title, new URL(url, Astro.url))}
+      target="_blank"
+    >
+      <Img
+        class="post__share-icon"
+        width="20px"
+        height="20px"
+        alt={t('shareFacebook') as string}
+        src="/assets/icons/social_facebook.svg"
+      />
+    </a>
+  </div>
 </div>
