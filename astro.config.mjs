@@ -7,31 +7,31 @@ import { SITE_URL, SITE_BASE } from './src/config';
 import { remarkReadingTime } from './src/lib/remark-reading-time';
 
 const swIntegrationOptions = {
-	workbox: {
-		skipWaiting: true,
-		manifestTransforms: [
-			(orignalManifest) => {
-				const manifest = orignalManifest.map((entity) => ({
-					...entity,
-					url: entity.url.replace(/\/index\.html$/, ''),
-				}));
-				return { manifest };
-			},
-		],
-	},
+  workbox: {
+    skipWaiting: true,
+    manifestTransforms: [
+      (orignalManifest) => {
+        const manifest = orignalManifest.map((entity) => ({
+          ...entity,
+          url: entity.url.replace(/\/index\.html$/, '/'),
+        }));
+        return { manifest };
+      },
+    ],
+  },
 };
 
 export default defineConfig({
-	site: SITE_URL,
-	base: SITE_BASE,
-	integrations: [
-		mdx(),
-		sitemap(),
-		serviceWorker(swIntegrationOptions),
-		compress(),
-	],
-	markdown: {
-		remarkPlugins: [remarkReadingTime],
-		extendDefaultPlugins: true,
-	},
+  site: SITE_URL,
+  base: SITE_BASE,
+  integrations: [
+    mdx(),
+    sitemap(),
+    serviceWorker(swIntegrationOptions),
+    compress(),
+  ],
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+    extendDefaultPlugins: true,
+  },
 });
