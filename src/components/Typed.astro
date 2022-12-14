@@ -1,6 +1,6 @@
 ---
+import * as typical from 'src/lib/typical';
 import { shuffleArray } from 'src/lib/content';
-import Typed from 'typed.js';
 
 export interface Props {
   selector: string;
@@ -9,7 +9,7 @@ export interface Props {
 
 declare global {
   interface Window {
-    Typed: typeof Typed;
+    typical: typeof typical;
   }
 }
 
@@ -22,20 +22,56 @@ const typedPosts = posts.map(({ url, frontmatter: { title } }) => ({
 shuffleArray(typedPosts);
 ---
 
+<style is:global>
+  .typed::after {
+    content: ' |';
+    color: #fff;
+    -webkit-animation: blink 1s infinite step-start;
+    animation: blink 1s infinite step-start;
+  }
+
+  @-webkit-keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
 <script>
-  import Typed from 'typed.js';
-  window.Typed = Typed;
+  import * as typical from 'src/lib/typical';
+  window.typical = typical;
 </script>
 <script define:vars={{ typedSelector, typedPosts }}>
   document.addEventListener('DOMContentLoaded', function () {
+    const node = document.querySelector(typedSelector);
+    if (node) {
+      const typePost = (post) => {
+        return [
+          () => {
+            node.href = post.url;
+          },
+          post.title,
+          5000,
+        ];
+      };
+
+      const posts = typedPosts.map(typePost).reduce((acc, typedPost) => {
+        return [...acc, ...typedPost];
+      }, []);
+
+      typical.type(node, ...posts, typical.type);
+    }
+    /*
     new window.Typed(typedSelector, {
       strings: typedPosts.map(
         (post) => '<a href="' + post.url + '">' + post.title + '</a>'
-      ),
-      typeSpeed: 30,
-      backSpeed: 0,
-      backDelay: 2000,
-      loop: true,
+      )
     });
+    */
   });
 </script>
