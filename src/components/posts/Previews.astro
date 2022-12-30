@@ -18,6 +18,7 @@ const defaultHeroImage =
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    gap: .5em;
   }
   .section-posts__title {
     display: block;
@@ -27,6 +28,9 @@ const defaultHeroImage =
   .section-posts__sidebar {
     display: block;
     font-size: 1.5em;
+  }
+  .section-posts__link-to-more {
+    white-space: nowrap;
   }
   .section-posts__sections {
     display: flex;
@@ -71,6 +75,13 @@ const defaultHeroImage =
     }
   }
   @media (max-width: 576px) {
+    .section-posts__header {
+      flex-wrap: wrap;
+      margin: 2.4em 0;
+    }
+    .section-posts__title {
+      margin: 0;
+    }
     .section-posts__section:first-child {
       display: block;
     }
@@ -90,7 +101,12 @@ const defaultHeroImage =
     </h2>
     <div class="section-posts__sidebar">
       <slot name="sidebar">
-        <Link href="/ru/posts">все записи →</Link>
+        <Link
+          href="/ru/posts"
+          class="section-posts__link-to-more"
+        >
+          все записи →
+        </Link>
       </slot>
     </div>
   </div>
