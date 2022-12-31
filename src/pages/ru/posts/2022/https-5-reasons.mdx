@@ -1,0 +1,77 @@
+---
+layout: 'src/layouts/ru/Post.astro'
+title: '5 аспектов использования HTTPS протокола в браузере'
+heroImage: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80'
+tags: ['browser', 'security']
+pubDate: 'Dec 31 2022'
+description: 'Когда речь заходит об использовании HTTPS первое, что приходит в голову это шифрование передаваемого по сети трафика. На самом деле это следствий использования этого протокола несколько больше.'
+---
+
+import Img from 'src/components/Img.astro';
+
+Для начала напомню, что HTTPS-протокол — это расширение HTTP-протокола, где данные передаются поверх криптографического протокола [TLS](https://ru.wikipedia.org/wiki/TLS), у которого есть свои заголовки, процедура установки соединения TLS Handshake, авторизации клиента, существует понятие сессий, а также присутствуют прочие особенности.
+
+Использование протокола, очевидно связано, с безопасностью, однако, я выделяю дополнительно и другие его аспекты.
+
+### Работа с сетью
+
+Как было отмечено еще на [Google I/O 2014 - HTTPS Everywhere](https://www.youtube.com/watch?v=cBhZ6S0PFCY) все сетевые взаимодействия должны быть по умолчанию безопасными. Безопасность соединения повышает приватность пользователя, исключает атаки типа [человек посередине](https://ru.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BA%D0%B0_%D0%BF%D0%BE%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D0%BA%D0%B0). Это означает, что не только перехват трафика злоумышленниками будет бесполезен для чтения, но он также будет безуспешен и для его модификации, например, ваш провайдер не сможет вставить на посещаемые вами сайты свой рекламный баннер.
+
+[Начиная с версии Chrome 68](https://security.googleblog.com/2018/02/a-secure-web-is-here-to-stay.html) для веб-сайтов, которые не используют https, возле адреса прямым текстом пишется `Not Secure`:
+
+<Img
+  src="/assets/posts/2022/https-5-reasons/not-secure-website.png"
+  height="340px"
+  alt=""
+/>
+
+Также выделю легкость в использовании безопасного соединения веб-разработчиком в браузере. Достаточно указать используемый HTTPS протокол в URL, а дальше браузер уже сам сделает за вас весь networking, вне зависимости от используемого WebAPI. Под WebAPI понимаю те, которые работают с сетью: XmlHttpRequest, EventSource, WebSocket. Для WebSocket, HTTPS используется в WebSocket HTTPS Handshake.
+
+Завершая сетевой аспект, добавлю, что версия протокола [HTTP/2](https://en.wikipedia.org/wiki/HTTP/2) в своей основе использует TLS, также как и HTTPS-протокол.
+
+### Ранжирование в поисковой выдаче Google
+
+В связи с использованием HTTPS у пользователей растет уровень доверия к веб-сайтам, в связи с чем Google Search отдает предпочтение web-ресурсам в поисковой выдаче, которые используют HTTPS протокол. В том же далеком 2014 году Google [впервые намекнула](https://developers.google.com/search/blog/2014/08/https-as-ranking-signal), что со временем может использовать HTTPS как один из сигналов для ранжирования, потому что хотят побудить всех владельцев веб-сайтов перейти с HTTP на HTTPS:
+
+> ...over the past few months we’ve been running tests taking into account whether sites use secure, encrypted connections as a signal in our search ranking algorithms. We’ve seen positive results, so we’re starting to use HTTPS as a ranking signal.
+
+И если спустя год, например, в отчете [Search Engine Ranking Factors 2015](https://moz.com/search-ranking-factors/correlations) от moz.com можно было найти вывод о слабой корреляции или вывод о слабом влиянии HTTPS на поисковую выдачу, то в [статьях последних лет](https://www.searchenginejournal.com/ranking-factors/https) уже говорится о том, что использование HTTPS протокола является факторов ранжирования.
+
+### Безопасная работа со смешанным контентом
+
+В браузерах много функционала, о котором мы наверно даже не подозреваем, достаточно взглянуть на список [Google features](https://chromestatus.com/features).
+
+Так среди всего прочего, можно выделить такую особенность как:
+[Strictly block "blockable" mixed content, insecure ‘mixed content’](https://chromestatus.com/feature/5738853059002368).
+
+HTTPS-страница, которая включает содержимое, полученное с использованием HTTP-протокола, называется страницей со [смешанным содержимым](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content). Подобные страницы зашифрованы лишь частично, поэтому весь незашифрованный контент остается доступен злоумышленникам.
+
+Подобный смешанный контент может быть как пассивным, который не взаимодействует с текущей страницей (изображение, аудио, видео), так и активным, который включает в себя скрипты, стили, iframe и все то, что может быть подгружено и исполнено на странице. На запросы первой группу браузер Chrome пишет в консоль предупреждения, а запросы второй просто блокирует:
+
+<Img
+  src="/assets/posts/2022/https-5-reasons/block-mixed-content.png"
+  height="320px"
+  alt=""
+/>
+
+Еще одна фича, которую стоит отметить — [blocking insecure downloads from secure (HTTPS) contexts](https://chromestatus.com/feature/5691978677223424). Chrome блокирует небезопасные загрузки, инициированные из безопасных контекстов:
+
+<Img
+  src="/assets/posts/2022/https-5-reasons/insecure-downloading.jpg"
+  height="300px"
+  alt=""
+/>
+
+### Безопасный контекст
+
+Другое важное понятие, которое открывает доступ ко множеству браузерных API, это безопасный контекст. Можно было бы назвать статью 10 или даже 15 причин использования HTTPS-протокола, только посчитав возможность использования каждого такого браузерного API.
+
+[Безопасный контекст](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) — это Window или Worker, для которых соблюдаются определенные минимальные стандарты аутентификации и конфиденциальности. Существует целая спецификация [Secure Contexts](https://www.w3.org/TR/secure-contexts/), которая детальнее раскрывает необходимость и детали контекстов. Основная цель безопасных контекстов — предотвратить атаку [человек посередине](https://ru.wikipedia.org/wiki/%D0%90%D1%82%D0%B0%D0%BA%D0%B0_%D0%BF%D0%BE%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B8%D0%BA%D0%B0).
+
+Важным здесь является то, что многие браузерные API доступны только в безопасном контексте, например: [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API), [Push API](https://developer.mozilla.org/en-US/docs/Web/API/Push_API), [Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API), [Web Bluetooth](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API) и так далее. Кстати вот [весь список доступных API](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts/features_restricted_to_secure_contexts) на MDN.
+
+### Progressive Web Apps
+
+Что такое [прогрессивные веб приложения](https://web.dev/i18n/ru/what-are-pwas/)? Если говорить очень грубо и коротко, то это веб-приложения, которые похожи на нативные, по функционалу и работающие на том же устройстве, что и нативные, детальнее изучить этот вопрос можно [в цикле статей на web.dev](https://web.dev/progressive-web-apps/).
+
+PWA требуют, что веб-сайты обслуживались HTTPS, более того, API, которые предполагаются в PWA, работают исключительно в безопасном контексте, в частности [Service Worker](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker), [Notification API](https://developer.mozilla.org/en-US/docs/Web/API/notification), [Background Sync API](https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API)
