@@ -181,7 +181,7 @@
   --post-meta-color: #ccc;
   --post-preview-line-color: #384252;
 
-  --post-blockquote-background-color: #18202c;
+  --post-blockquote-background-color: #2f3d52;
   --post-footer-background-color: #111822;
 
   /* footer */
@@ -257,9 +257,10 @@ pre > code {
 
 blockquote {
   background: var(--post-blockquote-background-color);
-  color: #222;
-  padding: 0.5rem 1rem;
+  color: #e3e3e3;
+  padding: 0.5rem 0.7rem;
   margin: 1.3rem 0;
+  border-left: 1px solid #fff;
 }
 
 .button {
