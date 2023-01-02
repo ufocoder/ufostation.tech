@@ -19,24 +19,24 @@ const { tags, selectedTag = '' } = Astro.props;
   }
   .tags__tag {
     display: inline-block;
-    background: #000;
-    color: #fff;
+    background: var(--background-quaternary);
+    color: var(--color-text-base);
     border-radius: 10px;
     margin: 0 0.7em 0.7em 0;
     padding: 1em;
   }
   .tags__tag-count {
-    color: #777;
+    color: var(--color-text-secondary);
     padding: 0 0 0 0.5em;
   }
   .tags__tag--selected {
-    background: #2592ff;
+    background: var(--background-highlighted);
   }
   .tags__tag--selected .tags__tag-count {
-    color: #fff;
+    color: var(--color-text-base);
   }
   .tags__tag:hover {
-    background: #444;
+    background: var(--background-tertiary);
   }
 </style>
 <div class="tags">

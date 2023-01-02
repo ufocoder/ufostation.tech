@@ -39,13 +39,13 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
     font-style: normal;
     font-size: 7.5em;
     line-height: 1.2em;
-    color: #fff;
+    color: var(--color-text-base);
     text-align: center;
   }
 
   .section-hero__subtitle {
     font-family: var(--font-family-primary);
-    color: #7588a4;
+    color: var(--color-text-secondary);
     font-style: normal;
     font-weight: normal;
     font-size: 2em;
@@ -77,7 +77,7 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
   }
 
   .section-hero__more-article .typed-cursor {
-    color: #000;
+    color: var(--color-text-base-inverted);
   }
 
   @media (max-width: 768px) {
