@@ -37,7 +37,7 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
   .section-hero__title {
     font-family: var(--font-family-primary);
     font-style: normal;
-    font-size: 7.5em;
+    font-size: var(--hero-title-font-size);
     line-height: 1.2em;
     color: var(--color-text-base);
     text-align: center;
@@ -48,7 +48,7 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
     color: var(--color-text-secondary);
     font-style: normal;
     font-weight: normal;
-    font-size: 2em;
+    font-size: var(--font-size-heading-h3);
     line-height: 1.1em;
     text-align: center;
     box-sizing: border-box;
@@ -60,7 +60,7 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
   }
 
   .section-hero__more-label {
-    font-size: 1.5em;
+    font-size: var(--font-size-heading-h4);
     font-weight: 300;
     font-family: var(--font-family-secondary);
     text-align: center;
@@ -68,7 +68,7 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
   }
 
   .section-hero__more-article {
-    font-size: 1.5em;
+    font-size: var(--font-size-heading-h4);
     font-weight: 300;
     font-family: var(--font-family-secondary);
     text-align: center;
@@ -82,15 +82,15 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
 
   @media (max-width: 768px) {
     .section-hero__title {
-      font-size: 4em;
+      font-size: var(--hero-title-font-size-smaller);
     }
 
     .section-hero__subtitle {
-      font-size: 2em;
+      font-size: var(--font-size-heading-h3);
     }
 
     .section-hero__container {
-      font-size: 1em;
+      font-size: var(--font-size-base);
     }
   }
   @media (max-width: 576px) {

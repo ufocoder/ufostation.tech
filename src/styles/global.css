@@ -157,15 +157,16 @@
   --font-family-primary: 'Oswald', sans-serif;
   --font-family-secondary: 'Roboto Condensed', sans-serif;
 
-  --font-size-heading-h1: 2.9rem;
-  --font-size-heading-h2: 2.5rem;
-  --font-size-heading-h3: 1.75rem;
+  --font-size-heading-h1: 3rem;
+  --font-size-heading-h2: 2.4rem;
+  --font-size-heading-h3: 2rem;
   --font-size-heading-h4: 1.5rem;
   --font-size-heading-h5: 1.2rem;
 
-  --font-size-base: 1.15rem;
+  --font-size-loud: 1.4rem;
+  --font-size-base: 1.1rem;
   --font-size-smaller: 0.95rem;
-  --font-size-tiny: 0.84rem;
+  --font-size-tiny: 0.8rem;
 
   /* header */
 
@@ -182,6 +183,11 @@
   --header-menu-toogler-line-size: 2px;
   --header-menu-toogler-line-color: var(--color-text-base);
   --header-menu-separator-color: var(--color-border-primary);
+
+  /* hero */
+
+  --hero-title-font-size: 7.5rem;
+  --hero-title-font-size-smaller: 4rem;
 
   /* post */
 

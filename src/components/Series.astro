@@ -30,16 +30,16 @@ const { title, series } = Astro.props;
     background: none;
   }
   .series__title {
-    font-size: 2.6em;
+    font-size: var(--font-size-heading-h2);
     font-weight: 400;
   }
   .series__content {
-    font-size: 1.4em;
+    font-size: var(--font-size-loud);
     font-weight: 300;
     margin: 2em 0;
   }
   .series__link {
-    font-size: 1.5em;
+    font-size: var(--font-size-loud);
   }
   .series__icon {
     width: 250px;
@@ -47,10 +47,10 @@ const { title, series } = Astro.props;
   }
   @media (max-width: 768px) {
     .series__title {
-      font-size: 2em;
+      font-size: var(--font-size-heading-h3);
     }
     .series__content {
-      font-size: 1.1em;
+      font-size: var(--font-size-base);
     }
     .series {
       display: block;
