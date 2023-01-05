@@ -9,18 +9,18 @@ const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
 
 <style>
   .post__title {
-    color: #fff;
-    margin-bottom: 0.2em;
+    color: var(--color-text-base);
+    margin-bottom: var(--spacer-xs);
     font-family: var(--font-family-primary);
   }
   .post__meta {
-    color: #aaa;
+    color: var(--color-text-secondary);
     font-size: var(--font-size-smaller);
-    margin-bottom: var(--layout-padding-base);
+    margin-bottom: var(--spacer-base);
   }
 
   .post__image {
-    margin: calc(2 * var(--layout-padding-base)) auto;
+    margin: var(--spacer-l) auto;
     max-width: 100%;
     max-height: 500px;
     display: block;
@@ -28,8 +28,8 @@ const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
 </style>
 <style is:global>
   .post__content {
-    margin: calc(2 * var(--layout-padding-base)) 0;
-    font-size: 1.1em;
+    margin: var(--spacer-l) 0;
+    font-size: var(--font-size-base);
     font-weight: 300;
   }
 
@@ -39,17 +39,18 @@ const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
 
   .post__content p {
     line-height: 1.4em;
-    margin: 1.3em 0;
+    margin: var(--spacer-m) 0;
   }
 
   .post__content li {
-    padding: 0.2em 0;
+    padding: var(--spacer-2xs) 0;
   }
+
   .post__content video,
   .post__content iframe {
     display: block;
     text-align: center;
-    margin: 1em auto;
+    margin: var(--spacer-base) auto;
     width: 100%;
     min-height: 500px;
   }

@@ -134,67 +134,96 @@
 :root {
   color-scheme: dark light;
 
+  --spacer-2xs: .25rem;
+  --spacer-xs: .5rem;
+  --spacer-s: .75rem;
+  --spacer-base: 1rem;
+  --spacer-m: 1.5rem;
+  --spacer-l: 2rem;
+  --spacer-xl: 2.5rem;
+  --spacer-2xl: 4rem;
+  --spacer-3xl: 5rem;
+
   --layout-width-base: 940px;
-  --layout-padding-base: 1rem;
+  --layout-padding-base: var(--spacer-base);
 
   --color-text-base: #fff;
-  --color-text-heading: #fff;
+  --color-text-base-inverted: #000;
+  --color-text-heading: var(--color-text-base);
 
-  --color-text-secondary: #4e4e4e;
+  --color-text-secondary: #7588a4;
   --color-text-link: #2892ff;
-  --color-text-button: #000;
+  --color-text-button: var(--color-text-base-inverted);
+
+  --color-border-primary: #3b4960;
 
   --background-primary: #18202c;
   --background-secondary: #111822;
+  --background-tertiary: #2f3d52;
+  --background-quaternary: #080b0e;
+  --background-substrate: #243144;
+  --background-highlighted: #007dff;
 
   --font-family-primary: 'Oswald', sans-serif;
   --font-family-secondary: 'Roboto Condensed', sans-serif;
 
-  --font-size-heading-h1: 2.9rem;
-  --font-size-heading-h2: 2.5rem;
-  --font-size-heading-h3: 1.75rem;
+  --font-size-heading-h1: 3rem;
+  --font-size-heading-h2: 2.4rem;
+  --font-size-heading-h3: 2rem;
   --font-size-heading-h4: 1.5rem;
   --font-size-heading-h5: 1.2rem;
 
-  --font-size-base: 1.15rem;
+  --font-size-loud: 1.4rem;
+  --font-size-base: 1.1rem;
   --font-size-smaller: 0.95rem;
-  --font-size-tiny: 0.84rem;
+  --font-size-tiny: 0.8rem;
 
   /* header */
 
-  --header-background-color: #111822;
+  --header-background-color: var(--background-secondary);
   --header-layout-height: 70px;
   --header-text-size: 1.5rem;
-  --header-text-color: #fff;
+  --header-text-color: var(--color-text-base);
 
   --header-link-color: #ccc;
-  --header-link-actived-color: #fff;
+  --header-link-actived-color: var(--color-text-base);
 
   --header-menu-toogler-width: 24px;
-  --header-menu-background: #18202c;
+  --header-menu-background: var(--background-primary);
   --header-menu-toogler-line-size: 2px;
-  --header-menu-toogler-line-color: #fff;
-  --header-menu-separator-color: #3b4960;
+  --header-menu-toogler-line-color: var(--color-text-base);
+  --header-menu-separator-color: var(--color-border-primary);
+
+  /* hero */
+
+  --hero-title-font-size: 7.5rem;
+  --hero-title-font-size-smaller: 4rem;
 
   /* post */
 
-  --post-meta-color: #ccc;
-  --post-preview-line-color: #384252;
+  --post-meta-color: var(--color-text-secondary);
+  --post-preview-line-color: var(--color-border-primary);
 
-  --post-blockquote-background-color: #2f3d52;
-  --post-footer-background-color: #111822;
+  --post-blockquote-background-color: var(--background-tertiary);
+  --post-blockquote-border-color: #fff;
+  --post-blockquote-text-color: #e3e3e3;
+
+  --post-code-background-color: #1062aa;
+
+  --post-footer-background-color: var(--background-secondary);
 
   /* footer */
-  --footer-background-color: #111822;
+
+  --footer-background-color: var(--background-secondary);
 }
 
 ::selection {
-  background: #007dff;
-  color: #fff;
+  background: var(--background-highlighted);
+  color: var(--color-text-base);
 }
 
 ::-moz-selection {
-  background: #007dff;
+  background: var(--background-highlighted);
 }
 
 body {
@@ -245,11 +274,11 @@ table {
 }
 code {
   padding: 2px 5px;
-  background-color: #1062aa;
+  background-color: var(--post-code-background-color);
   border-radius: 3px;
 }
 pre {
-  padding: 1rem;
+  padding: var(--spacer-base);
 }
 pre > code {
   all: unset;
@@ -257,17 +286,17 @@ pre > code {
 
 blockquote {
   background: var(--post-blockquote-background-color);
-  color: #e3e3e3;
-  padding: 0.5rem 0.7rem;
-  margin: 1.3rem 0;
-  border-left: 1px solid #fff;
+  color: var(--post-blockquote-text-color);
+  padding: var(--spacer-s);
+  margin: var(--spacer-m) 0;
+  border-left: 1px solid var(--post-blockquote-border-color);
 }
 
 .button {
   background: var(--background-secondary);
   color: var(--color-text-button);
-  border: 1px solid #999;
-  padding: 0.5em 1em;
+  border: 1px solid var(--color-border-primary);
+  padding: var(--spacer-s) var(--spacer-base);
   border-radius: 1em;
   cursor: pointer;
   transition: 0.2s all;

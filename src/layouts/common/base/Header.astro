@@ -51,8 +51,8 @@ const { transparent } = Astro.props;
   .header__link {
     color: var(--header-link-color);
     position: relative;
-    margin: 0 0 0 0.7em;
-    padding: 0.3em 0.7em;
+    margin: 0 0 0 var(--spacer-s);
+    padding: var(--spacer-2xs) var(--spacer-s);
   }
 
   .header__link.active {
@@ -93,7 +93,7 @@ const { transparent } = Astro.props;
     border-top: 1px var(--header-menu-separator-color) solid;
     display: block;
     margin: 0;
-    padding: 1em;
+    padding: var(--spacer-base);
     border-radius: 0;
   }
 
@@ -115,8 +115,8 @@ const { transparent } = Astro.props;
 
   .header__toggler {
     cursor: pointer;
-    padding: 20px 10px;
-    margin: 0 -10px;
+    padding: var(--spacer-m) var(--spacer-s);
+    margin: 0 calc(-1 * var(--spacer-s));
     width: var(--header-menu-toogler-width);
   }
 

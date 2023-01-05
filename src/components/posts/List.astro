@@ -12,12 +12,12 @@ const { posts } = Astro.props;
 
 <style>
   .post-previews {
-    margin: 2em 0;
+    margin: var(--spacer-l) 0;
   }
   .post-preview {
-    margin-bottom: 1.2em;
+    margin-bottom: var(--spacer-base);
     border-bottom: 1px solid var(--post-preview-line-color);
-    padding-bottom: 1.2em;
+    padding-bottom: var(--spacer-base);
   }
   .post-preview:last-child {
     padding-bottom: 0;
@@ -25,16 +25,16 @@ const { posts } = Astro.props;
     border-bottom: none;
   }
   .post-preview__title {
-    font-size: 1.3em;
+    font-size: var(--font-size-heading-h5);
     display: block;
   }
   .post-preview__meta {
-    margin: 0.5em 0;
-    color: #868686;
+    margin: var(--spacer-xs) 0;
+    color: var(--color-text-secondary);
     font-size: var(--font-size-smaller);
   }
   .post-preview__content {
-    margin: 1em 0;
+    margin: var(--spacer-base) 0;
     font-size: var(--font-size-base);
     font-weight: 300;
     line-height: 1.3em;

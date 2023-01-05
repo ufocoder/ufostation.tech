@@ -12,34 +12,34 @@ const { title, series } = Astro.props;
 <style>
   .series {
     display: flex;
-    padding: 2em;
+    padding: var(--spacer-l);
     background: var(--background-secondary);
-    gap: 4em;
-    margin: 2em 0;
+    gap: var(--spacer-2xl);
+    margin: var(--spacer-l) 0;
   }
   .series__column--left {
     flex: 1.6;
   }
   .series__column--right {
     flex: 1;
-    padding: 1em;
-    background: #080b0e;
+    padding: var(--spacer-base);
+    background: var(--background-quaternary);
     align-self: center;
   }
   .series__column--right nav {
     background: none;
   }
   .series__title {
-    font-size: 2.6em;
+    font-size: var(--font-size-heading-h2);
     font-weight: 400;
   }
   .series__content {
-    font-size: 1.4em;
+    font-size: var(--font-size-loud);
     font-weight: 300;
-    margin: 2em 0;
+    margin: var(--spacer-xl) 0;
   }
   .series__link {
-    font-size: 1.5em;
+    font-size: var(--font-size-loud);
   }
   .series__icon {
     width: 250px;
@@ -47,10 +47,10 @@ const { title, series } = Astro.props;
   }
   @media (max-width: 768px) {
     .series__title {
-      font-size: 2em;
+      font-size: var(--font-size-heading-h3);
     }
     .series__content {
-      font-size: 1.1em;
+      font-size: var(--font-size-base);
     }
     .series {
       display: block;
