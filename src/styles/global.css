@@ -134,8 +134,18 @@
 :root {
   color-scheme: dark light;
 
+  --spacer-2xs: .25rem;
+  --spacer-xs: .5rem;
+  --spacer-s: .75rem;
+  --spacer-base: 1rem;
+  --spacer-m: 1.5rem;
+  --spacer-l: 2rem;
+  --spacer-xl: 2.5rem;
+  --spacer-2xl: 4rem;
+  --spacer-3xl: 5rem;
+
   --layout-width-base: 940px;
-  --layout-padding-base: 1rem;
+  --layout-padding-base: var(--spacer-base);
 
   --color-text-base: #fff;
   --color-text-base-inverted: #000;
@@ -268,7 +278,7 @@ code {
   border-radius: 3px;
 }
 pre {
-  padding: 1rem;
+  padding: var(--spacer-base);
 }
 pre > code {
   all: unset;
@@ -277,8 +287,8 @@ pre > code {
 blockquote {
   background: var(--post-blockquote-background-color);
   color: var(--post-blockquote-text-color);
-  padding: 0.5rem 0.7rem;
-  margin: 1.3rem 0;
+  padding: var(--spacer-s);
+  margin: var(--spacer-m) 0;
   border-left: 1px solid var(--post-blockquote-border-color);
 }
 
@@ -286,7 +296,7 @@ blockquote {
   background: var(--background-secondary);
   color: var(--color-text-button);
   border: 1px solid var(--color-border-primary);
-  padding: 0.5em 1em;
+  padding: var(--spacer-s) var(--spacer-base);
   border-radius: 1em;
   cursor: pointer;
   transition: 0.2s all;

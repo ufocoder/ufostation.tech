@@ -26,7 +26,7 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
   }
 
   .section-hero__logo {
-    margin-top: 1em;
+    margin-top: var(--spacer-base);
   }
 
   .section-hero__logo-image {
@@ -52,11 +52,11 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
     line-height: 1.1em;
     text-align: center;
     box-sizing: border-box;
-    margin-bottom: 40px;
+    margin-bottom: var(--spacer-xl);
   }
 
   .section-hero__more {
-    margin: 6em 0 2em;
+    margin: 6rem 0 var(--spacer-l);
   }
 
   .section-hero__more-label {

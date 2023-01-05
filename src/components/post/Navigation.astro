@@ -14,19 +14,19 @@ const posts = await getSeriesPosts(series);
 
 <style>
   .post-navigation {
-    padding: var(--layout-padding-base);
+    padding: var(--spacer-base);
   }
   .post-navigation__title {
-    margin-bottom: 1em;
+    margin-bottom: var(--spacer-base);
     font-weight: 700;
   }
   .post-navigation__menu {
     margin: 0;
-    padding: 0 0 0 1em;
+    padding: 0 0 0 var(--spacer-base);
   }
   .post-navigation__item {
     margin: 0;
-    padding: 0 0 0.5em 0;
+    padding: 0 0 var(--spacer-xs) 0;
     color: var(--color-text-link);
   }
 </style>

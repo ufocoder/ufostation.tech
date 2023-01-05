@@ -12,17 +12,17 @@ const { title, series } = Astro.props;
 <style>
   .series {
     display: flex;
-    padding: 2em;
+    padding: var(--spacer-l);
     background: var(--background-secondary);
-    gap: 4em;
-    margin: 2em 0;
+    gap: var(--spacer-2xl);
+    margin: var(--spacer-l) 0;
   }
   .series__column--left {
     flex: 1.6;
   }
   .series__column--right {
     flex: 1;
-    padding: 1em;
+    padding: var(--spacer-base);
     background: var(--background-quaternary);
     align-self: center;
   }
@@ -36,7 +36,7 @@ const { title, series } = Astro.props;
   .series__content {
     font-size: var(--font-size-loud);
     font-weight: 300;
-    margin: 2em 0;
+    margin: var(--spacer-xl) 0;
   }
   .series__link {
     font-size: var(--font-size-loud);

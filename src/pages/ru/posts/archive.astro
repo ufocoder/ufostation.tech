@@ -19,11 +19,12 @@ const meta = {
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    gap: var(--spacer-xs);
   }
   .archive__title {
     display: block;
     font-size: var(--font-size-heading-h2);
-    margin-bottom: 1em;
+    margin-bottom: var(--spacer-xl);
   }
   .archive__sidebar {
     display: block;
@@ -40,8 +41,8 @@ const meta = {
   }
 
   .archive__items {
-    margin: var(--layout-padding-base) 0;
-    padding: 0 0 0 var(--layout-padding-base);
+    margin: var(--spacer-base) 0;
+    padding: 0 0 0 var(--spacer-base);
   }
 
   .archive__item {
@@ -52,6 +53,17 @@ const meta = {
     display: inline-block;
     color: var(--color-text-secondary);
   }
+
+  @media (max-width: 576px) {
+    .archive__header {
+      flex-wrap: wrap;
+      margin: var(--spacer-xl) 0;
+    }
+    .archive__title {
+      margin: 0;
+    }
+  }
+
 </style>
 <BaseLayout meta={meta}>
   <main>

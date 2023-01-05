@@ -18,12 +18,12 @@ const defaultHeroImage =
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    gap: .5em;
+    gap: var(--spacer-xs);
   }
   .section-posts__title {
     display: block;
     font-size: var(--font-size-heading-h2);
-    margin-bottom: 1em;
+    margin-bottom: var(--spacer-xl);
   }
   .section-posts__sidebar {
     display: block;
@@ -36,21 +36,21 @@ const defaultHeroImage =
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2em;
+    gap: var(--spacer-l);
   }
   .section-posts__section {
     flex: 1 1 30%;
-    margin-bottom: 1em;
+    margin-bottom: var(--spacer-base);
   }
   .section__post-meta {
     font-size: var(--font-size-tiny);
     color: var(--color-text-secondary);
-    margin: 1em 0;
+    margin: var(--spacer-s) 0;
   }
   .section__post-title {
     color: var(--color-text-base);
     font-size: var(--font-size-heading-h4);
-    margin: 1em 0;
+    margin: var(--spacer-m) 0;
   }
   .section__image-container {
     height: 250px;
@@ -77,7 +77,7 @@ const defaultHeroImage =
   @media (max-width: 576px) {
     .section-posts__header {
       flex-wrap: wrap;
-      margin: 2.4em 0;
+      margin: var(--spacer-xl) 0;
     }
     .section-posts__title {
       margin: 0;
