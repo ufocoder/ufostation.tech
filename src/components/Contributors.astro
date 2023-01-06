@@ -1,0 +1,93 @@
+---
+import { Octokit } from 'octokit';
+
+const apiToken = import.meta.env.GITHUB_API_TOKEN;
+
+const octokit = new Octokit({
+  auth: apiToken,
+});
+
+const result = await octokit.request(
+  'GET /repos/{owner}/{repo}/stats/contributors',
+  {
+    owner: 'ufocoder',
+    repo: 'ufostation.tech',
+  }
+);
+---
+
+<style>
+  .section-contributors {
+    margin: var(--spacer-l) 0;
+  }
+
+  .section-contributors__title {
+    margin: 0 0 var(--spacer-l);
+  }
+
+  .section-contributors__counter {
+    color: var(--color-text-secondary);
+    font-size: 75%;
+    font-weight: 400;
+  }
+
+  .contributors {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacer-base);
+  }
+
+  .contributor {
+    display: flex;
+    align-items: center;
+    gap: var(--spacer-xs);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+
+  .contributor__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  @media (hover: hover) {
+    .contributor:hover {
+      color: var(--color-text-base);
+    }
+  }
+</style>
+
+{ (result.status === 200) && (
+  <section class="section-contributors">
+    <h3 class="section-contributors__title">
+      Contributors
+      <span class="section-contributors__counter">
+        ({result.data.length})
+      </span>
+    </h3>
+
+    <ul class="contributors">
+      {result.data
+        .sort((previous, current) => (current.total - previous.total))
+        .map(({author: { login, avatar_url, html_url }}) => (
+          <li class="contributors__item">
+            <a class="contributor" href={html_url} target="_blank">
+              <img
+                class="contributor__avatar"
+                src={avatar_url}
+                width="32"
+                height="32"
+                alt={login}
+              />
+              <span class="contributor__name">{login}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+)}

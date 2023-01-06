@@ -22,6 +22,7 @@
     "astrojs-service-worker": "^0.0.8",
     "marked": "^4.2.5",
     "mdast-util-to-string": "^3.1.0",
+    "octokit": "^2.0.10",
     "reading-time": "^1.5.0",
     "rss-parser": "^3.12.0",
     "workbox-build": "^6.5.4",
