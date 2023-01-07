@@ -1,7 +1,8 @@
 ---
 import { Octokit } from 'octokit';
+import { GITHUB_OWNER, GITHUB_REPO } from 'src/config';
 
-const apiToken = import.meta.env.GITHUB_API_TOKEN;
+const apiToken = import.meta.env.API_GITHUB_TOKEN;
 
 const octokit = new Octokit({
   auth: apiToken,
@@ -10,10 +11,18 @@ const octokit = new Octokit({
 const result = await octokit.request(
   'GET /repos/{owner}/{repo}/stats/contributors',
   {
-    owner: 'ufocoder',
-    repo: 'ufostation.tech',
+    owner: GITHUB_OWNER,
+    repo: GITHUB_REPO,
   }
 );
+
+if (result.status !== 200) {
+  throw new Error('Bad Github response');
+}
+
+const contributors = (result.data as any)
+  .sort((previous, current) => (current.total - previous.total))
+  .map(({ author }) => author);
 ---
 
 <style>
@@ -52,6 +61,7 @@ const result = await octokit.request(
     width: 32px;
     height: 32px;
     border-radius: 50%;
+    background-color: var(--background-quaternary);
   }
 
   @media (hover: hover) {
@@ -61,33 +71,29 @@ const result = await octokit.request(
   }
 </style>
 
-{ (result.status === 200) && (
-  <section class="section-contributors">
-    <h3 class="section-contributors__title">
-      Contributors
-      <span class="section-contributors__counter">
-        ({result.data.length})
-      </span>
-    </h3>
+<section class="section-contributors">
+  <h3 class="section-contributors__title">
+    Contributors
+    <span class="section-contributors__counter">
+      ({contributors.length})
+    </span>
+  </h3>
 
-    <ul class="contributors">
-      {result.data
-        .sort((previous, current) => (current.total - previous.total))
-        .map(({author: { login, avatar_url, html_url }}) => (
-          <li class="contributors__item">
-            <a class="contributor" href={html_url} target="_blank">
-              <img
-                class="contributor__avatar"
-                src={avatar_url}
-                width="32"
-                height="32"
-                alt={login}
-              />
-              <span class="contributor__name">{login}</span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-)}
+  <ul class="contributors">
+    {contributors.map(({ login, avatar_url, html_url }) => (
+        <li class="contributors__item">
+          <a class="contributor" href={html_url} target="_blank">
+            <img
+              class="contributor__avatar"
+              src={avatar_url}
+              width="32"
+              height="32"
+              alt={login}
+            />
+            <span class="contributor__name">{login}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
