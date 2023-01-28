@@ -4,5 +4,5 @@ Built with [astro.build](https://astro.build/)
 
 **npm commands**
 
-- `GITHUB_API_TOKEN=your_token_here npm run dev` - development
-- `GITHUB_API_TOKEN=your_token_here npm run build` - build website
+- `API_GITHUB_TOKEN=your_token_here npm run dev` - development
+- `API_GITHUB_TOKEN=your_token_here npm run build` - build website
