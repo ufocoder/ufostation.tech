@@ -58,7 +58,7 @@ import Video from 'src/components/Video.astro';
 
 Существует [список триггеров](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/), благодаря которым элементы выносятся в отдельные слои
 
-Если использовать анимацию через изменение `left/top`, то вам необходимо перерисовывать всю область на экране. На основном слое будет находится и фон и квадрат, и придется соверщать больше работы связанной с редерингом (тайлинг, растеризация и тп)
+Если использовать анимацию через изменение `left/top`, то вам необходимо перерисовывать всю область на экране. На основном слое будет находится и фон и квадрат, и придется совершать больше работы связанной с редерингом (тайлинг, растеризация и тп)
 
 <Img src="/assets/posts/2021/better-animations/layers-top-left.jpg" />
 
@@ -101,7 +101,7 @@ import Video from 'src/components/Video.astro';
   style="max-width: 600px; width: 100%;"
 />
 
-**Сопроводительные материалы**  
-— [How to create high-performance CSS animations](https://web.dev/animations-guide/)  
-— [GPU Accelerated Compositing in Chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/)  
+**Сопроводительные материалы**
+— [How to create high-performance CSS animations](https://web.dev/animations-guide/)
+— [GPU Accelerated Compositing in Chrome](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome/)
 — [Overview of the RenderingNG architecture](https://developer.chrome.com/articles/renderingng-architecture/)
