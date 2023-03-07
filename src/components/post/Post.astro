@@ -46,13 +46,16 @@ const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
     padding: var(--spacer-2xs) 0;
   }
 
-  .post__content video,
-  .post__content iframe {
+  .post__content video {
     display: block;
     text-align: center;
     margin: var(--spacer-base) auto;
     width: 100%;
     min-height: 500px;
+  }
+
+  .post__content .youtube-video__container {
+    margin: var(--spacer-base) auto;
   }
 </style>
 <article class="post">
