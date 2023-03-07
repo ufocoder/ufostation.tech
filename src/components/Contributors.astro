@@ -13,8 +13,6 @@ const result = await octokit.rest.repos.getContributorsStats({
   repo: GITHUB_REPO,
 });
 
-console.log(result);
-
 if (result.status !== 200) {
   throw new Error('Bad Github response');
 }
