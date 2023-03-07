@@ -20,21 +20,37 @@ import Img from 'src/components/Img.astro';
 JavaScript → Style → Layout → Paint → Compose
 ```
 
-<Img src="/assets/posts/2021/browser-rendering-style/style-stage.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-style/style-stage.jpg"
+  width="976"
+  height="652"
+/>
 
 После парсинга (или выполнения JavaScript) следующим шагом в Rendering Pipeline является стилизация — Style.
 
-<Img src="/assets/posts/2021/browser-rendering-style/style-computed.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-style/style-computed.jpg"
+  width="1280"
+  height="529"
+/>
 
 С тем как и где представлены результаты вычисления стилей, уверен, вы уже встречались в devtools во вкладке Elements при выделении конкретного элемента в DOM.
 
-<Img src="/assets/posts/2021/browser-rendering-style/style-task.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-style/style-task.jpg"
+  width="1280"
+  height="786"
+/>
 
 Задача Recalculate Style, которую можно найти в devtools performance, занимается тем, что пытается совместить эти две модели (или дерева) DOM и CSSOM и получить новое дерево, которое называют Render Tree.
 
 В Render Tree, еще встречал такой перевод как "модель визуализации", попадают те элементы, которые действительно отобразятся на странице.
 
-<Img src="/assets/posts/2021/browser-rendering-style/style-render-tree.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-style/style-render-tree.jpg"
+  width="1280"
+  height="658"
+/>
 
 В Render Tree не попадут элементы, которые спрятаны CSS-стилями, то есть не занимают никакого места, например, элементы со свойством display:none.
 

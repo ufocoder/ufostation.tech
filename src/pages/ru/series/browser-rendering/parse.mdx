@@ -16,29 +16,53 @@ import Img from 'src/components/Img.astro';
 
 На деле современные браузеры работают так, что если вы откроете в нем невалидный HTML, предполагающий что-то на экране, то прерывания парсинга не будет и вы вряд ли получите пустую страницу.
 
-<Img src="/assets/posts/2021/browser-rendering-parse/parse-spec.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-parse/parse-spec.jpg"
+  width="866"
+  height="1126"
+/>
 
 Источник изображения: [HTML. Living Standard. 13.2.1 Overview of the parsing model](https://html.spec.whatwg.org/multipage/parsing.html#overview-of-the-parsing-model)
 
-<Img src="/assets/posts/2021/browser-rendering-parse/parse-bytes.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-parse/parse-bytes.jpg"
+  width="1280"
+  height="508"
+/>
 
 Когда браузер получил часть документа из сети, то он "видит" это как набор байтов — необходимо превратить его в набор символов.
 
-<Img src="/assets/posts/2021/browser-rendering-parse/parse-tokens.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-parse/parse-tokens.jpg"
+  width="1280"
+  height="538"
+/>
 
 В конечном счете все узлы собираются в объектную модель, для HTML документа эта модель сокращенно называется DOM.
 
-<Img src="/assets/posts/2021/browser-rendering-parse/parse-dom.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-parse/parse-dom.jpg"
+  width="1280"
+  height="774"
+/>
 
 В рамках parse stage в rendering pipeline присутствует задача Parse HTML, в devtools performance видно, что парсинг происходит range'ами.
 
 Важным моментом здесь является тот факт, что у нас есть stage (этапы/шаги) в rendering pipeline и есть задачи, видимые в devtools performance, и не смотря на то, что и в первых и во вторых могут присутствовать одинаковые слова — смыслы за ними стоят разные.
 
-<Img src="/assets/posts/2021/browser-rendering-parse/parse-html-task.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-parse/parse-html-task.jpg"
+  width="1280"
+  height="782"
+/>
 
 В рамках выполнения задачи parse HTML у нас может возникать множество дочерних задач, например: отправка сетевых запросов (Send Request) как на скрине выше, а также выполнения JavaScript кода (Evaluate Script), вычисление стилей (Recalculate Style) и так далее.
 
-<Img src="/assets/posts/2021/browser-rendering-parse/parse-request-task.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-parse/parse-request-task.jpg"
+  width="1280"
+  height="783"
+/>
 
 Также к parse stage в rendering pipeline относится и парсинг CSS, здесь у нас происходит точно такая же последовательность действий:
 
@@ -48,8 +72,16 @@ bytes → characters → tokens → nodes→ object model
 
 Для парсинга CSS есть своя спецификация: https://www.w3.org/TR/css-syntax-3/
 
-<Img src="/assets/posts/2021/browser-rendering-parse/parse-styles.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-parse/parse-styles.jpg"
+  width="1280"
+  height="405"
+/>
 
 В devtools performance можно найти соответствующую задачу Parse Stylesheet
 
-<Img src="/assets/posts/2021/browser-rendering-parse/parse-stylesheet-task.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-parse/parse-stylesheet-task.jpg"
+  width="1280"
+  height="798"
+/>

@@ -10,4 +10,11 @@ const { src: rawSrc, ...props } = Astro.props;
 const src = addUrlPrefix(import.meta.env.BASE_URL, rawSrc.toString());
 ---
 
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
 <img src={src} {...props} />

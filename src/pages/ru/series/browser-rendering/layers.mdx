@@ -20,7 +20,11 @@ import Img from 'src/components/Img.astro';
 
 Теперь поговорим об этом детальней
 
-<Img src="/assets/posts/2021/browser-rendering-layers/stage.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-layers/stage.jpg"
+  width="1280"
+  height="629"
+/>
 
 После вычисления Layout Tree, происходит следующий шаг —выделение слоев, Composition Assignments, происходит это в процессе отрисовки, в его главном потоке:
 

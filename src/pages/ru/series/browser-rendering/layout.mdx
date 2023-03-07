@@ -14,7 +14,11 @@ import Img from 'src/components/Img.astro';
 
 Отображение элементов из DOM tree (или Shadow DOM tree) в Layout tree не происходит 1 к 1, поскольку нет необходимости вычислять геометрию объектов, которые не будут отображаться.
 
-<Img src="/assets/posts/2021/browser-rendering-layout/layout-tree.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-layout/layout-tree.jpg"
+  width="1280"
+  height="791"
+/>
 
 Также причина по которой отображение элементов происходит не 1 к 1 из DOM tree в Layout tree, заключается в том, то некоторые элементы могут быть обернуты в дополнительные (так называемые анонимные) Layout объекты.
 
@@ -38,7 +42,11 @@ import Img from 'src/components/Img.astro';
 
 Надеюсь, что правильно разобрался во всем этом.
 
-<Img src="/assets/posts/2021/browser-rendering-layout/layout-styles-grouped.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-layout/layout-styles-grouped.jpg"
+  width="1280"
+  height="577"
+/>
 
 То, как будет вычисляться layout, какая layout model будет использоваться, определяется CSS-свойством display.
 
@@ -52,7 +60,11 @@ import Img from 'src/components/Img.astro';
 
 В [исходниках Blink](https://chromium.googlesource.com/chromium/blink/+/refs/heads/main) можно найти предопределенные [стили для html-страниц](https://chromium.googlesource.com/chromium/blink/+/refs/heads/main/Source/core/css/html.css), а также некоторые другие, например, для тэгов [audio](https://chromium.googlesource.com/chromium/blink/+/refs/heads/main/Source/core/css/mediaControls.css), [video](https://chromium.googlesource.com/chromium/blink/+/refs/heads/main/Source/core/css/mediaControls.css), стили для [полноэкранного режима](https://chromium.googlesource.com/chromium/blink/+/refs/heads/main/Source/core/css/fullscreen.css), стили для страницы [view-source](https://chromium.googlesource.com/chromium/blink/+/refs/heads/main/Source/core/css/view-source.css), дополнительные стили под android версию и [так далее](https://chromium.googlesource.com/chromium/blink/+/refs/heads/main/Source/core/css).
 
-<Img src="/assets/posts/2021/browser-rendering-layout/layout-css-box-model.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-layout/layout-css-box-model.jpg"
+  width="1280"
+  height="967"
+/>
 
 В devtools performance при исследовании вкладки computed styles любого элемента можно обнаружить его css box model, независимо от того какое значение display установлено.
 
@@ -66,6 +78,10 @@ import Img from 'src/components/Img.astro';
 
 Также на этапе layout в rendering pipeline в Chromium вычисляются и размеры текста с учетом его типографских особенностей, а происходит это с помощью библиотеки [HarfBuzz](https://github.com/harfbuzz/harfbuzz).
 
-<Img src="/assets/posts/2021/browser-rendering-layout/layout-task.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-layout/layout-task.jpg"
+  width="1280"
+  height="722"
+/>
 
 Все вычисления layout происходят в одноименной задаче, которая к слову всегда встречается в devtools performance после того как страница загрузилась, а затем выполнились задачи Parse HTML и Recalculate Style.
