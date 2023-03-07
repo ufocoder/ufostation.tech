@@ -1,5 +1,5 @@
 ---
-import { Octokit } from 'octokit';
+import { Octokit } from '@octokit/rest';
 import { GITHUB_OWNER, GITHUB_REPO } from 'src/config';
 
 const apiToken = import.meta.env.API_GITHUB_TOKEN;
@@ -8,20 +8,19 @@ const octokit = new Octokit({
   auth: apiToken,
 });
 
-const result = await octokit.request(
-  'GET /repos/{owner}/{repo}/stats/contributors',
-  {
-    owner: GITHUB_OWNER,
-    repo: GITHUB_REPO,
-  }
-);
+const result = await octokit.rest.repos.getContributorsStats({
+  owner: GITHUB_OWNER,
+  repo: GITHUB_REPO,
+});
+
+console.log(result);
 
 if (result.status !== 200) {
   throw new Error('Bad Github response');
 }
 
 const contributors = (result.data as any)
-  .sort((previous, current) => (current.total - previous.total))
+  .sort((previous, current) => current.total - previous.total)
   .map(({ author }) => author);
 ---
 
@@ -80,7 +79,8 @@ const contributors = (result.data as any)
   </h3>
 
   <ul class="contributors">
-    {contributors.map(({ login, avatar_url, html_url }) => (
+    {
+      contributors.map(({ login, avatar_url, html_url }) => (
         <li class="contributors__item">
           <a class="contributor" href={html_url} target="_blank">
             <img
