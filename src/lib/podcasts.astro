@@ -1,0 +1,47 @@
+---
+import Parser from 'rss-parser';
+import { PODCAST_RSS_URL } from '../config';
+
+export async function getFeed() {
+  const parser = new Parser();
+
+  return await parser.parseURL(PODCAST_RSS_URL);
+}
+
+export function getSeasons(feed) {
+  const seasons: Record<number, any> = {};
+
+  feed.items.forEach((item) => {
+    const season = item.itunes.season;
+
+    if (!Object.hasOwn(seasons, season)) {
+      seasons[season] = [];
+    }
+
+    seasons[season].push(item);
+  });
+
+  return seasons;
+}
+
+export function getLinks(feed) {
+  return feed.items.map((item) => item.link);
+}
+
+export function extractEpisodeName(link) {
+  return link.replace(/.*[/]/i, '');
+}
+
+export function extractEpisodeIndex(episodeName) {
+  const normalizedEpisodeName = extractEpisodeName(episodeName);
+  return normalizedEpisodeName.replace(/\D+/, '');
+}
+
+export async function getData() {
+  const feed = await getFeed();
+  const seasons = getSeasons(feed);
+  const links = getLinks(feed);
+
+  return { feed, seasons, links };
+}
+---

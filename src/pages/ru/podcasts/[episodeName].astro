@@ -1,0 +1,56 @@
+---
+import BaseLayout from 'src/layouts/ru/Base.astro';
+import ShareLinks from 'src/components/ShareLinks.astro';
+import Link from 'src/components/Link.astro';
+
+import { getData, extractEpisodeIndex } from 'src/lib/podcasts.astro';
+
+export async function getStaticPaths() {
+  const { links } = await getData();
+
+  return links.map((link) => {
+    const episodeName = link.replace(/.*[/]/i, '');
+
+    return {
+      params: { episodeName },
+    };
+  });
+}
+
+const { url } = Astro;
+const { episodeName } = Astro.params;
+
+const episodeIndex = extractEpisodeIndex(episodeName);
+
+const title = `Подкаст • Эпизод ${episodeIndex}`;
+const { feed } = await getData();
+
+const meta = {
+  title,
+  description: `${feed.title}. ${feed.description}`,
+};
+---
+
+<style>
+  .podcast__more {
+    font-size: var(--font-size-heading-h5);
+  }
+</style>
+<BaseLayout meta={meta}>
+  <main>
+    <h2>Подкаст</h2>
+
+    <iframe
+      src=`https://player.mave.digital?podcast=ufostation&episode=${episodeIndex}&color=rgb(95,128,245)&mute=1&date=1&download=1`
+      style="width: 100%"
+      height="235"
+      scrolling="no"
+      frameborder="no"></iframe>
+
+    <ShareLinks title={title} url={url} type="podcast" />
+
+    <Link href="/ru/podcasts" class="podcast__more">
+      ← Вернуться к списку подкастов
+    </Link>
+  </main>
+</BaseLayout>

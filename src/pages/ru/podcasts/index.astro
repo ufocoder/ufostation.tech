@@ -1,23 +1,11 @@
 ---
-import Parser from 'rss-parser';
 import BaseLayout from 'src/layouts/ru/Base.astro';
 
-import { PODCAST_RSS_URL } from 'src/config';
+import { getData, extractEpisodeName } from 'src/lib/podcasts.astro';
 
-const parser = new Parser();
-const feed = await parser.parseURL(PODCAST_RSS_URL);
+const { feed, seasons } = await getData();
 
-const seasons: Record<number, any> = {};
-
-feed.items.forEach((item) => {
-  const season = item.itunes.season;
-
-  if (!Object.hasOwn(seasons, season)) {
-    seasons[season] = [];
-  }
-
-  seasons[season].push(item);
-});
+const { url } = Astro;
 
 const meta = {
   title: 'Подкаст',
@@ -38,7 +26,9 @@ const meta = {
               <ul class="archive__items">
                 {seasons[season].map((podcast) => (
                   <li class="archive__item">
-                    <a href={podcast.link} target="_blank">
+                    <a
+                      href={`/ru/podcasts/${extractEpisodeName(podcast.link)}`}
+                    >
                       {podcast.title}
                     </a>
                   </li>

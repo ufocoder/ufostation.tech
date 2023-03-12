@@ -1,7 +1,7 @@
 ---
 import { formatFullDate, addUrlPrefix } from 'src/lib/content';
 import { t, readingTime } from 'src/locales';
-import SharePost from '../post/Share.astro';
+import ShareLinks from '../ShareLinks.astro';
 
 const { content } = Astro.props;
 const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
@@ -84,5 +84,5 @@ const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
   <div class="post__content">
     <slot />
   </div>
-  <SharePost title={title} url={url} />
+  <ShareLinks title={title} url={url} type="post" />
 </article>
