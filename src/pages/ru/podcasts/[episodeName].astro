@@ -3,13 +3,17 @@ import BaseLayout from 'src/layouts/ru/Base.astro';
 import ShareLinks from 'src/components/ShareLinks.astro';
 import Link from 'src/components/Link.astro';
 
-import { getData, extractEpisodeIndex } from 'src/lib/podcasts.astro';
+import {
+  getData,
+  extractEpisodeName,
+  extractEpisodeIndex,
+} from 'src/lib/podcasts.astro';
 
 export async function getStaticPaths() {
   const { links } = await getData();
 
   return links.map((link) => {
-    const episodeName = link.replace(/.*[/]/i, '');
+    const episodeName = extractEpisodeName(link);
 
     return {
       params: { episodeName },

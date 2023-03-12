@@ -1,7 +1,7 @@
 ---
 import { formatFullDate, addUrlPrefix } from 'src/lib/content';
 import { t, readingTime } from 'src/locales';
-import ShareLinks from '../ShareLinks.astro';
+import ShareLinks from 'src/components/ShareLinks.astro';
 
 const { content } = Astro.props;
 const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
