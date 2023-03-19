@@ -14,7 +14,7 @@ const result = await octokit.rest.repos.getContributorsStats({
 });
 
 if (result.status !== 200) {
-  throw new Error(`Bad Github response ${apiToken}`);
+  throw new Error(`Bad Github response`);
 }
 
 const contributors = (result.data as any)
