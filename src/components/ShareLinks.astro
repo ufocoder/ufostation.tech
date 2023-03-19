@@ -6,21 +6,22 @@ import { t } from 'src/locales';
 export interface Props {
   title: string;
   url: URL;
+  type: 'post' | 'podcast';
 }
 
-const { title, url } = Astro.props;
+const { title, url, type } = Astro.props;
 ---
 
 <style>
-  .post__share {
+  .share {
     margin: var(--spacer-l) 0;
     padding: var(--spacer-base);
     background-color: var(--post-footer-background-color);
   }
-  .post__share-icons {
+  .share-icons {
     display: inline;
   }
-  .post__share-icon {
+  .share-icon {
     height: 24px;
     width: 24px;
     vertical-align: text-bottom;
@@ -28,16 +29,17 @@ const { title, url } = Astro.props;
   }
 </style>
 
-<div class="post__share">
-  {t('wantToShare')}
+<div class="share">
+  {type === 'post' && t('wantToShareThePost')}
+  {type === 'podcast' && t('wantToShareThePodcast')}
 
-  <div class="post__share-icons">
+  <div class="share-icons">
     <a
       href={createTwitterShareURL(title, new URL(url, Astro.url))}
       target="_blank"
     >
       <Img
-        class="post__share-icon"
+        class="share-icon"
         width="20px"
         height="20px"
         alt={t('shareTwitter') as string}
@@ -50,7 +52,7 @@ const { title, url } = Astro.props;
       target="_blank"
     >
       <Img
-        class="post__share-icon"
+        class="share-icon"
         width="20px"
         height="20px"
         alt={t('shareFacebook') as string}
