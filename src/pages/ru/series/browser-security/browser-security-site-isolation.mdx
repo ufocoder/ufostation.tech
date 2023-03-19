@@ -17,7 +17,11 @@ import Youtube from 'src/components/post/Youtube.astro';
 
 Сайт [https://evil.com](https://evil.com/) эксплуатирует ошибку браузера, которая позволяет получить доступ к вашей машине и ко встроенной странице [https://banking.com](https://banking.com/), далее нападающий веб-сайт может получить доступ к вашему аккаунту на [https://banking.com](https://banking.com/).
 
-<Img src="/assets/posts/2020/browser-security-site-isolation/processes.jpg" />
+<Img
+  src="/assets/posts/2020/browser-security-site-isolation/processes.jpg"
+  width="1280"
+  height="713"
+/>
 Как такое возможно? - Уязвимости в движке рендеринга; - Универсальный межсайтовый
 скриптинг [UXSS](https://www.acunetix.com/blog/articles/universal-cross-site-scripting-uxss/);
 - Атаки по побочным каналам, такие как [Spectre](https://spectreattack.com/).
@@ -26,7 +30,11 @@ import Youtube from 'src/components/post/Youtube.astro';
 
 С технологией Site Isolation эти два веб-сайта ([evil.com](http://evil.com/), [banking.com](http://banking.com/)) будут запущены в отдельных процессах рендеринга (каждый в своей песочнице), как следствие это усложнит эксплуатацию уязвимости браузера, чтобы получить данные.
 
-<Img src="/assets/posts/2020/browser-security-site-isolation/architecture.jpg" />
+<Img
+  src="/assets/posts/2020/browser-security-site-isolation/architecture.jpg"
+  width="1280"
+  height="717"
+/>
 
 Для более детального погружения в тему Site Isolation, строго рекомендую ознакомится с докладом [USENIX Security '19 - Site Isolation: Process Separation for Web Sites within the Browser](https://www.youtube.com/watch?v=YvVwrcaxxbQ).
 

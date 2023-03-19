@@ -60,28 +60,46 @@ import Video from 'src/components/Video.astro';
 
 Если использовать анимацию через изменение `left/top`, то вам необходимо перерисовывать всю область на экране. На основном слое будет находится и фон и квадрат, и придется совершать больше работы связанной с редерингом (тайлинг, растеризация и тп)
 
-<Img src="/assets/posts/2021/better-animations/layers-top-left.jpg" />
+<Img
+  src="/assets/posts/2021/better-animations/layers-top-left.jpg"
+  width="1200"
+  height="662"
+/>
 
 В случае анимации через `transform: translate` - происходит вынос квадрата в отдельный слой, как следствие нужно меньше работы совершить на отрисовку
 
-<Img src="/assets/posts/2021/better-animations/layers-transform.jpg" />
+<Img
+  src="/assets/posts/2021/better-animations/layers-transform.jpg"
+  width="1200"
+  height="695"
+/>
 
 #### Про сокращение paint операций
 
 В случае с `top/left` запускает создание задач связанных с `rendering pipeline`, причем для каждого кадра, то есть это задачи recalculate style, layout, update layer tree, paint, composite layers
 
-<Img src="/assets/posts/2021/better-animations/devtools-top-left.jpg" />
+<Img
+  src="/assets/posts/2021/better-animations/devtools-top-left.jpg"
+  width="1200"
+  height="779"
+/>
 
 Когда-то разработчики из компании Google сделали [csstriggers.com](https://csstriggers.com/), чтобы понять что создает новые задачи в main thread
 
 <Img
   src="/assets/posts/2021/better-animations/css-triggers.jpg"
   style="max-width: 600px; width: 100%;"
+  width="1200"
+  height="828"
 />
 
 Если посмотреть на задачи создаваемые с помощью `transform: translate`, то main thread практически пустой, по крайней мере вышеупомянутых задач нет. Нет задач — нет новых paint операций
 
-<Img src="/assets/posts/2021/better-animations/devtools-transform.jpg" />
+<Img
+  src="/assets/posts/2021/better-animations/devtools-transform.jpg"
+  width="1200"
+  height="779"
+/>
 
 #### С точки зрения процессов и потоков
 
@@ -92,6 +110,8 @@ import Video from 'src/components/Video.astro';
 <Img
   src="/assets/posts/2021/better-animations/pipeline-top-left.jpg"
   style="max-width: 600px; width: 100%;"
+  width="1200"
+  height="773"
 />
 
 В случае с анимацией через `transform: translate` цепочка сократится задач и участвующих в ней потоков сократится:
@@ -99,6 +119,8 @@ import Video from 'src/components/Video.astro';
 <Img
   src="/assets/posts/2021/better-animations/pipeline-transform.jpg"
   style="max-width: 600px; width: 100%;"
+  width="1200"
+  height="773"
 />
 
 **Сопроводительные материалы**

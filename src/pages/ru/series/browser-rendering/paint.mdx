@@ -18,7 +18,11 @@ JavaScript → Style → Layout → Paint → Compose
 
 Браузер — приложение, и как правило использует библиотеку для вывода примитивов на экранах через вызовы операционной системы, в которой работает. И кажется, если не вдаваться в детали реализации, то вроде бы ничего сложного, нужно согласно ранее полученному Render Tree и Layout Tree понять какой набор API-вызовов будет вызван,, но посмотрите на то, как это все устроено в [Rendering pipeline structure](https://developer.chrome.com/blog/renderingng-architecture/#rendering-pipeline-structure) в Chromium:
 
-<Img src="/assets/posts/2021/browser-rendering-paint/pipeline.jpg" />
+<Img
+  src="/assets/posts/2021/browser-rendering-paint/pipeline.jpg"
+  width="804"
+  height="1280"
+/>
 
 Схема [Rendering pipeline structure](https://developer.chrome.com/blog/renderingng-architecture/#rendering-pipeline-structure) из статьи [Overview of the RenderingNG architecture](https://developer.chrome.com/blog/renderingng-architecture/)
 
