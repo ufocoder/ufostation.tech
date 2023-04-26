@@ -1,7 +1,6 @@
 ---
 import Typed from 'src/components/Typed.astro';
 import Link from 'src/components/Link.astro';
-import { PODCAST_SITE_URL } from 'src/config';
 import { getFeaturedPosts } from 'src/lib/posts.astro';
 
 const posts = await (await getFeaturedPosts()).slice(0, 15);
@@ -113,7 +112,7 @@ const posts = await (await getFeaturedPosts()).slice(0, 15);
     <div class="section-hero__subtitle">
       технические <Link href="/ru/posts/">статьи</Link>,
       <Link href="/ru/series/">серии заметок</Link>,
-      <Link href={PODCAST_SITE_URL}>подкаст</Link><br />
+      <Link href="/ru/podcasts">подкаст</Link><br />
       про информационные технологии
     </div>
     <div class="section-hero__more">
