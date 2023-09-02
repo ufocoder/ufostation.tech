@@ -175,7 +175,7 @@
 
   --font-size-loud: 1.4rem;
   --font-size-base: 1.1rem;
-  --font-size-smaller: 0.95rem;
+  --font-size-smaller: 1rem;
   --font-size-tiny: 0.8rem;
 
   /* header */
@@ -285,11 +285,20 @@ pre > code {
 }
 
 blockquote {
+  font-size: var(--font-size-smaller);
   background: var(--post-blockquote-background-color);
   color: var(--post-blockquote-text-color);
   padding: var(--spacer-s);
   margin: var(--spacer-m) 0;
   border-left: 1px solid var(--post-blockquote-border-color);
+}
+
+blockquote > p:first-child { 
+  margin-top: 0;
+}
+
+blockquote > p:last-child { 
+  margin-bottom: 0;
 }
 
 .button {

@@ -2,6 +2,7 @@
 import { formatFullDate, addUrlPrefix } from 'src/lib/content';
 import { t, readingTime } from 'src/locales';
 import ShareLinks from 'src/components/ShareLinks.astro';
+import FixTypo from 'src/components/post/FixTypo.astro';
 
 const { content } = Astro.props;
 const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
@@ -85,4 +86,5 @@ const { title, url, pubDate, updatedDate, heroImage, minutesRead } = content;
     <slot />
   </div>
   <ShareLinks title={title} url={url} type="post" />
+  <FixTypo />
 </article>
