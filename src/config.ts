@@ -1,3 +1,4 @@
+export const SOURCE_DIR = process.cwd();
 export const SITE_URL = 'http://ufostation.tech';
 export const SITE_BASE = '/';
 export const SITE_TITLE = 'UfoStation';

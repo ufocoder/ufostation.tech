@@ -1,8 +1,9 @@
 ---
-import { GITHUB_URL } from 'src/config'
+import { GITHUB_URL, SOURCE_DIR } from 'src/config'
 import { t } from 'src/locales';
 
-const url = `${GITHUB_URL}/edit/main/src/pages${Astro.url.pathname}.astro`
+const filename = Astro.self.moduleId.substring(SOURCE_DIR.length + 1);
+const url = `${GITHUB_URL}/edit/main/${filename}`
 ---
 
 <p>
