@@ -2,8 +2,14 @@
 import { GITHUB_URL, SOURCE_DIR } from 'src/config'
 import { t } from 'src/locales';
 
-const filename = Astro.self.moduleId.substring(SOURCE_DIR.length + 1);
-const url = `${GITHUB_URL}/edit/main/${filename}`
+export interface Props {
+  file: string;
+}
+
+const { file } = Astro.props;
+
+const filepath = file.substring(SOURCE_DIR.length + 1);
+const url = `${GITHUB_URL}/edit/main/${filepath}`
 ---
 
 <p>
