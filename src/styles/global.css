@@ -331,3 +331,7 @@ blockquote > p:last-child {
 .content__inline-icon {
   vertical-align: bottom;
 }
+
+.content a {
+  word-break: break-all;
+}
